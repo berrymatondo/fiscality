@@ -53,13 +53,15 @@ export function CountUp({
     }
 
     // Always start from zero on (re)mount, then animate up.
-    setDisplay(
-      (0).toLocaleString('fr-FR', {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals,
-      }),
-    )
-    raf = requestAnimationFrame(tick)
+    raf = requestAnimationFrame(() => {
+      setDisplay(
+        (0).toLocaleString('fr-FR', {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals,
+        }),
+      )
+      raf = requestAnimationFrame(tick)
+    })
     return () => cancelAnimationFrame(raf)
   }, [isNumeric, target, decimals, duration])
 

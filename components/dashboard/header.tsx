@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { exportDashboard } from '@/lib/export'
 
 const EXERCICES = ['2021', '2022', '2023', '2024', '2025']
@@ -123,6 +124,8 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
           <Download className="h-4 w-4" />
           Exporter
         </Button>
+
+        <ThemeToggle />
       </div>
     </header>
   )
