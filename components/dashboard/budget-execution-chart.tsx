@@ -12,10 +12,11 @@ import {
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { budgetExecution } from '@/lib/data'
 
-const data = [
-  { name: 'RECETTES', Prévisions: 27764.4, Exécution: 12543.8 },
-  { name: 'DÉPENSES', Prévisions: 27709.5, Exécution: 9872.3 },
-]
+const data = budgetExecution.map((item) => ({
+  name: item.name,
+  Prévisions: item.prevision,
+  Exécution: item.execution,
+}))
 
 export function BudgetExecutionChart() {
   return (
@@ -47,8 +48,8 @@ export function BudgetExecutionChart() {
               tickLine={false}
               axisLine={false}
               tick={{ fontSize: 10, fill: 'var(--muted-foreground)' }}
-              domain={[0, 30000]}
-              ticks={[0, 10000, 20000, 30000]}
+              domain={[0, 50000]}
+              ticks={[0, 10000, 20000, 30000, 40000, 50000]}
               tickFormatter={(v) => v.toLocaleString('fr-FR')}
             />
             <Bar dataKey="Prévisions" fill="var(--chart-5)" fillOpacity={0.35} radius={[3, 3, 0, 0]} barSize={46} isAnimationActive={false}>

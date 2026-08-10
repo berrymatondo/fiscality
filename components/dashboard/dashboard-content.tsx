@@ -14,6 +14,7 @@ import { AlertsCard } from '@/components/dashboard/alerts-card'
 import { ReformsCard } from '@/components/dashboard/reforms-card'
 import { DocumentationView } from '@/components/dashboard/documentation-view'
 import { GovernanceView } from '@/components/dashboard/governance-view'
+import { TrackingTable } from '@/components/dashboard/tracking-table'
 import type { NavLabel } from '@/components/dashboard/sidebar'
 import { revenueBreakdown, expenseBreakdown, provinces } from '@/lib/data'
 import { exportDashboard } from '@/lib/export'
@@ -140,16 +141,16 @@ function InvestmentsView() {
         </Card>
         <Card className="p-4">
           <p className="text-[10px] uppercase text-muted-foreground">Taux d&apos;exécution</p>
-          <p className="mt-1 text-2xl font-extrabold text-warning">19,4%</p>
+          <p className="mt-1 text-2xl font-extrabold text-warning">14,6%</p>
         </Card>
         <Card className="p-4">
-          <p className="text-[10px] uppercase text-muted-foreground">Montant engagé</p>
-          <p className="mt-1 text-2xl font-extrabold text-foreground">1 915,2</p>
+          <p className="text-[10px] uppercase text-muted-foreground">Montant payé</p>
+          <p className="mt-1 text-2xl font-extrabold text-foreground">5 784,8</p>
           <p className="text-[10px] text-muted-foreground">Mrd CDF</p>
         </Card>
         <Card className="p-4">
-          <p className="text-[10px] uppercase text-muted-foreground">vs 2023</p>
-          <p className="mt-1 text-2xl font-extrabold text-destructive">-8,7%</p>
+          <p className="text-[10px] uppercase text-muted-foreground">Situation au</p>
+          <p className="mt-1 text-2xl font-extrabold text-foreground">31/12/2025</p>
         </Card>
       </div>
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
@@ -157,7 +158,7 @@ function InvestmentsView() {
         <BreakdownTable
           title="Répartition des dépenses par nature"
           description="(en %)"
-          centerValue="9 872,3"
+          centerValue="39 735,6"
           data={expenseBreakdown}
         />
       </div>
@@ -247,13 +248,13 @@ export function DashboardContent({ section }: { section: NavLabel }) {
               title="Répartition des dépenses à date par nature"
               description="(en %)"
               data={expenseBreakdown}
-              centerValue="9 872,3"
+              centerValue="39 735,6"
               centerUnit="Mrd CDF"
             />
             <BreakdownTable
               title="Détail des dépenses"
               description="(en % et en Mrd CDF)"
-              centerValue="9 872,3"
+              centerValue="39 735,6"
               data={expenseBreakdown}
             />
           </div>
@@ -325,6 +326,8 @@ export function DashboardContent({ section }: { section: NavLabel }) {
           <ReformsCard />
         </>
       )
+    case 'Tableau ESB':
+      return <TrackingTable />
     case 'Alertes & Risques':
       return (
         <>

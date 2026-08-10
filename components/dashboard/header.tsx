@@ -32,8 +32,8 @@ const MONTHS = [
 ]
 
 export function Header({ onMenuClick }: { onMenuClick: () => void }) {
-  const [exercice, setExercice] = useState('2024')
-  const [month, setMonth] = useState('Mai')
+  const [exercice, setExercice] = useState('2025')
+  const [month, setMonth] = useState('Décembre')
 
   return (
     <header className="flex flex-col gap-4 border-b border-border bg-card px-4 py-4 md:px-6 md:py-5 xl:flex-row xl:items-center xl:justify-between">

@@ -16,7 +16,7 @@ export function MinistryChart() {
               <div className="h-3.5 w-full overflow-hidden rounded-sm bg-muted">
                 <div
                   className="h-full rounded-sm bg-primary"
-                  style={{ width: `${(m.value / 50) * 100}%` }}
+                  style={{ width: `${Math.min(m.value, 120) / 1.2}%` }}
                 />
               </div>
             </div>
@@ -26,7 +26,7 @@ export function MinistryChart() {
           </div>
         ))}
         <div className="flex justify-between pt-1 text-[10px] text-muted-foreground">
-          {[0, 10, 20, 30, 40, 50].map((t) => (
+          {[0, 20, 40, 60, 80, 100, 120].map((t) => (
             <span key={t}>{t}%</span>
           ))}
         </div>

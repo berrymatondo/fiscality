@@ -15,12 +15,12 @@ export const kpis = [
   {
     label: 'Dépenses totales',
     sublabel: '(cumul à date)',
-    value: '9 872,3',
+    value: '39 735,6',
     unit: 'Mrd CDF',
     meta: "Taux d'exécution",
-    metaValue: '35,6%',
-    compareLabel: 'vs 2023 :',
-    compareValue: '+6,2%',
+    metaValue: '86,9%',
+    compareLabel: 'Situation au',
+    compareValue: '31/12/2025',
     compareTone: 'positive',
     icon: 'Wallet',
     color: 'info',
@@ -81,7 +81,7 @@ export const kpis = [
 
 export const budgetExecution = [
   { name: 'RECETTES', prevision: 27764.4, execution: 12543.8, taux: '45,2%' },
-  { name: 'DÉPENSES', prevision: 27709.5, execution: 9872.3, taux: '35,6%' },
+  { name: 'DÉPENSES', prevision: 45749.6, execution: 39735.6, taux: '86,9%' },
 ]
 
 export const revenueBreakdown = [
@@ -93,23 +93,23 @@ export const revenueBreakdown = [
 ]
 
 export const expenseBreakdown = [
-  { name: 'Charges de personnel', value: 35.2, color: 'var(--chart-1)' },
-  { name: 'Biens et services', value: 19.6, color: 'oklch(0.62 0.16 245)' },
-  { name: 'Transferts et subventions', value: 16.8, color: 'var(--chart-3)' },
-  { name: 'Intérêts de la dette', value: 6.3, color: 'var(--chart-4)' },
-  { name: 'Investissements', value: 19.4, color: 'var(--chart-2)' },
-  { name: 'Autres dépenses', value: 2.7, color: 'var(--chart-5)' },
+  { name: 'Rémunérations', value: 31.9, color: 'var(--chart-1)' },
+  { name: 'Fonctionnement', value: 27.8, color: 'oklch(0.62 0.16 245)' },
+  { name: 'Investissements', value: 14.6, color: 'var(--chart-2)' },
+  { name: 'Interventions', value: 4.0, color: 'var(--chart-3)' },
+  { name: 'Dette et frais financiers', value: 3.4, color: 'var(--chart-4)' },
+  { name: 'Autres dépenses', value: 18.3, color: 'var(--chart-5)' },
 ]
 
 export const ministryExecution = [
-  { name: 'Enseignement Primaire, Secondaire et Technique', value: 42.8 },
-  { name: 'Santé Publique', value: 41.3 },
-  { name: 'Infrastructures et Travaux Publics', value: 38.7 },
-  { name: 'Intérieur, Sécurité et Affaires Coutumières', value: 36.9 },
-  { name: 'Défense Nationale et Anciens Combattants', value: 35.4 },
-  { name: 'Affaires Sociales, Actions Humanitaires', value: 34.1 },
-  { name: 'Agriculture', value: 32.5 },
-  { name: 'Autres Ministères', value: 28.6 },
+  { name: 'Infrastructures et Travaux Publics', value: 113.4 },
+  { name: 'Finances', value: 98.0 },
+  { name: 'Intérieur et Sécurité', value: 85.6 },
+  { name: 'Éducation Nationale et Nouvelle Citoyenneté', value: 77.7 },
+  { name: 'Défense Nationale', value: 70.8 },
+  { name: 'Santé Publique, Hygiène et Prévention', value: 36.5 },
+  { name: 'Affaires Sociales', value: 23.3 },
+  { name: 'Agriculture et Sécurité Alimentaire', value: 20.4 },
 ]
 
 export const treasury = {
