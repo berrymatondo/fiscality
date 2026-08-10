@@ -21,6 +21,7 @@ import {
   X,
 } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 export const nav = [
@@ -51,9 +52,11 @@ function Brand({ collapsed }: { collapsed?: boolean }) {
         collapsed && 'justify-center px-0',
       )}
     >
-      <img
+      <Image
         src="/logo-ministere-budget.png"
         alt="Logo du Ministère du Budget de la République Démocratique du Congo"
+        width={44}
+        height={44}
         className="h-11 w-11 shrink-0 object-contain"
       />
       {!collapsed && (
