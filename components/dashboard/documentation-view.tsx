@@ -14,10 +14,13 @@ import {
   AlertTriangle,
   FileText,
   ScrollText,
+  Workflow,
+  ListChecks,
   BookOpen,
   type LucideIcon,
 } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import Link from 'next/link'
 
 type Indicator = {
   name: string
@@ -121,6 +124,7 @@ const otherIndicators: Indicator[] = [
 
 type PageDoc = {
   label: string
+  href: string
   icon: LucideIcon
   purpose: string
   content: string
@@ -129,6 +133,7 @@ type PageDoc = {
 const pageDocs: PageDoc[] = [
   {
     label: "Vue d'ensemble",
+    href: '/',
     icon: LayoutDashboard,
     purpose: "Synthèse stratégique de l'exécution du budget de l'État.",
     content:
@@ -136,6 +141,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Recettes',
+    href: '/recettes',
     icon: HandCoins,
     purpose: 'Détail de la mobilisation des recettes à date.',
     content:
@@ -143,6 +149,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Dépenses',
+    href: '/depenses',
     icon: Wallet,
     purpose: "Suivi de l'exécution des dépenses par nature.",
     content:
@@ -150,6 +157,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Trésorerie',
+    href: '/tresorerie',
     icon: Landmark,
     purpose: "Situation et évolution des disponibilités de l'État.",
     content:
@@ -157,6 +165,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Dette publique',
+    href: '/dette-publique',
     icon: FileBarChart2,
     purpose: "Encours et structure de la dette de l'État.",
     content:
@@ -164,6 +173,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Investissements Publics',
+    href: '/investissements-publics',
     icon: Building2,
     purpose: "Exécution des dépenses d'investissement.",
     content:
@@ -171,6 +181,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Exécution par Ministère',
+    href: '/execution-par-ministere',
     icon: Layers,
     purpose: "Taux d'exécution des dépenses par ministère.",
     content:
@@ -178,6 +189,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Provinces',
+    href: '/provinces',
     icon: Map,
     purpose: 'Exécution des dépenses par province.',
     content:
@@ -185,6 +197,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Indicateurs Macroéconomiques',
+    href: '/indicateurs-macroeconomiques',
     icon: LineChart,
     purpose: 'Environnement macroéconomique et hypothèses budgétaires.',
     content:
@@ -192,13 +205,23 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Suivi des réformes',
+    href: '/suivi-des-reformes',
     icon: ClipboardCheck,
     purpose: 'Avancement des réformes budgétaires.',
     content:
       "Affiche l'avancement global et le statut de chaque réforme (réalisée, en cours).",
   },
   {
+    label: 'Tableau ESB',
+    href: '/tableau-esb',
+    icon: ListChecks,
+    purpose: 'Suivi détaillé des engagements et de l’exécution budgétaire.',
+    content:
+      'Centralise les lignes de suivi budgétaire, leurs montants, leur niveau d’exécution et leur situation afin de faciliter le pilotage opérationnel.',
+  },
+  {
     label: 'Alertes & Risques',
+    href: '/alertes-et-risques',
     icon: AlertTriangle,
     purpose: "Points de vigilance sur l'exécution budgétaire.",
     content:
@@ -206,6 +229,7 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Rapports',
+    href: '/rapports',
     icon: FileText,
     purpose: 'Documents budgétaires et exports de données.',
     content:
@@ -213,13 +237,23 @@ const pageDocs: PageDoc[] = [
   },
   {
     label: 'Schéma Directeur',
+    href: '/schema-directeur',
     icon: ScrollText,
     purpose: 'Cadre de gouvernance financière encadrant le budget.',
     content:
       "Présente le Schéma Directeur de la Gouvernance Financière (Circulaire N°001/ME/MIN.BUDGET) : piliers du Gouvernement, instruments budgétaires (Loi de Finances, PEB, PTR), cycle de vie des recettes et des dépenses, mobilisation des recettes, modèle provincial des 40%, seuils de marchés publics, mécanisme M.A.D et règles d'or.",
   },
   {
+    label: 'Processus budgétaire',
+    href: '/processus-budgetaire',
+    icon: Workflow,
+    purpose: 'Représentation chronologique du cycle budgétaire de l’État.',
+    content:
+      'Présente les 4 phases et les 12 étapes du cadrage à la reddition des comptes. Chaque étape affiche son activité, ses intervenants et une date éditable sauvegardée dans le navigateur. La frise permet de sélectionner, ouvrir et focaliser directement une étape. La page détaille également les quatre actes de la dépense publique.',
+  },
+  {
     label: 'Documentation',
+    href: '/documentation',
     icon: BookOpen,
     purpose: 'Guide d\u2019utilisation du tableau de bord.',
     content:
@@ -272,6 +306,11 @@ export function DocumentationView() {
           <CardDescription>Principes généraux</CardDescription>
         </CardHeader>
         <CardContent className="space-y-2 text-[12px] leading-relaxed text-muted-foreground">
+          <p>
+            Chaque rubrique du menu correspond à une page autonome avec sa propre adresse.
+            Elle peut être ouverte directement, actualisée ou ajoutée aux favoris sans perdre
+            la section consultée.
+          </p>
           <p>
             Ce tableau de bord suit l&apos;exécution du Budget de l&apos;État de la
             République Démocratique du Congo. Les montants sont exprimés en{' '}
@@ -329,22 +368,26 @@ export function DocumentationView() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {pageDocs.map(({ label, icon: Icon, purpose, content }) => (
-              <div
+            {pageDocs.map(({ label, href, icon: Icon, purpose, content }) => (
+              <Link
                 key={label}
-                className="rounded-lg border border-border p-4 transition-colors hover:bg-accent/40"
+                href={href}
+                className="group rounded-lg border border-border p-4 transition-colors hover:border-primary/30 hover:bg-accent/40"
               >
                 <div className="flex items-center gap-2">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent text-accent-foreground">
                     <Icon className="h-4 w-4" />
                   </span>
-                  <p className="text-[13px] font-semibold text-foreground">{label}</p>
+                  <div className="min-w-0">
+                    <p className="text-[13px] font-semibold text-foreground group-hover:text-primary">{label}</p>
+                    <p className="truncate font-mono text-[9px] text-muted-foreground">{href}</p>
+                  </div>
                 </div>
                 <p className="mt-2 text-[12px] font-medium text-foreground">{purpose}</p>
                 <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground">
                   {content}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </CardContent>
