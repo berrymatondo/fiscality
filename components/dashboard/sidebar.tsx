@@ -15,7 +15,6 @@ import {
   AlertTriangle,
   FileText,
   BookOpen,
-  ScrollText,
   Workflow,
   PanelLeftClose,
   PanelLeftOpen,
@@ -27,22 +26,21 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 export const nav = [
-  { label: "Vue d'ensemble", href: '/', icon: LayoutDashboard },
-  { label: 'Recettes', href: '/recettes', icon: HandCoins },
-  { label: 'Dépenses', href: '/depenses', icon: Wallet },
-  { label: 'Trésorerie', href: '/tresorerie', icon: Landmark },
-  { label: 'Dette publique', href: '/dette-publique', icon: FileBarChart2 },
-  { label: 'Investissements Publics', href: '/investissements-publics', icon: Building2 },
-  { label: 'Exécution par Ministère', href: '/execution-par-ministere', icon: Layers },
-  { label: 'Provinces', href: '/provinces', icon: Map },
-  { label: 'Indicateurs Macroéconomiques', href: '/indicateurs-macroeconomiques', icon: LineChart },
-  { label: 'Suivi des réformes', href: '/suivi-des-reformes', icon: ClipboardCheck },
-  { label: 'Tableau ESB', href: '/tableau-esb', icon: ListChecks },
-  { label: 'Alertes & Risques', href: '/alertes-et-risques', icon: AlertTriangle },
-  { label: 'Rapports', href: '/rapports', icon: FileText },
-  { label: 'Schéma Directeur', href: '/schema-directeur', icon: ScrollText },
-  { label: 'Processus budgétaire', href: '/processus-budgetaire', icon: Workflow },
-  { label: 'Documentation', href: '/documentation', icon: BookOpen },
+  { label: "Vue d'ensemble", href: '/', icon: LayoutDashboard, group: 'Synthèse' },
+  { label: 'Recettes', href: '/recettes', icon: HandCoins, group: 'Exécution budgétaire' },
+  { label: 'Dépenses', href: '/depenses', icon: Wallet, group: 'Exécution budgétaire' },
+  { label: 'Trésorerie', href: '/tresorerie', icon: Landmark, group: 'Exécution budgétaire' },
+  { label: 'Dette publique', href: '/dette-publique', icon: FileBarChart2, group: 'Exécution budgétaire' },
+  { label: 'Investissements Publics', href: '/investissements-publics', icon: Building2, group: 'Exécution budgétaire' },
+  { label: 'Exécution par Ministère', href: '/execution-par-ministere', icon: Layers, group: 'Analyses' },
+  { label: 'Provinces', href: '/provinces', icon: Map, group: 'Analyses' },
+  { label: 'Indicateurs Macroéconomiques', href: '/indicateurs-macroeconomiques', icon: LineChart, group: 'Analyses' },
+  { label: 'Suivi des réformes', href: '/suivi-des-reformes', icon: ClipboardCheck, group: 'Pilotage & contrôle' },
+  { label: 'Tableau ESB', href: '/tableau-esb', icon: ListChecks, group: 'Pilotage & contrôle' },
+  { label: 'Alertes & Risques', href: '/alertes-et-risques', icon: AlertTriangle, group: 'Pilotage & contrôle' },
+  { label: 'Processus budgétaire', href: '/processus-budgetaire', icon: Workflow, group: 'Ressources' },
+  { label: 'Rapports', href: '/rapports', icon: FileText, group: 'Ressources' },
+  { label: 'Documentation', href: '/documentation', icon: BookOpen, group: 'Ressources' },
 ] as const
 
 export type NavLabel = (typeof nav)[number]['label']
@@ -88,29 +86,45 @@ function NavList({
   onSelect: (label: NavLabel) => void
   collapsed?: boolean
 }) {
+  const groups = ['Synthèse', 'Exécution budgétaire', 'Analyses', 'Pilotage & contrôle', 'Ressources'] as const
+
   return (
-    <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 py-2">
-      {nav.map(({ label, href, icon: Icon }) => {
-        const isActive = active === label
-        return (
-          <Link
-            key={label}
-            href={href}
-            onClick={() => onSelect(label)}
-            title={collapsed ? label : undefined}
-            className={cn(
-              'flex items-center gap-3 rounded-md px-3 py-2.5 text-left text-[13px] font-medium transition-colors',
-              collapsed && 'justify-center px-0',
-              isActive
-                ? 'bg-sidebar-accent text-sidebar-accent-foreground'
-                : 'text-sidebar-foreground hover:bg-sidebar-accent/60',
-            )}
-          >
-            <Icon className="h-4 w-4 shrink-0" />
-            {!collapsed && <span className="leading-tight">{label}</span>}
-          </Link>
-        )
-      })}
+    <nav className="flex flex-1 flex-col overflow-y-auto px-3 py-2">
+      {groups.map((group, groupIndex) => (
+        <div
+          key={group}
+          className={cn(groupIndex > 0 && (collapsed ? 'mt-2 border-t border-sidebar-border pt-2' : 'mt-3'))}
+        >
+          {!collapsed && (
+            <p className="mb-1 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground/70">
+              {group}
+            </p>
+          )}
+          <div className="space-y-0.5">
+            {nav.filter((item) => item.group === group).map(({ label, href, icon: Icon }) => {
+              const isActive = active === label
+              return (
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={() => onSelect(label)}
+                  title={collapsed ? label : undefined}
+                  className={cn(
+                    'flex items-center gap-3 rounded-md px-3 py-2 text-left text-[12px] font-medium transition-colors',
+                    collapsed && 'justify-center px-0 py-2.5',
+                    isActive
+                      ? 'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm'
+                      : 'text-sidebar-foreground hover:bg-sidebar-accent/60',
+                  )}
+                >
+                  <Icon className="h-4 w-4 shrink-0" />
+                  {!collapsed && <span className="leading-tight">{label}</span>}
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      ))}
     </nav>
   )
 }

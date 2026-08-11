@@ -13,7 +13,6 @@ import {
   ClipboardCheck,
   AlertTriangle,
   FileText,
-  ScrollText,
   Workflow,
   ListChecks,
   BookOpen,
@@ -234,14 +233,6 @@ const pageDocs: PageDoc[] = [
     purpose: 'Documents budgétaires et exports de données.',
     content:
       "Permet de télécharger les rapports d'exécution, de trésorerie, de dette, macroéconomiques et de réformes au format CSV.",
-  },
-  {
-    label: 'Schéma Directeur',
-    href: '/schema-directeur',
-    icon: ScrollText,
-    purpose: 'Cadre de gouvernance financière encadrant le budget.',
-    content:
-      "Présente le Schéma Directeur de la Gouvernance Financière (Circulaire N°001/ME/MIN.BUDGET) : piliers du Gouvernement, instruments budgétaires (Loi de Finances, PEB, PTR), cycle de vie des recettes et des dépenses, mobilisation des recettes, modèle provincial des 40%, seuils de marchés publics, mécanisme M.A.D et règles d'or.",
   },
   {
     label: 'Processus budgétaire',

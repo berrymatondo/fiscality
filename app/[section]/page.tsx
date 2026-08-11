@@ -12,7 +12,7 @@ const sections: Record<string, NavLabel> = {
   'indicateurs-macroeconomiques': 'Indicateurs Macroéconomiques',
   'suivi-des-reformes': 'Suivi des réformes', 'tableau-esb': 'Tableau ESB',
   'alertes-et-risques': 'Alertes & Risques', rapports: 'Rapports',
-  'schema-directeur': 'Schéma Directeur', 'processus-budgetaire': 'Processus budgétaire',
+  'processus-budgetaire': 'Processus budgétaire',
   documentation: 'Documentation',
 }
 
