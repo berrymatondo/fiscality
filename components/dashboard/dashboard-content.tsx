@@ -15,6 +15,7 @@ import { ReformsCard } from '@/components/dashboard/reforms-card'
 import { DocumentationView } from '@/components/dashboard/documentation-view'
 import { GovernanceView } from '@/components/dashboard/governance-view'
 import { TrackingTable } from '@/components/dashboard/tracking-table'
+import { BudgetProcessView } from '@/components/dashboard/budget-process-view'
 import type { NavLabel } from '@/components/dashboard/sidebar'
 import { revenueBreakdown, expenseBreakdown, provinces } from '@/lib/data'
 import { exportDashboard } from '@/lib/export'
@@ -342,6 +343,8 @@ export function DashboardContent({ section }: { section: NavLabel }) {
       return <ReportsView />
     case 'Schéma Directeur':
       return <GovernanceView />
+    case 'Processus budgétaire':
+      return <BudgetProcessView />
     case 'Documentation':
       return <DocumentationView />
     default:

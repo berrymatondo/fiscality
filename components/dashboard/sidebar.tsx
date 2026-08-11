@@ -16,30 +16,33 @@ import {
   FileText,
   BookOpen,
   ScrollText,
+  Workflow,
   PanelLeftClose,
   PanelLeftOpen,
   X,
 } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 export const nav = [
-  { label: "Vue d'ensemble", icon: LayoutDashboard },
-  { label: 'Recettes', icon: HandCoins },
-  { label: 'Dépenses', icon: Wallet },
-  { label: 'Trésorerie', icon: Landmark },
-  { label: 'Dette publique', icon: FileBarChart2 },
-  { label: 'Investissements Publics', icon: Building2 },
-  { label: 'Exécution par Ministère', icon: Layers },
-  { label: 'Provinces', icon: Map },
-  { label: 'Indicateurs Macroéconomiques', icon: LineChart },
-  { label: 'Suivi des réformes', icon: ClipboardCheck },
-  { label: 'Tableau ESB', icon: ListChecks },
-  { label: 'Alertes & Risques', icon: AlertTriangle },
-  { label: 'Rapports', icon: FileText },
-  { label: 'Schéma Directeur', icon: ScrollText },
-  { label: 'Documentation', icon: BookOpen },
+  { label: "Vue d'ensemble", href: '/', icon: LayoutDashboard },
+  { label: 'Recettes', href: '/recettes', icon: HandCoins },
+  { label: 'Dépenses', href: '/depenses', icon: Wallet },
+  { label: 'Trésorerie', href: '/tresorerie', icon: Landmark },
+  { label: 'Dette publique', href: '/dette-publique', icon: FileBarChart2 },
+  { label: 'Investissements Publics', href: '/investissements-publics', icon: Building2 },
+  { label: 'Exécution par Ministère', href: '/execution-par-ministere', icon: Layers },
+  { label: 'Provinces', href: '/provinces', icon: Map },
+  { label: 'Indicateurs Macroéconomiques', href: '/indicateurs-macroeconomiques', icon: LineChart },
+  { label: 'Suivi des réformes', href: '/suivi-des-reformes', icon: ClipboardCheck },
+  { label: 'Tableau ESB', href: '/tableau-esb', icon: ListChecks },
+  { label: 'Alertes & Risques', href: '/alertes-et-risques', icon: AlertTriangle },
+  { label: 'Rapports', href: '/rapports', icon: FileText },
+  { label: 'Schéma Directeur', href: '/schema-directeur', icon: ScrollText },
+  { label: 'Processus budgétaire', href: '/processus-budgetaire', icon: Workflow },
+  { label: 'Documentation', href: '/documentation', icon: BookOpen },
 ] as const
 
 export type NavLabel = (typeof nav)[number]['label']
@@ -87,11 +90,12 @@ function NavList({
 }) {
   return (
     <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3 py-2">
-      {nav.map(({ label, icon: Icon }) => {
+      {nav.map(({ label, href, icon: Icon }) => {
         const isActive = active === label
         return (
-          <button
+          <Link
             key={label}
+            href={href}
             onClick={() => onSelect(label)}
             title={collapsed ? label : undefined}
             className={cn(
@@ -104,7 +108,7 @@ function NavList({
           >
             <Icon className="h-4 w-4 shrink-0" />
             {!collapsed && <span className="leading-tight">{label}</span>}
-          </button>
+          </Link>
         )
       })}
     </nav>
