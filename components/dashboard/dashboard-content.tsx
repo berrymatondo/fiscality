@@ -20,12 +20,9 @@ import { revenueBreakdown, expenseBreakdown, provinces } from '@/lib/data'
 import { exportDashboard } from '@/lib/export'
 
 function SectionHeading({ title, description }: { title: string; description: string }) {
-  return (
-    <div>
-      <h2 className="text-lg font-bold text-foreground">{title}</h2>
-      <p className="text-[13px] text-muted-foreground">{description}</p>
-    </div>
-  )
+  void title
+  void description
+  return null
 }
 
 function BreakdownTable({

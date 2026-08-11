@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Sidebar, type NavLabel } from '@/components/dashboard/sidebar'
 import { Header } from '@/components/dashboard/header'
 import { DashboardContent } from '@/components/dashboard/dashboard-content'
+import { PageHero } from '@/components/dashboard/page-hero'
 
 export function DashboardShell({ section }: { section: NavLabel }) {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -19,6 +20,7 @@ export function DashboardShell({ section }: { section: NavLabel }) {
       <div className="flex min-w-0 flex-1 flex-col">
         <Header onMenuClick={() => setMobileOpen(true)} />
         <main className="flex-1 space-y-4 p-4 md:p-6">
+          <PageHero section={section} />
           <DashboardContent section={section} />
         </main>
       </div>

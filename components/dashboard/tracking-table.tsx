@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { AlertTriangle, ArrowRight, Search, TrendingDown, X } from 'lucide-react'
+import { AlertCircle, AlertTriangle, ArrowRight, BadgeDollarSign, Banknote, CheckCircle2, CircleGauge, Coins, FileCheck2, Landmark, ListChecks, Search, ShieldAlert, Sparkles, TrendingDown, Trophy, WalletCards, X, type LucideIcon } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { budgetSections, budgetSectionTotal } from '@/lib/budget-sections'
 import { cn } from '@/lib/utils'
@@ -35,17 +35,19 @@ const riskStyle: Record<Risk, string> = {
 }
 
 function RiskBadge({ risk }: { risk: Risk }) {
-  return <span className={cn('inline-flex whitespace-nowrap rounded-full px-2 py-1 text-[10px] font-bold', riskStyle[risk])}>{risk}</span>
+  const Icon = risk === 'Normal' ? CheckCircle2 : risk === 'Critique' ? AlertCircle : AlertTriangle
+  return <span className={cn('inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-1 text-[10px] font-bold', riskStyle[risk])}><Icon className="h-3 w-3" />{risk}</span>
 }
 
-function Ranking({ title, rows, value }: { title: string; rows: RawSection[]; value: (row: RawSection) => string }) {
+function Ranking({ title, rows, value, icon: Icon, tone }: { title: string; rows: RawSection[]; value: (row: RawSection) => string; icon: LucideIcon; tone: string }) {
   return (
-    <Card>
-      <CardHeader><CardTitle>{title}</CardTitle></CardHeader>
+    <Card className="overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-md">
+      <div className={cn('h-1', tone)} />
+      <CardHeader><CardTitle className="flex items-center gap-2"><span className={cn('flex h-8 w-8 items-center justify-center rounded-lg text-white', tone)}><Icon className="h-4 w-4" /></span>{title}</CardTitle></CardHeader>
       <CardContent className="space-y-3">
         {rows.map((row, index) => (
           <button key={row.number} onClick={() => document.getElementById(`section-${row.number}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })} className="grid w-full grid-cols-[20px_1fr_auto] items-center gap-2 text-left">
-            <span className="text-[10px] font-bold text-muted-foreground">{index + 1}</span>
+            <span className={cn('flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-black text-white', tone)}>{index + 1}</span>
             <span className="truncate text-[11px] font-medium text-foreground">{row.section}</span>
             <span className="text-[11px] font-bold text-foreground">{value(row)}</span>
           </button>
@@ -82,26 +84,30 @@ export function TrackingTable() {
   const totalOrdered = toNumber(budgetSectionTotal.ordered)
   const totalPaid = toNumber(budgetSectionTotal.paid)
   const pipeline = columns.map(([key, label]) => ({ label, value: toNumber(budgetSectionTotal[key]) }))
+  const pipelineIcons = [Landmark, WalletCards, FileCheck2, ListChecks, BadgeDollarSign, Banknote]
+  const pipelineTones = ['bg-blue-600', 'bg-indigo-600', 'bg-violet-600', 'bg-amber-500', 'bg-orange-500', 'bg-emerald-600']
+  const kpis = [
+    { label: 'Crédits votés', value: compact(totalVoted), detail: 'Base budgétaire', icon: Landmark, tone: 'from-blue-600 to-blue-500', soft: 'bg-blue-500/10 text-blue-600' },
+    { label: 'Engagements', value: compact(totalCommitted), detail: `${(totalCommitted / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% des crédits`, icon: FileCheck2, tone: 'from-violet-600 to-indigo-500', soft: 'bg-violet-500/10 text-violet-600' },
+    { label: 'Paiements', value: compact(totalPaid), detail: `${(totalPaid / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% des crédits`, icon: Banknote, tone: 'from-emerald-600 to-teal-500', soft: 'bg-emerald-500/10 text-emerald-600' },
+    { label: 'Reste à payer', value: compact(totalOrdered - totalPaid), detail: 'Ordonnancé non payé', icon: Coins, tone: 'from-amber-500 to-orange-500', soft: 'bg-amber-500/10 text-amber-600' },
+    { label: 'Sections critiques', value: String(analytics.counts.Critique), detail: 'Paiement inférieur à 30%', icon: ShieldAlert, tone: 'from-red-600 to-rose-500', soft: 'bg-red-500/10 text-red-600' },
+    { label: 'Dépassements', value: String(analytics.counts.Dépassement), detail: 'Engagements > crédits', icon: AlertTriangle, tone: 'from-fuchsia-600 to-violet-500', soft: 'bg-fuchsia-500/10 text-fuchsia-600' },
+  ]
 
   return (
     <>
-      <div>
-        <h2 className="text-lg font-bold text-foreground">Cockpit de pilotage ESB</h2>
-        <p className="text-[13px] text-muted-foreground">Exécution au 31/12/2025 · Montants en CDF</p>
-      </div>
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-900 px-6 py-7 text-white shadow-lg md:px-8">
+        <div className="absolute -right-10 -top-16 h-56 w-56 rounded-full bg-blue-400/20 blur-3xl" /><div className="absolute bottom-0 right-1/3 h-28 w-28 rounded-full bg-violet-400/15 blur-2xl" />
+        <div className="relative flex flex-col justify-between gap-5 md:flex-row md:items-center"><div><div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[.16em]"><Sparkles className="h-3.5 w-3.5 text-amber-300" />Pilotage intelligent</div><h2 className="text-2xl font-black tracking-tight md:text-3xl">Cockpit de pilotage ESB</h2><p className="mt-2 text-[13px] text-blue-100/80">Une lecture dynamique de la chaîne d’exécution budgétaire par section.</p></div><div className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur"><CircleGauge className="h-8 w-8 text-emerald-300" /><div><p className="text-2xl font-black">{(totalPaid / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}%</p><p className="text-[9px] uppercase tracking-wider text-blue-100/70">Taux global payé</p></div></div></div>
+      </section>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
-        {[
-          ['Crédits votés', compact(totalVoted), 'Base budgétaire'],
-          ['Engagements', compact(totalCommitted), `${(totalCommitted / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% des crédits`],
-          ['Paiements', compact(totalPaid), `${(totalPaid / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% des crédits`],
-          ['Reste à payer', compact(totalOrdered - totalPaid), 'Ordonnancé non payé'],
-          ['Sections critiques', String(analytics.counts.Critique), 'Paiement inférieur à 30%'],
-          ['Dépassements', String(analytics.counts.Dépassement), 'Engagements > crédits'],
-        ].map(([label, value, detail]) => (
-          <Card key={label} className="p-4">
-            <p className="text-[9px] font-semibold uppercase text-muted-foreground">{label}</p>
-            <p className="mt-1 text-xl font-extrabold text-foreground">{value}</p>
+        {kpis.map(({ label, value, detail, icon: Icon, tone, soft }) => (
+          <Card key={label} className="group relative overflow-hidden p-4 transition-all hover:-translate-y-1 hover:shadow-lg">
+            <div className={cn('absolute inset-x-0 top-0 h-1 bg-gradient-to-r', tone)} />
+            <div className="flex items-start justify-between gap-2"><p className="text-[9px] font-semibold uppercase text-muted-foreground">{label}</p><span className={cn('flex h-8 w-8 items-center justify-center rounded-lg transition-transform group-hover:scale-110', soft)}><Icon className="h-4 w-4" /></span></div>
+            <p className="mt-2 text-xl font-extrabold text-foreground">{value}</p>
             <p className="mt-1 text-[10px] text-muted-foreground">{detail}</p>
           </Card>
         ))}
@@ -113,12 +119,13 @@ export function TrackingTable() {
           <div className="grid gap-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-center">
             {pipeline.map((step, index) => (
               <div key={step.label} className="contents">
-                <div className="rounded-lg border border-border bg-muted/30 p-3">
-                  <p className="text-[9px] uppercase text-muted-foreground">{step.label}</p>
+                <div className="group rounded-xl border border-border bg-muted/20 p-3 transition-all hover:border-primary/30 hover:bg-card hover:shadow-md">
+                  <div className={cn('mb-2 flex h-8 w-8 items-center justify-center rounded-lg text-white shadow-sm', pipelineTones[index])}>{(() => { const Icon = pipelineIcons[index]; return <Icon className="h-4 w-4" /> })()}</div>
+                  <p className="text-[9px] font-bold uppercase text-muted-foreground">{step.label}</p>
                   <p className="mt-1 text-sm font-extrabold text-foreground">{compact(step.value)}</p>
                   {index > 0 && <p className="text-[10px] text-muted-foreground">{(step.value / pipeline[index - 1].value * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% de l’étape précédente</p>}
                 </div>
-                {index < pipeline.length - 1 && <ArrowRight className="mx-auto hidden h-4 w-4 text-muted-foreground lg:block" />}
+                {index < pipeline.length - 1 && <span className="mx-auto hidden h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary lg:flex"><ArrowRight className="h-4 w-4" /></span>}
               </div>
             ))}
           </div>
@@ -126,10 +133,10 @@ export function TrackingTable() {
       </Card>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Ranking title="Plus gros budgets" rows={analytics.byBudget.slice(0, 5)} value={(r) => compact(toNumber(r.voted))} />
-        <Ranking title="Plus faibles exécutions" rows={analytics.lowExecution.slice(0, 5)} value={(r) => `${rateOf(r).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}%`} />
-        <Ranking title="Plus forts dépassements" rows={analytics.overruns.slice(0, 5)} value={(r) => `+${billions(toNumber(r.committed) - toNumber(r.voted))}`} />
-        <Ranking title="Plus grands restes à payer" rows={analytics.unpaid.slice(0, 5)} value={(r) => billions(toNumber(r.ordered) - toNumber(r.paid))} />
+        <Ranking title="Plus gros budgets" icon={Trophy} tone="bg-blue-600" rows={analytics.byBudget.slice(0, 5)} value={(r) => compact(toNumber(r.voted))} />
+        <Ranking title="Plus faibles exécutions" icon={TrendingDown} tone="bg-red-500" rows={analytics.lowExecution.slice(0, 5)} value={(r) => `${rateOf(r).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}%`} />
+        <Ranking title="Plus forts dépassements" icon={AlertTriangle} tone="bg-violet-600" rows={analytics.overruns.slice(0, 5)} value={(r) => `+${billions(toNumber(r.committed) - toNumber(r.voted))}`} />
+        <Ranking title="Plus grands restes à payer" icon={Coins} tone="bg-amber-500" rows={analytics.unpaid.slice(0, 5)} value={(r) => billions(toNumber(r.ordered) - toNumber(r.paid))} />
       </div>
 
       <Card>

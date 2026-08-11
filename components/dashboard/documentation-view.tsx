@@ -280,17 +280,6 @@ function IndicatorList({ items }: { items: Indicator[] }) {
 export function DocumentationView() {
   return (
     <>
-      <div>
-        <div className="flex items-center gap-2">
-          <BookOpen className="h-5 w-5 text-primary" />
-          <h2 className="text-lg font-bold text-foreground">Documentation</h2>
-        </div>
-        <p className="text-[13px] text-muted-foreground">
-          Guide d&apos;utilisation du tableau de bord : définition des indicateurs et
-          présentation de chaque page.
-        </p>
-      </div>
-
       <Card>
         <CardHeader>
           <CardTitle>Comment lire le tableau de bord</CardTitle>
