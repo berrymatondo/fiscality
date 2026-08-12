@@ -67,7 +67,7 @@ function Brand({ collapsed }: { collapsed?: boolean }) {
       />
       {!collapsed && (
         <div className="leading-tight">
-          <p className="text-[11px] font-bold text-brand-navy">
+          <p className="text-[11px] font-bold text-brand-navy dark:text-slate-50">
             RÉPUBLIQUE DÉMOCRATIQUE DU CONGO
           </p>
           <p className="text-[10px] font-semibold text-muted-foreground">

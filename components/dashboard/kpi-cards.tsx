@@ -26,7 +26,7 @@ const iconStyles: Record<string, string> = {
   info: 'bg-primary text-primary-foreground',
   violet: 'bg-[oklch(0.55_0.16_300)] text-white',
   warning: 'bg-warning text-warning-foreground',
-  destructive: 'bg-destructive text-white',
+  destructive: 'bg-red-700 text-white dark:bg-red-600 dark:text-white',
 }
 
 const valueStyles: Record<string, string> = {

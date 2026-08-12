@@ -28,7 +28,7 @@ const riskOf = (row: RawSection): Risk => {
 }
 
 const riskStyle: Record<Risk, string> = {
-  Critique: 'bg-destructive/10 text-destructive',
+  Critique: 'border border-destructive/25 bg-destructive/10 text-destructive dark:border-red-300/35 dark:bg-red-950/70 dark:text-red-200',
   'À surveiller': 'bg-warning/15 text-warning-foreground',
   Normal: 'bg-success/10 text-success',
   Dépassement: 'bg-violet-500/10 text-violet-700 dark:text-violet-300',
@@ -91,7 +91,7 @@ export function TrackingTable() {
     { label: 'Engagements', value: compact(totalCommitted), detail: `${(totalCommitted / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% des crédits`, icon: FileCheck2, tone: 'from-violet-600 to-indigo-500', soft: 'bg-violet-500/10 text-violet-600' },
     { label: 'Paiements', value: compact(totalPaid), detail: `${(totalPaid / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% des crédits`, icon: Banknote, tone: 'from-emerald-600 to-teal-500', soft: 'bg-emerald-500/10 text-emerald-600' },
     { label: 'Reste à payer', value: compact(totalOrdered - totalPaid), detail: 'Ordonnancé non payé', icon: Coins, tone: 'from-amber-500 to-orange-500', soft: 'bg-amber-500/10 text-amber-600' },
-    { label: 'Sections critiques', value: String(analytics.counts.Critique), detail: 'Paiement inférieur à 30%', icon: ShieldAlert, tone: 'from-red-600 to-rose-500', soft: 'bg-red-500/10 text-red-600' },
+    { label: 'Sections critiques', value: String(analytics.counts.Critique), detail: 'Paiement inférieur à 30%', icon: ShieldAlert, tone: 'from-red-600 to-rose-500', soft: 'bg-red-500/10 text-red-700 dark:bg-red-950/70 dark:text-red-200' },
     { label: 'Dépassements', value: String(analytics.counts.Dépassement), detail: 'Engagements > crédits', icon: AlertTriangle, tone: 'from-fuchsia-600 to-violet-500', soft: 'bg-fuchsia-500/10 text-fuchsia-600' },
   ]
 

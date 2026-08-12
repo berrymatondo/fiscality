@@ -47,7 +47,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
           <Menu className="h-5 w-5" />
         </button>
         <div>
-          <h1 className="text-xl font-extrabold tracking-tight text-brand-navy text-balance md:text-2xl">
+          <h1 className="text-xl font-extrabold tracking-tight text-brand-navy text-balance dark:text-slate-50 md:text-2xl">
             TABLEAU DE BORD STRATÉGIQUE
           </h1>
           <p className="text-[13px] text-muted-foreground md:text-sm">
