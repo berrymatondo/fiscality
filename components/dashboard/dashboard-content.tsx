@@ -15,6 +15,7 @@ import { ReformsCard } from '@/components/dashboard/reforms-card'
 import { DocumentationView } from '@/components/dashboard/documentation-view'
 import { TrackingTable } from '@/components/dashboard/tracking-table'
 import { BudgetProcessView } from '@/components/dashboard/budget-process-view'
+import { AnalysisView } from '@/components/dashboard/analysis-view'
 import type { NavLabel } from '@/components/dashboard/sidebar'
 import { revenueBreakdown, expenseBreakdown, provinces } from '@/lib/data'
 import { exportDashboard } from '@/lib/export'
@@ -323,8 +324,10 @@ export function DashboardContent({ section }: { section: NavLabel }) {
           <ReformsCard />
         </>
       )
-    case 'Tableau ESB':
+    case 'Suivi de l’exécution (ESB)':
       return <TrackingTable />
+    case 'Analyses':
+      return <AnalysisView />
     case 'Alertes & Risques':
       return (
         <>

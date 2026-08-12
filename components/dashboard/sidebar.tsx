@@ -16,6 +16,10 @@ import {
   FileText,
   BookOpen,
   Workflow,
+  ChevronDown,
+  BarChart3,
+  Library,
+  ShieldCheck,
   PanelLeftClose,
   PanelLeftOpen,
   X,
@@ -35,8 +39,9 @@ export const nav = [
   { label: 'Exécution par Ministère', href: '/execution-par-ministere', icon: Layers, group: 'Analyses' },
   { label: 'Provinces', href: '/provinces', icon: Map, group: 'Analyses' },
   { label: 'Indicateurs Macroéconomiques', href: '/indicateurs-macroeconomiques', icon: LineChart, group: 'Analyses' },
+  { label: 'Analyses', href: '/analyses', icon: BarChart3, group: 'Analyses' },
   { label: 'Suivi des réformes', href: '/suivi-des-reformes', icon: ClipboardCheck, group: 'Pilotage & contrôle' },
-  { label: 'Tableau ESB', href: '/tableau-esb', icon: ListChecks, group: 'Pilotage & contrôle' },
+  { label: 'Suivi de l’exécution (ESB)', href: '/tableau-esb', icon: ListChecks, group: 'Pilotage & contrôle' },
   { label: 'Alertes & Risques', href: '/alertes-et-risques', icon: AlertTriangle, group: 'Pilotage & contrôle' },
   { label: 'Processus budgétaire', href: '/processus-budgetaire', icon: Workflow, group: 'Ressources' },
   { label: 'Rapports', href: '/rapports', icon: FileText, group: 'Ressources' },
@@ -86,45 +91,29 @@ function NavList({
   onSelect: (label: NavLabel) => void
   collapsed?: boolean
 }) {
-  const groups = ['Synthèse', 'Exécution budgétaire', 'Analyses', 'Pilotage & contrôle', 'Ressources'] as const
+  const sections = [
+    { key: 'overview', label: "Vue d'ensemble", icon: LayoutDashboard, href: '/', children: [] },
+    { key: 'execution', label: 'Exécution budgétaire', icon: Wallet, href: '/depenses', children: ['Recettes', 'Dépenses', 'Exécution par Ministère', 'Investissements Publics'] },
+    { key: 'finances', label: 'Finances publiques', icon: Landmark, href: '/tresorerie', children: ['Trésorerie', 'Dette publique', 'Indicateurs Macroéconomiques'] },
+    { key: 'analyses', label: 'Analyses', icon: BarChart3, href: '/analyses', children: ['Analyses'] },
+    { key: 'pilotage', label: 'Pilotage & contrôle', icon: ShieldCheck, href: '/suivi-des-reformes', children: ['Suivi des réformes', 'Suivi de l’exécution (ESB)', 'Alertes & Risques'] },
+    { key: 'resources', label: 'Rapports & ressources', icon: Library, href: '/rapports', children: ['Rapports', 'Processus budgétaire', 'Documentation'] },
+  ] as const
+  const activeSection = sections.find((section) => section.children.some((label) => label === active))?.key
+  const [openGroup, setOpenGroup] = useState<string | null>(activeSection || null)
 
   return (
     <nav className="flex flex-1 flex-col overflow-y-auto px-3 py-2">
-      {groups.map((group, groupIndex) => (
-        <div
-          key={group}
-          className={cn(groupIndex > 0 && (collapsed ? 'mt-2 border-t border-sidebar-border pt-2' : 'mt-3'))}
-        >
-          {!collapsed && (
-            <p className="mb-1 px-3 text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground/70">
-              {group}
-            </p>
-          )}
-          <div className="space-y-0.5">
-            {nav.filter((item) => item.group === group).map(({ label, href, icon: Icon }) => {
-              const isActive = active === label
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  onClick={() => onSelect(label)}
-                  title={collapsed ? label : undefined}
-                  className={cn(
-                    'flex items-center gap-3 rounded-md px-3 py-2 text-left text-[12px] font-medium transition-colors',
-                    collapsed && 'justify-center px-0 py-2.5',
-                    isActive
-                      ? 'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm'
-                      : 'text-sidebar-foreground hover:bg-sidebar-accent/60',
-                  )}
-                >
-                  <Icon className="h-4 w-4 shrink-0" />
-                  {!collapsed && <span className="leading-tight">{label}</span>}
-                </Link>
-              )
-            })}
-          </div>
+      {sections.map((section) => {
+        const Icon = section.icon
+        const direct = section.children.length === 0 || collapsed || section.key === 'analyses'
+        const expanded = openGroup === section.key
+        const sectionActive = active === section.label || section.children.some((label) => label === active)
+        return <div key={section.key} className="mb-1">
+          {direct ? <Link href={section.href} onClick={() => onSelect(section.label as NavLabel)} title={collapsed ? section.label : undefined} className={cn('flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold transition-colors',collapsed&&'justify-center px-0',sectionActive?'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm':'text-sidebar-foreground hover:bg-sidebar-accent/60')}><Icon className="h-4 w-4 shrink-0"/>{!collapsed&&<span className="flex-1">{section.label}</span>}</Link> : <button type="button" onClick={() => setOpenGroup(expanded ? null : section.key)} className={cn('flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-[13px] font-semibold transition-colors',sectionActive?'text-sidebar-accent-foreground':'text-sidebar-foreground hover:bg-sidebar-accent/60')}><Icon className="h-4 w-4 shrink-0"/><span className="flex-1">{section.label}</span><ChevronDown className={cn('h-3.5 w-3.5 transition-transform',expanded&&'rotate-180')}/></button>}
+          {!collapsed && !direct && expanded && <div className="ml-5 mt-1 space-y-0.5 border-l border-sidebar-border pl-2">{section.children.map((childLabel) => {const item=nav.find((entry)=>entry.label===childLabel)!;const ChildIcon=item.icon;const isActive=active===item.label;return <Link key={item.label} href={item.href} onClick={()=>onSelect(item.label)} className={cn('flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium transition-colors',isActive?'bg-sidebar-accent text-sidebar-accent-foreground':'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-foreground')}><ChildIcon className="h-3.5 w-3.5 shrink-0"/><span>{item.label}</span></Link>})}</div>}
         </div>
-      ))}
+      })}
     </nav>
   )
 }

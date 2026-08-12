@@ -15,6 +15,7 @@ import {
   FileText,
   Workflow,
   ListChecks,
+  BarChart3,
   BookOpen,
   type LucideIcon,
 } from 'lucide-react'
@@ -195,6 +196,14 @@ const pageDocs: PageDoc[] = [
       "Combine une carte choroplèthe de la RDC (colorée selon le taux d'exécution) et un tableau détaillé par province.",
   },
   {
+    label: 'Analyses',
+    href: '/analyses',
+    icon: BarChart3,
+    purpose: 'Exploration multidimensionnelle de l’exécution budgétaire.',
+    content:
+      'Regroupe dans une même page les lectures par ministère, province, nature économique et période, accessibles au moyen d’onglets internes.',
+  },
+  {
     label: 'Indicateurs Macroéconomiques',
     href: '/indicateurs-macroeconomiques',
     icon: LineChart,
@@ -211,7 +220,7 @@ const pageDocs: PageDoc[] = [
       "Affiche l'avancement global et le statut de chaque réforme (réalisée, en cours).",
   },
   {
-    label: 'Tableau ESB',
+    label: 'Suivi de l’exécution (ESB)',
     href: '/tableau-esb',
     icon: ListChecks,
     purpose: 'Suivi détaillé des engagements et de l’exécution budgétaire.',

@@ -12,7 +12,8 @@ const descriptions: Record<NavLabel, string> = {
   Provinces: 'Analyse territoriale de l’exécution budgétaire dans les provinces de la RDC.',
   'Indicateurs Macroéconomiques': 'Lecture des principaux agrégats qui encadrent la programmation budgétaire.',
   'Suivi des réformes': 'Pilotage de l’avancement des réformes et des chantiers de modernisation.',
-  'Tableau ESB': 'Une lecture dynamique de la chaîne d’exécution budgétaire par section.',
+  'Suivi de l’exécution (ESB)': 'Une lecture dynamique de la chaîne d’exécution budgétaire par section.',
+  Analyses: 'Exploration multidimensionnelle des données par ministère, province, nature et période.',
   'Alertes & Risques': 'Identification et hiérarchisation des points de vigilance budgétaires.',
   Rapports: 'Accès centralisé aux rapports, situations périodiques et exports de données.',
   'Processus budgétaire': 'Du cadrage à la reddition des comptes, une vision complète du cycle budgétaire.',
@@ -20,7 +21,7 @@ const descriptions: Record<NavLabel, string> = {
 }
 
 export function PageHero({ section }: { section: NavLabel }) {
-  if (section === 'Tableau ESB' || section === 'Processus budgétaire') return null
+  if (section === 'Suivi de l’exécution (ESB)' || section === 'Processus budgétaire') return null
   const item = nav.find((entry) => entry.label === section)!
   const Icon = item.icon
 
