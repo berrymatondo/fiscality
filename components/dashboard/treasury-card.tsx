@@ -3,13 +3,14 @@
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { treasury, treasuryTrend } from '@/lib/data'
+import { DualCurrencyAmount } from '@/components/dashboard/currency'
 
 export function TreasuryCard() {
   return (
     <Card>
       <CardHeader>
         <CardTitle>Situation de trésorerie</CardTitle>
-        <CardDescription>(en Mrd CDF)</CardDescription>
+        <CardDescription>CDF principal · équivalent USD</CardDescription>
       </CardHeader>
       <CardContent className="grid grid-cols-1 gap-5 sm:grid-cols-[180px_1fr]">
         <div className="space-y-3">
@@ -63,7 +64,7 @@ function Metric({ label, value, tone }: { label: string; value: string; tone: st
   return (
     <div>
       <p className="text-[10px] text-muted-foreground">{label}</p>
-      <p className={`text-lg font-extrabold ${tone}`}>{value}</p>
+      <DualCurrencyAmount value={value} scale="billion" className={`text-lg font-extrabold ${tone}`} />
     </div>
   )
 }

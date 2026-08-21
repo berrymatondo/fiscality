@@ -5,6 +5,7 @@ import { AlertCircle, AlertTriangle, ArrowRight, BadgeDollarSign, Banknote, Chec
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { budgetSections, budgetSectionTotal } from '@/lib/budget-sections'
 import { cn } from '@/lib/utils'
+import { DualCurrencyAmount, useExchangeRate } from '@/components/dashboard/currency'
 
 const columns = [
   ['voted', 'Créd. votés'], ['adjusted', 'Créd. après virements'],
@@ -58,6 +59,7 @@ function Ranking({ title, rows, value, icon: Icon, tone }: { title: string; rows
 }
 
 export function TrackingTable() {
+  const exchangeRate = useExchangeRate()
   const [query, setQuery] = useState('')
   const [riskFilter, setRiskFilter] = useState<Risk | 'Tous'>('Tous')
   const [selected, setSelected] = useState<RawSection | null>(null)
@@ -94,6 +96,7 @@ export function TrackingTable() {
     { label: 'Sections critiques', value: String(analytics.counts.Critique), detail: 'Paiement inférieur à 30%', icon: ShieldAlert, tone: 'from-red-600 to-rose-500', soft: 'bg-red-500/10 text-red-700 dark:bg-red-950/70 dark:text-red-200' },
     { label: 'Dépassements', value: String(analytics.counts.Dépassement), detail: 'Engagements > crédits', icon: AlertTriangle, tone: 'from-fuchsia-600 to-violet-500', soft: 'bg-fuchsia-500/10 text-fuchsia-600' },
   ]
+  const usd = (value: number) => `${(value / exchangeRate).toLocaleString('fr-FR', { maximumFractionDigits: 0 })} USD`
 
   return (
     <>
@@ -103,11 +106,12 @@ export function TrackingTable() {
       </section>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
-        {kpis.map(({ label, value, detail, icon: Icon, tone, soft }) => (
+        {kpis.map(({ label, value, detail, icon: Icon, tone, soft }, index) => (
           <Card key={label} className="group relative overflow-hidden p-4 transition-all hover:-translate-y-1 hover:shadow-lg">
             <div className={cn('absolute inset-x-0 top-0 h-1 bg-gradient-to-r', tone)} />
             <div className="flex items-start justify-between gap-2"><p className="text-[9px] font-semibold uppercase text-muted-foreground">{label}</p><span className={cn('flex h-8 w-8 items-center justify-center rounded-lg transition-transform group-hover:scale-110', soft)}><Icon className="h-4 w-4" /></span></div>
             <p className="mt-2 text-xl font-extrabold text-foreground">{value}</p>
+            {index < 4 && <p className="text-[9px] text-muted-foreground">≈ {usd([totalVoted, totalCommitted, totalPaid, totalOrdered - totalPaid][index])}</p>}
             <p className="mt-1 text-[10px] text-muted-foreground">{detail}</p>
           </Card>
         ))}
@@ -152,8 +156,8 @@ export function TrackingTable() {
         <CardContent className="max-h-[70vh] overflow-auto px-0 pt-1">
           <table className="w-full min-w-[1600px] border-collapse text-left text-[11px] tabular-nums">
             <thead className="sticky top-0 z-10 bg-muted text-[10px] uppercase text-muted-foreground shadow-sm"><tr><th className="w-14 px-4 py-3 text-center">N°</th><th className="min-w-80 px-4 py-3">Sections</th>{columns.map(([key, label]) => <th key={key} className="min-w-44 px-4 py-3 text-right">{label}</th>)}<th className="px-4 py-3 text-right">Taux payé</th><th className="px-4 py-3 text-center">Alerte</th></tr></thead>
-            <tbody>{rows.map((row) => { const risk = riskOf(row); return <tr id={`section-${row.number}`} key={row.number} onClick={() => setSelected(row)} className="cursor-pointer border-t border-border hover:bg-muted/40"><td className="px-4 py-3 text-center text-muted-foreground">{row.number}</td><td className="px-4 py-3 font-semibold text-foreground">{row.section}</td>{columns.map(([key]) => <td key={key} className="whitespace-nowrap px-4 py-3 text-right">{row[key]}</td>)}<td className="px-4 py-3 text-right font-bold text-primary">{rateOf(row).toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%</td><td className="px-4 py-3 text-center"><RiskBadge risk={risk} /></td></tr> })}</tbody>
-            {riskFilter === 'Tous' && !query && <tfoot className="sticky bottom-0 bg-primary text-primary-foreground"><tr className="font-bold"><td /><td className="px-4 py-3">TOTAL GÉNÉRAL</td>{columns.map(([key]) => <td key={key} className="whitespace-nowrap px-4 py-3 text-right">{budgetSectionTotal[key]}</td>)}<td className="px-4 py-3 text-right">86,9%</td><td /></tr></tfoot>}
+            <tbody>{rows.map((row) => { const risk = riskOf(row); return <tr id={`section-${row.number}`} key={row.number} onClick={() => setSelected(row)} className="cursor-pointer border-t border-border hover:bg-muted/40"><td className="px-4 py-3 text-center text-muted-foreground">{row.number}</td><td className="px-4 py-3 font-semibold text-foreground">{row.section}</td>{columns.map(([key]) => <td key={key} className="whitespace-nowrap px-4 py-3 text-right"><DualCurrencyAmount value={toNumber(row[key])} className="items-end" showToggle={false} /></td>)}<td className="px-4 py-3 text-right font-bold text-primary">{rateOf(row).toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%</td><td className="px-4 py-3 text-center"><RiskBadge risk={risk} /></td></tr> })}</tbody>
+            {riskFilter === 'Tous' && !query && <tfoot className="sticky bottom-0 bg-primary text-primary-foreground"><tr className="font-bold"><td /><td className="px-4 py-3">TOTAL GÉNÉRAL</td>{columns.map(([key]) => <td key={key} className="whitespace-nowrap px-4 py-3 text-right"><DualCurrencyAmount value={toNumber(budgetSectionTotal[key])} className="items-end" secondaryClassName="text-primary-foreground/70" showToggle={false} /></td>)}<td className="px-4 py-3 text-right">86,9%</td><td /></tr></tfoot>}
           </table>
           {!rows.length && <p className="py-10 text-center text-sm text-muted-foreground">Aucune section trouvée.</p>}
         </CardContent>

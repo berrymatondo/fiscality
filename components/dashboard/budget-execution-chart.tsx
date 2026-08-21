@@ -11,6 +11,7 @@ import {
 } from 'recharts'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { budgetExecution } from '@/lib/data'
+import { DualCurrencyAmount } from '@/components/dashboard/currency'
 
 const data = budgetExecution.map((item) => ({
   name: item.name,
@@ -91,6 +92,14 @@ export function BudgetExecutionChart() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
+        <div className="mt-3 grid grid-cols-2 gap-3 border-t border-border pt-3">
+          {budgetExecution.map((item) => (
+            <div key={item.name}>
+              <p className="text-[9px] font-semibold uppercase text-muted-foreground">{item.name} exécutées</p>
+              <DualCurrencyAmount value={item.execution} scale="billion" className="text-xs font-bold text-foreground" />
+            </div>
+          ))}
+        </div>
       </CardContent>
     </Card>
   )

@@ -2,6 +2,7 @@ import { Sparkles } from 'lucide-react'
 import { nav, type NavLabel } from '@/components/dashboard/sidebar'
 
 const descriptions: Record<NavLabel, string> = {
+  Paramètres: 'Configuration des variables utilisées dans le tableau de bord.',
   "Vue d'ensemble": "Une vision consolidée des indicateurs clés et de l’exécution du Budget de l’État.",
   Recettes: 'Suivi de la mobilisation, de la structure et de la performance des recettes publiques.',
   Dépenses: 'Analyse de l’exécution des dépenses par nature et de leur rythme de consommation.',

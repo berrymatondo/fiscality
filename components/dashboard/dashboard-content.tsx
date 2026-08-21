@@ -16,6 +16,8 @@ import { DocumentationView } from '@/components/dashboard/documentation-view'
 import { TrackingTable } from '@/components/dashboard/tracking-table'
 import { BudgetProcessView } from '@/components/dashboard/budget-process-view'
 import { AnalysisView } from '@/components/dashboard/analysis-view'
+import { SettingsView } from '@/components/dashboard/settings-view'
+import { DualCurrencyAmount } from '@/components/dashboard/currency'
 import type { NavLabel } from '@/components/dashboard/sidebar'
 import { revenueBreakdown, expenseBreakdown, provinces } from '@/lib/data'
 import { exportDashboard } from '@/lib/export'
@@ -49,7 +51,7 @@ function BreakdownTable({
             <tr className="text-left text-[10px] uppercase text-muted-foreground">
               <th className="pb-2 font-semibold">Poste</th>
               <th className="pb-2 text-right font-semibold">Part (%)</th>
-              <th className="pb-2 text-right font-semibold">Montant (Mrd CDF)</th>
+              <th className="pb-2 text-right font-semibold">Montant (CDF / USD)</th>
             </tr>
           </thead>
           <tbody>
@@ -70,10 +72,7 @@ function BreakdownTable({
                     {row.value.toLocaleString('fr-FR', { minimumFractionDigits: 1 })}%
                   </td>
                   <td className="py-2 text-right text-muted-foreground">
-                    {amount.toLocaleString('fr-FR', {
-                      minimumFractionDigits: 1,
-                      maximumFractionDigits: 1,
-                    })}
+                    <DualCurrencyAmount value={amount} scale="billion" className="items-end" showToggle={false} />
                   </td>
                 </tr>
               )
@@ -85,7 +84,7 @@ function BreakdownTable({
   )
 }
 
-function ProvinceTable() {
+function ProvinceTable({ data }: { data: { name: string; taux: number }[] }) {
   return (
     <Card>
       <CardHeader>
@@ -101,7 +100,7 @@ function ProvinceTable() {
             </tr>
           </thead>
           <tbody>
-            {provinces.map((p) => (
+            {data.map((p) => (
               <tr key={p.name} className="border-t border-border">
                 <td className="py-2.5 text-foreground">{p.name}</td>
                 <td className="py-2.5">
@@ -143,8 +142,7 @@ function InvestmentsView() {
         </Card>
         <Card className="p-4">
           <p className="text-[10px] uppercase text-muted-foreground">Montant payé</p>
-          <p className="mt-1 text-2xl font-extrabold text-foreground">5 784,8</p>
-          <p className="text-[10px] text-muted-foreground">Mrd CDF</p>
+          <DualCurrencyAmount value="5 784,8" scale="billion" className="mt-1 text-2xl font-extrabold text-foreground" />
         </Card>
         <Card className="p-4">
           <p className="text-[10px] uppercase text-muted-foreground">Situation au</p>
@@ -207,8 +205,18 @@ function ReportsView() {
   )
 }
 
-export function DashboardContent({ section }: { section: NavLabel }) {
+export function DashboardContent({
+  section,
+  periodeLabel,
+  provincesPubliees,
+}: {
+  section: NavLabel
+  periodeLabel?: string
+  provincesPubliees?: { name: string; taux: number }[] | null
+}) {
   switch (section) {
+    case 'Paramètres':
+      return <SettingsView />
     case 'Recettes':
       return (
         <>
@@ -226,7 +234,7 @@ export function DashboardContent({ section }: { section: NavLabel }) {
             />
             <BreakdownTable
               title="Détail des recettes"
-              description="(en % et en Mrd CDF)"
+              description="(en % · CDF principal · équivalent USD)"
               centerValue="12 543,8"
               data={revenueBreakdown}
             />
@@ -251,7 +259,7 @@ export function DashboardContent({ section }: { section: NavLabel }) {
             />
             <BreakdownTable
               title="Détail des dépenses"
-              description="(en % et en Mrd CDF)"
+              description="(en % · CDF principal · équivalent USD)"
               centerValue="39 735,6"
               data={expenseBreakdown}
             />
@@ -298,9 +306,22 @@ export function DashboardContent({ section }: { section: NavLabel }) {
             title="Provinces"
             description="Exécution des dépenses par province"
           />
+          <div className="flex items-center gap-2 text-[11px] font-medium">
+            {provincesPubliees ? (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-primary">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                Données publiées{periodeLabel ? ` — ${periodeLabel}` : ''}
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-muted-foreground">
+                <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground" />
+                Données de démonstration — aucune saisie publiée pour cette période
+              </span>
+            )}
+          </div>
           <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
             <ProvinceMap />
-            <ProvinceTable />
+            <ProvinceTable data={provincesPubliees ?? provinces} />
           </div>
         </>
       )

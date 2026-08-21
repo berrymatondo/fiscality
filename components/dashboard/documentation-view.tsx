@@ -304,7 +304,7 @@ export function DocumentationView() {
             Ce tableau de bord suit l&apos;exécution du Budget de l&apos;État de la
             République Démocratique du Congo. Les montants sont exprimés en{' '}
             <span className="font-semibold text-foreground">
-              milliards de francs congolais (Mrd CDF)
+              francs congolais (CDF), avec leur équivalent en dollars américains (USD)
             </span>{' '}
             sauf indication contraire.
           </p>

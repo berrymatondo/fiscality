@@ -1,0 +1,403 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// --- Référentiel budgétaire -------------------------------------------------
+
+model Ministere {
+  id          String  @id @default(cuid())
+  nom         String  @unique
+  description String?
+
+  users   User[]
+  saisies LigneBudgetaire[]
+  entites Entite[]
+
+  @@map("ministeres")
+}
+
+/// Entité sous tutelle d'un ministère (régie financière, direction générale, etc.).
+model Entite {
+  id             String   @id @default(cuid())
+  sigle          String
+  nom            String
+  classification String?
+  domaine        String?
+  rib            String?
+  ministereId    String
+  ministere      Ministere @relation(fields: [ministereId], references: [id], onDelete: Cascade)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  saisies LigneBudgetaire[]
+
+  @@unique([ministereId, sigle])
+  @@map("entites")
+}
+
+model Province {
+  id  String @id @default(cuid())
+  nom String @unique
+
+  users   User[]
+  saisies SaisieProvince[]
+
+  @@map("provinces")
+}
+
+enum StatutSaisie {
+  BROUILLON
+  SOUMIS
+  VALIDE
+  PUBLIE
+  OP_SOUMIS
+  PAYE
+}
+
+enum TypePrevision {
+  INVESTISSEMENT
+  BIENS_SERVICES
+  PERSONNEL
+}
+
+/// Demande budgétaire (prévision) saisie par un point focal Ministère (profil B1),
+/// rattachée à une entité de son ministère et classée par rubrique / type de prévision.
+model LigneBudgetaire {
+  id                 String        @id @default(cuid())
+  reference          String        @unique
+  ministereId        String
+  ministere          Ministere     @relation(fields: [ministereId], references: [id])
+  entiteId           String?
+  entite             Entite?       @relation(fields: [entiteId], references: [id], onDelete: SetNull)
+  exercice           Int
+  periode            String
+  typePrevision      TypePrevision
+  rubrique           String
+  objet              String?
+  montantDemande     Decimal?
+  priorite           String?
+  commentaire        String?
+  statut             StatutSaisie  @default(BROUILLON)
+  auteurId           String
+  auteur             User          @relation(fields: [auteurId], references: [id])
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  pieceJointes PieceJointe[]
+
+  @@map("lignes_budgetaires")
+}
+
+/// Saisie mensuelle d'exécution budgétaire par un point focal Province (profil B2).
+model SaisieProvince {
+  id              String       @id @default(cuid())
+  reference       String       @unique
+  provinceId      String
+  province        Province     @relation(fields: [provinceId], references: [id])
+  exercice        Int
+  periode         String
+  tauxExecution   Decimal?
+  recettesPropres Decimal?
+  retrocessions   Decimal?
+  commentaire     String?
+  statut          StatutSaisie @default(BROUILLON)
+  auteurId        String
+  auteur          User         @relation(fields: [auteurId], references: [id])
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  pieceJointes PieceJointe[]
+
+  @@unique([provinceId, periode])
+  @@map("saisies_provinces")
+}
+
+/// Saisie mensuelle de trésorerie par la Direction Générale du Trésor (profil C1).
+model SaisieTresor {
+  id                 String       @id @default(cuid())
+  reference          String       @unique
+  exercice           Int
+  periode            String       @unique
+  soldeCompteGeneral Decimal?
+  soldeBancaire      Decimal?
+  engagementsAttente Decimal?
+  arrieres           Decimal?
+  commentaire        String?
+  statut             StatutSaisie @default(BROUILLON)
+  auteurId           String
+  auteur             User         @relation(fields: [auteurId], references: [id])
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+
+  pieceJointes PieceJointe[]
+
+  @@map("saisies_tresor")
+}
+
+/// Saisie mensuelle de la dette publique par la Direction Générale de la Dette (profil C2).
+model SaisieDette {
+  id                String       @id @default(cuid())
+  reference         String       @unique
+  exercice          Int
+  periode           String       @unique
+  encoursExterieure Decimal?
+  encoursInterieure Decimal?
+  serviceDetteDu    Decimal?
+  serviceDettePaye  Decimal?
+  ratioDettePib     Decimal?
+  nouveauxEmprunts  String?
+  commentaire       String?
+  statut            StatutSaisie @default(BROUILLON)
+  auteurId          String
+  auteur            User         @relation(fields: [auteurId], references: [id])
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  pieceJointes PieceJointe[]
+
+  @@map("saisies_dette")
+}
+
+/// Saisie mensuelle des recettes par les régies financières (profil C3).
+model SaisieRecettes {
+  id                  String       @id @default(cuid())
+  reference           String       @unique
+  exercice            Int
+  periode             String       @unique
+  recettesFiscales    Decimal?
+  recettesDouanieres  Decimal?
+  recettesMinieres    Decimal?
+  recettesNonFiscales Decimal?
+  dons                Decimal?
+  commentaire         String?
+  statut              StatutSaisie @default(BROUILLON)
+  auteurId            String
+  auteur              User         @relation(fields: [auteurId], references: [id])
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+
+  pieceJointes PieceJointe[]
+
+  @@map("saisies_recettes")
+}
+
+/// Saisie mensuelle des indicateurs macroéconomiques par la cellule macro (profil C4).
+model SaisieMacro {
+  id           String       @id @default(cuid())
+  reference    String       @unique
+  exercice     Int
+  periode      String       @unique
+  pib          Decimal?
+  croissance   Decimal?
+  inflation    Decimal?
+  tauxChange   Decimal?
+  coursCuivre  Decimal?
+  coursPetrole Decimal?
+  reserves     Decimal?
+  commentaire  String?
+  statut       StatutSaisie @default(BROUILLON)
+  auteurId     String
+  auteur       User         @relation(fields: [auteurId], references: [id])
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  pieceJointes PieceJointe[]
+
+  @@map("saisies_macro")
+}
+
+/// Document attaché à une saisie (justificatif, pièce comptable, etc.).
+model PieceJointe {
+  id        String   @id @default(cuid())
+  nom       String
+  typeMime  String
+  taille    Int
+  contenu   Bytes
+  auteurId  String
+  auteur    User     @relation(fields: [auteurId], references: [id])
+  createdAt DateTime @default(now())
+
+  ligneBudgetaireId String?
+  ligneBudgetaire   LigneBudgetaire? @relation(fields: [ligneBudgetaireId], references: [id], onDelete: Cascade)
+  saisieProvinceId  String?
+  saisieProvince    SaisieProvince?  @relation(fields: [saisieProvinceId], references: [id], onDelete: Cascade)
+  saisieTresorId    String?
+  saisieTresor      SaisieTresor?    @relation(fields: [saisieTresorId], references: [id], onDelete: Cascade)
+  saisieDetteId     String?
+  saisieDette       SaisieDette?     @relation(fields: [saisieDetteId], references: [id], onDelete: Cascade)
+  saisieRecettesId  String?
+  saisieRecettes    SaisieRecettes?  @relation(fields: [saisieRecettesId], references: [id], onDelete: Cascade)
+  saisieMacroId     String?
+  saisieMacro       SaisieMacro?     @relation(fields: [saisieMacroId], references: [id], onDelete: Cascade)
+
+  @@map("pieces_jointes")
+}
+
+enum StatutReforme {
+  EN_COURS
+  REALISE
+  RETARDE
+}
+
+/// Suivi des réformes, saisi par la cellule de Suivi-Évaluation (profil C5).
+model Reforme {
+  id            String        @id @default(cuid())
+  nom           String        @unique
+  statut        StatutReforme @default(EN_COURS)
+  avancement    Int?
+  prochainJalon String?
+  commentaire   String?
+  auteurId      String
+  auteur        User          @relation(fields: [auteurId], references: [id])
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@map("reformes")
+}
+
+enum SeveriteAlerte {
+  INFO
+  AVERTISSEMENT
+  CRITIQUE
+}
+
+enum StatutAlerte {
+  OUVERTE
+  TRAITEE
+}
+
+/// Alertes et risques, saisis par la cellule de Suivi-Évaluation (profil C5).
+model Alerte {
+  id        String         @id @default(cuid())
+  texte     String
+  section   String?
+  severite  SeveriteAlerte @default(INFO)
+  statut    StatutAlerte   @default(OUVERTE)
+  auteurId  String
+  auteur    User           @relation(fields: [auteurId], references: [id])
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  @@map("alertes")
+}
+
+model User {
+  id               String            @id
+  name             String
+  email            String
+  emailVerified    Boolean           @default(false)
+  image            String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  role             String            @default("LECTEUR")
+  ministereId      String?
+  ministere        Ministere?        @relation(fields: [ministereId], references: [id])
+  provinceId       String?
+  province         Province?         @relation(fields: [provinceId], references: [id])
+  sessions         Session[]
+  accounts         Account[]
+  saisiesMinistere LigneBudgetaire[]
+  saisiesProvince  SaisieProvince[]
+  saisiesTresor    SaisieTresor[]
+  saisiesDette     SaisieDette[]
+  saisiesRecettes  SaisieRecettes[]
+  saisiesMacro     SaisieMacro[]
+  reformes         Reforme[]
+  alertes          Alerte[]
+  pieceJointes     PieceJointe[]
+  notifications    Notification[]
+  journalAudit     JournalAudit[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+/// Notification affichée dans la cloche du tableau de bord (changement de statut d'une saisie, etc.).
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  titre     String
+  message   String?
+  lien      String?
+  lu        Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, lu])
+  @@map("notifications")
+}
+
+/// Journal d'audit : trace chaque étape de traitement d'une saisie (soumission, validation,
+/// publication, ordre de paiement, exécution...), pour la traçabilité du workflow.
+model JournalAudit {
+  id          String   @id @default(cuid())
+  domain      String
+  recordId    String
+  action      String
+  statutAvant String?
+  statutApres String?
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  details     String?
+  createdAt   DateTime @default(now())
+
+  @@index([domain, recordId])
+  @@map("journal_audit")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  issuer                String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}

@@ -2,6 +2,7 @@
 
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { DualCurrencyAmount } from '@/components/dashboard/currency'
 
 type Segment = { name: string; value: number; color: string }
 
@@ -47,8 +48,9 @@ export function DonutCard({
             </PieChart>
           </ResponsiveContainer>
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
-            <span className="text-lg font-extrabold text-foreground">{centerValue}</span>
-            <span className="text-[10px] font-medium text-muted-foreground">{centerUnit}</span>
+            {centerUnit.includes('CDF') ? (
+              <DualCurrencyAmount value={centerValue} scale="billion" className="items-center text-lg font-extrabold text-foreground" secondaryClassName="text-[9px]" />
+            ) : <><span className="text-lg font-extrabold text-foreground">{centerValue}</span><span className="text-[10px] font-medium text-muted-foreground">{centerUnit}</span></>}
           </div>
         </div>
 

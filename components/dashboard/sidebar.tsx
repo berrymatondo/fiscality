@@ -20,14 +20,19 @@ import {
   BarChart3,
   Library,
   ShieldCheck,
+  PenLine,
   PanelLeftClose,
   PanelLeftOpen,
   X,
+  Settings,
+  SlidersHorizontal,
 } from 'lucide-react'
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { useSession } from '@/lib/auth-client'
+import { SAISIE_HREF_BY_ROLE, saisieNavLabel, type Role } from '@/lib/roles'
 
 export const nav = [
   { label: "Vue d'ensemble", href: '/', icon: LayoutDashboard, group: 'Synthèse' },
@@ -46,9 +51,10 @@ export const nav = [
   { label: 'Processus budgétaire', href: '/processus-budgetaire', icon: Workflow, group: 'Ressources' },
   { label: 'Rapports', href: '/rapports', icon: FileText, group: 'Ressources' },
   { label: 'Documentation', href: '/documentation', icon: BookOpen, group: 'Ressources' },
+  { label: 'Paramètres', href: '/parametres', icon: Settings, group: 'Configuration' },
 ] as const
 
-export type NavLabel = (typeof nav)[number]['label']
+export type NavLabel = (typeof nav)[number]['label'] | 'Paramètres'
 
 function Brand({ collapsed }: { collapsed?: boolean }) {
   return (
@@ -87,17 +93,18 @@ function NavList({
   onSelect,
   collapsed,
 }: {
-  active: NavLabel
+  active: NavLabel | undefined
   onSelect: (label: NavLabel) => void
   collapsed?: boolean
 }) {
   const sections = [
     { key: 'overview', label: "Vue d'ensemble", icon: LayoutDashboard, href: '/', children: [] },
-    { key: 'execution', label: 'Exécution budgétaire', icon: Wallet, href: '/depenses', children: ['Recettes', 'Dépenses', 'Exécution par Ministère', 'Investissements Publics'] },
+    { key: 'execution', label: 'Exécution budgétaire', icon: Wallet, href: '/depenses', children: ['Recettes', 'Dépenses', 'Exécution par Ministère', 'Provinces', 'Investissements Publics'] },
     { key: 'finances', label: 'Finances publiques', icon: Landmark, href: '/tresorerie', children: ['Trésorerie', 'Dette publique', 'Indicateurs Macroéconomiques'] },
     { key: 'analyses', label: 'Analyses', icon: BarChart3, href: '/analyses', children: ['Analyses'] },
     { key: 'pilotage', label: 'Pilotage & contrôle', icon: ShieldCheck, href: '/suivi-des-reformes', children: ['Suivi des réformes', 'Suivi de l’exécution (ESB)', 'Alertes & Risques'] },
     { key: 'resources', label: 'Rapports & ressources', icon: Library, href: '/rapports', children: ['Rapports', 'Processus budgétaire', 'Documentation'] },
+    { key: 'settings', label: 'Paramètres', icon: Settings, href: '/parametres', children: [] },
   ] as const
   const activeSection = sections.find((section) => section.children.some((label) => label === active))?.key
   const [openGroup, setOpenGroup] = useState<string | null>(activeSection || null)
@@ -118,6 +125,128 @@ function NavList({
   )
 }
 
+function AccountNav({ collapsed }: { collapsed?: boolean }) {
+  const { data: session } = useSession()
+  const [configOpen, setConfigOpen] = useState(false)
+  if (!session) return null
+
+  const role = session.user.role as Role
+  const isAdmin = role === 'SUPER_ADMIN' || role === 'ADMIN_DGB'
+  const isSuperAdmin = role === 'SUPER_ADMIN'
+  const isMinistereFocal = role === 'MINISTERE_FOCAL'
+  const saisieHref = SAISIE_HREF_BY_ROLE[role] ?? null
+  const saisieLabel = saisieNavLabel(role)
+
+  if (!isAdmin && !saisieHref) return null
+
+  return (
+    <div
+      className={cn(
+        'flex flex-col gap-1 border-t border-sidebar-border px-3 pb-2 pt-2',
+        collapsed && 'items-center px-0',
+      )}
+    >
+      {saisieHref && (
+        <Link
+          href={saisieHref}
+          title={collapsed ? saisieLabel : undefined}
+          className={cn(
+            'flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold text-sidebar-foreground transition-colors hover:bg-sidebar-accent/60',
+            collapsed && 'justify-center px-0',
+          )}
+        >
+          <PenLine className="h-4 w-4 shrink-0" />
+          {!collapsed && <span>{saisieLabel}</span>}
+        </Link>
+      )}
+      {isAdmin && (
+        <Link
+          href="/admin/users"
+          title={collapsed ? 'Administration des comptes' : undefined}
+          className={cn(
+            'flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold text-sidebar-foreground transition-colors hover:bg-sidebar-accent/60',
+            collapsed && 'justify-center px-0',
+          )}
+        >
+          <ShieldCheck className="h-4 w-4 shrink-0" />
+          {!collapsed && <span>Administration des comptes</span>}
+        </Link>
+      )}
+      {isSuperAdmin && (
+        <div>
+          <button
+            type="button"
+            onClick={() => setConfigOpen((v) => !v)}
+            title={collapsed ? 'Configuration' : undefined}
+            className={cn(
+              'flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold text-sidebar-foreground transition-colors hover:bg-sidebar-accent/60',
+              collapsed && 'justify-center px-0',
+            )}
+          >
+            <SlidersHorizontal className="h-4 w-4 shrink-0" />
+            {!collapsed && (
+              <>
+                <span className="flex-1 text-left">Configuration</span>
+                <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', configOpen && 'rotate-180')} />
+              </>
+            )}
+          </button>
+          {!collapsed && configOpen && (
+            <div className="ml-5 mt-1 space-y-0.5 border-l border-sidebar-border pl-2">
+              <Link
+                href="/admin/ministeres"
+                className="flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium text-muted-foreground transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
+              >
+                <Landmark className="h-3.5 w-3.5 shrink-0" />
+                <span>Ministères</span>
+              </Link>
+              <Link
+                href="/admin/provinces"
+                className="flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium text-muted-foreground transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
+              >
+                <Map className="h-3.5 w-3.5 shrink-0" />
+                <span>Provinces</span>
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
+      {isMinistereFocal && (
+        <div>
+          <button
+            type="button"
+            onClick={() => setConfigOpen((v) => !v)}
+            title={collapsed ? 'Configuration' : undefined}
+            className={cn(
+              'flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold text-sidebar-foreground transition-colors hover:bg-sidebar-accent/60',
+              collapsed && 'justify-center px-0',
+            )}
+          >
+            <SlidersHorizontal className="h-4 w-4 shrink-0" />
+            {!collapsed && (
+              <>
+                <span className="flex-1 text-left">Configuration</span>
+                <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', configOpen && 'rotate-180')} />
+              </>
+            )}
+          </button>
+          {!collapsed && configOpen && (
+            <div className="ml-5 mt-1 space-y-0.5 border-l border-sidebar-border pl-2">
+              <Link
+                href="/ministere/entites"
+                className="flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium text-muted-foreground transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
+              >
+                <Building2 className="h-3.5 w-3.5 shrink-0" />
+                <span>Mes entités</span>
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
 function Footer() {
   return (
     <div className="border-t border-sidebar-border px-5 py-4 text-[10px] text-muted-foreground">
@@ -134,7 +263,7 @@ export function Sidebar({
   mobileOpen,
   onMobileClose,
 }: {
-  active: NavLabel
+  active: NavLabel | undefined
   onSelect: (label: NavLabel) => void
   mobileOpen: boolean
   onMobileClose: () => void
@@ -146,7 +275,7 @@ export function Sidebar({
       {/* Desktop sidebar */}
       <aside
         className={cn(
-          'hidden shrink-0 flex-col border-r border-sidebar-border bg-sidebar transition-[width] duration-200 lg:flex',
+          'sticky top-0 hidden h-screen shrink-0 flex-col border-r border-sidebar-border bg-sidebar transition-[width] duration-200 lg:flex',
           collapsed ? 'w-16' : 'w-64',
         )}
       >
@@ -171,6 +300,7 @@ export function Sidebar({
         </div>
 
         <NavList active={active} onSelect={onSelect} collapsed={collapsed} />
+        <AccountNav collapsed={collapsed} />
         {!collapsed && <Footer />}
       </aside>
 
@@ -210,6 +340,7 @@ export function Sidebar({
             </button>
           </div>
           <NavList active={active} onSelect={onSelect} />
+          <AccountNav />
           <Footer />
         </aside>
       </div>

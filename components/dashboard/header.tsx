@@ -1,7 +1,7 @@
 'use client'
 
 import { Calendar, ChevronDown, Download, Check, Menu } from 'lucide-react'
-import { useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -13,9 +13,10 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { UserMenu } from '@/components/dashboard/user-menu'
+import { NotificationBell } from '@/components/dashboard/notification-bell'
 import { exportDashboard } from '@/lib/export'
 
-const EXERCICES = ['2021', '2022', '2023', '2024', '2025']
 const MONTHS = [
   'Janvier',
   'Février',
@@ -31,9 +32,27 @@ const MONTHS = [
   'Décembre',
 ]
 
-export function Header({ onMenuClick }: { onMenuClick: () => void }) {
-  const [exercice, setExercice] = useState('2025')
-  const [month, setMonth] = useState('Décembre')
+export function Header({
+  onMenuClick,
+  exercice,
+  periode,
+  exercicesDisponibles,
+}: {
+  onMenuClick: () => void
+  exercice: number
+  periode: string
+  exercicesDisponibles: number[]
+}) {
+  const router = useRouter()
+  const pathname = usePathname()
+
+  const monthIndex = Math.min(Math.max(Number(periode.slice(5, 7)) - 1, 0), 11)
+  const monthLabel = MONTHS[monthIndex]
+
+  function navigate(nextExercice: number, nextMonthIndex: number) {
+    const nextPeriode = `${nextExercice}-${String(nextMonthIndex + 1).padStart(2, '0')}`
+    router.push(`${pathname}?exercice=${nextExercice}&periode=${nextPeriode}`)
+  }
 
   return (
     <header className="flex flex-col gap-4 border-b border-border bg-card px-4 py-4 md:px-6 md:py-5 xl:flex-row xl:items-center xl:justify-between">
@@ -73,10 +92,10 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
             <DropdownMenuGroup>
               <DropdownMenuLabel>Exercice budgétaire</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              {EXERCICES.map((year) => (
+              {exercicesDisponibles.map((year) => (
                 <DropdownMenuItem
                   key={year}
-                  onClick={() => setExercice(year)}
+                  onClick={() => navigate(year, monthIndex)}
                   className="justify-between"
                 >
                   {year}
@@ -94,7 +113,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
                 Période
               </span>
               <span className="block text-sm font-semibold text-foreground">
-                {month} {exercice}
+                {monthLabel} {exercice}
               </span>
             </span>
             <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -103,14 +122,14 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
             <DropdownMenuGroup>
               <DropdownMenuLabel>Période</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              {MONTHS.map((m) => (
+              {MONTHS.map((m, i) => (
                 <DropdownMenuItem
                   key={m}
-                  onClick={() => setMonth(m)}
+                  onClick={() => navigate(exercice, i)}
                   className="justify-between"
                 >
                   {m}
-                  {month === m && <Check className="h-4 w-4" />}
+                  {monthIndex === i && <Check className="h-4 w-4" />}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuGroup>
@@ -118,7 +137,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
         </DropdownMenu>
 
         <Button
-          onClick={() => exportDashboard(exercice, month)}
+          onClick={() => exportDashboard(String(exercice), monthLabel)}
           className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
         >
           <Download className="h-4 w-4" />
@@ -126,6 +145,8 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
         </Button>
 
         <ThemeToggle />
+        <NotificationBell />
+        <UserMenu />
       </div>
     </header>
   )

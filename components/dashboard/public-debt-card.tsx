@@ -2,13 +2,14 @@ import { TrendingUp } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { publicDebt } from '@/lib/data'
 import { cn } from '@/lib/utils'
+import { DualCurrencyAmount } from '@/components/dashboard/currency'
 
 export function PublicDebtCard() {
   return (
     <Card>
       <CardHeader>
         <CardTitle>Dette publique</CardTitle>
-        <CardDescription>(en Mrd CDF et en % du PIB)</CardDescription>
+        <CardDescription>CDF principal · équivalent USD · % du PIB</CardDescription>
       </CardHeader>
       <CardContent>
         <table className="w-full text-[12px]">
@@ -30,7 +31,7 @@ export function PublicDebtCard() {
                 )}
               >
                 <td className="py-2.5 text-foreground">{row.type}</td>
-                <td className="py-2.5 text-right text-foreground">{row.encours}</td>
+                <td className="py-2.5 text-right text-foreground"><DualCurrencyAmount value={row.encours} scale="billion" className="items-end" showToggle={false} /></td>
                 <td className="py-2.5 text-right text-foreground">{row.pib}</td>
                 <td className="py-2.5 text-right">
                   <span className="inline-flex items-center gap-1 font-semibold text-success">

@@ -11,6 +11,7 @@ import { Card } from '@/components/ui/card'
 import { CountUp } from '@/components/dashboard/count-up'
 import { kpis } from '@/lib/data'
 import { cn } from '@/lib/utils'
+import { DualCurrencyAmount } from '@/components/dashboard/currency'
 
 const icons: Record<string, LucideIcon> = {
   HandCoins,
@@ -69,11 +70,10 @@ export function KpiCards() {
                 <Icon className="h-5 w-5" />
               </div>
               <div className="leading-tight">
-                <CountUp
-                  value={kpi.value}
-                  className={cn('text-xl font-extrabold', valueStyles[kpi.color])}
-                />
-                {kpi.unit && (
+                {kpi.unit.includes('CDF') ? (
+                  <DualCurrencyAmount value={kpi.value} scale="billion" className={cn('text-xl font-extrabold', valueStyles[kpi.color])} />
+                ) : <CountUp value={kpi.value} className={cn('text-xl font-extrabold', valueStyles[kpi.color])} />}
+                {kpi.unit && !kpi.unit.includes('CDF') && (
                   <span className="ml-1 text-[10px] font-semibold text-muted-foreground">
                     {kpi.unit}
                   </span>

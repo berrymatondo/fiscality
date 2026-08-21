@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { macroIndicators } from '@/lib/data'
 import { cn } from '@/lib/utils'
+import { DualCurrencyAmount } from '@/components/dashboard/currency'
 
 export function MacroCard() {
   return (
@@ -21,7 +22,9 @@ export function MacroCard() {
             {macroIndicators.map((row) => (
               <tr key={row.name} className="border-t border-border">
                 <td className="py-2 text-foreground">{row.name}</td>
-                <td className="py-2 text-right font-semibold text-foreground">{row.value}</td>
+                <td className="py-2 text-right font-semibold text-foreground">
+                  {row.name.includes('PIB nominal') ? <DualCurrencyAmount value={row.value} scale="billion" className="items-end" showToggle={false} /> : row.value}
+                </td>
                 <td
                   className={cn(
                     'py-2 text-right font-semibold',
