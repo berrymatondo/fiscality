@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AlertCircle, AlertTriangle, ArrowRight, BadgeDollarSign, Banknote, CheckCircle2, CircleGauge, Coins, FileCheck2, Landmark, ListChecks, Search, ShieldAlert, Sparkles, TrendingDown, Trophy, WalletCards, X, type LucideIcon } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { budgetSections, budgetSectionTotal } from '@/lib/budget-sections'
@@ -64,6 +64,13 @@ export function TrackingTable() {
   const [query, setQuery] = useState('')
   const [riskFilter, setRiskFilter] = useState<Risk | 'Tous'>('Tous')
   const [selected, setSelected] = useState<RawSection | null>(null)
+
+  useEffect(() => {
+    if (!selected) return
+    const onKeyDown = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelected(null) }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [selected])
 
   const analytics = useMemo(() => {
     const byBudget = [...budgetSections].sort((a, b) => toNumber(b.voted) - toNumber(a.voted))
@@ -164,7 +171,75 @@ export function TrackingTable() {
         </CardContent>
       </Card>
 
-      {selected && <div className="fixed inset-0 z-50 flex justify-end bg-foreground/30" onClick={() => setSelected(null)}><aside className="h-full w-full max-w-lg overflow-y-auto bg-card p-6 shadow-2xl" onClick={(e) => e.stopPropagation()}><div className="flex items-start justify-between gap-4"><div><p className="text-xs text-muted-foreground">Section {selected.number}</p><h3 className="mt-1 text-lg font-bold text-foreground">{selected.section}</h3></div><button onClick={() => setSelected(null)} className="rounded-md p-2 hover:bg-muted"><X className="h-5 w-5" /></button></div><div className="mt-5 flex items-center gap-2"><RiskBadge risk={riskOf(selected)} /><span className="text-sm font-bold text-primary">{rateOf(selected).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% payé</span></div><div className="mt-6 space-y-3">{columns.map(([key, label]) => <div key={key} className="flex justify-between gap-4 border-b border-border pb-3 text-sm"><span className="text-muted-foreground">{label}</span><span className="font-semibold tabular-nums">{selected[key]} CDF</span></div>)}</div><div className="mt-6 rounded-lg bg-muted/50 p-4"><p className="text-xs font-bold uppercase text-foreground">Diagnostic de pilotage</p><div className="mt-3 space-y-2 text-sm text-muted-foreground"><p className="flex items-center gap-2"><TrendingDown className="h-4 w-4" />Reste à payer : <strong className="text-foreground">{billions(toNumber(selected.ordered) - toNumber(selected.paid))} CDF</strong></p>{riskOf(selected) === 'Dépassement' && <p className="flex items-start gap-2 text-violet-700 dark:text-violet-300"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />Les engagements dépassent les crédits votés de {billions(toNumber(selected.committed) - toNumber(selected.voted))} CDF.</p>}{riskOf(selected) === 'Critique' && <p className="flex items-start gap-2 text-destructive"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />Exécution très faible : revue immédiate des blocages recommandée.</p>}{riskOf(selected) === 'À surveiller' && <p className="flex items-start gap-2 text-warning-foreground"><AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />Sous-exécution : demander un plan d’accélération et un échéancier.</p>}</div></div></aside></div>}
+      {selected && (
+        <div
+          className="animate-in fade-in-0 fixed inset-0 z-50 flex items-center justify-center bg-foreground/30 p-4 duration-200"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={selected.section}
+            className="animate-in fade-in-0 zoom-in-95 max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-xl bg-card p-6 shadow-2xl duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs text-muted-foreground">Section {selected.number}</p>
+                <h3 className="mt-1 text-lg font-bold text-foreground">{selected.section}</h3>
+              </div>
+              <button onClick={() => setSelected(null)} className="rounded-md p-2 hover:bg-muted">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="mt-5 flex items-center gap-2">
+              <RiskBadge risk={riskOf(selected)} />
+              <span className="text-sm font-bold text-primary">
+                {rateOf(selected).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% payé
+              </span>
+            </div>
+            <div className="mt-6 space-y-3">
+              {columns.map(([key, label]) => (
+                <div key={key} className="flex items-center justify-between gap-4 border-b border-border pb-3 text-sm">
+                  <span className="text-muted-foreground">{label}</span>
+                  <DualCurrencyAmount value={toNumber(selected[key])} className="items-end" dual />
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 rounded-lg bg-muted/50 p-4">
+              <p className="text-xs font-bold uppercase text-foreground">Diagnostic de pilotage</p>
+              <div className="mt-3 space-y-2 text-sm text-muted-foreground">
+                <p className="flex items-center gap-2">
+                  <TrendingDown className="h-4 w-4" />
+                  Reste à payer :{' '}
+                  <strong className="text-foreground">
+                    {billions(toNumber(selected.ordered) - toNumber(selected.paid))} CDF
+                  </strong>
+                </p>
+                {riskOf(selected) === 'Dépassement' && (
+                  <p className="flex items-start gap-2 text-violet-700 dark:text-violet-300">
+                    <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                    Les engagements dépassent les crédits votés de{' '}
+                    {billions(toNumber(selected.committed) - toNumber(selected.voted))} CDF.
+                  </p>
+                )}
+                {riskOf(selected) === 'Critique' && (
+                  <p className="flex items-start gap-2 text-destructive">
+                    <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                    Exécution très faible : revue immédiate des blocages recommandée.
+                  </p>
+                )}
+                {riskOf(selected) === 'À surveiller' && (
+                  <p className="flex items-start gap-2 text-warning-foreground">
+                    <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                    Sous-exécution : demander un plan d’accélération et un échéancier.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <p className="text-[11px] text-muted-foreground">Source : Ministère du Budget — ESB des dépenses par section, édition du 07/08/2026.</p>
     </>
