@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { provinceLegend } from '@/lib/data'
 import { PROVINCES_GEO } from '@/lib/provinces-geo'
-import { MAP_VIEWBOX, DRC_SILHOUETTE_PATH, KINSHASA_MARKER, PROVINCE_CELLS } from '@/lib/provinces-map-cells'
+import { MAP_VIEWBOX, PROVINCE_CELLS } from '@/lib/provinces-map-cells'
 
 function bandIndex(taux: number): number {
   if (taux >= 50) return 0
@@ -23,10 +23,9 @@ export function InteractiveProvinceMap({ onSelect }: { onSelect: (province: stri
 
   const cellsWithData = PROVINCE_CELLS.map((cell) => {
     const taux = tauxOf(cell.name)
-    return { ...cell, fullName: cell.name, taux, color: provinceLegend[bandIndex(taux)].color }
+    const d = cell.points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0]},${p[1]}`).join(' ') + ' Z'
+    return { name: cell.name, d, taux, color: provinceLegend[bandIndex(taux)].color }
   })
-
-  const kinshasaTaux = tauxOf('Kinshasa')
 
   return (
     <Card>
@@ -37,55 +36,30 @@ export function InteractiveProvinceMap({ onSelect }: { onSelect: (province: stri
       <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <div className="relative flex-1">
           <svg viewBox={MAP_VIEWBOX} className="h-auto w-full" role="img" aria-label="Carte de la République Démocratique du Congo par province">
-            <defs>
-              <clipPath id="drc-silhouette-clip">
-                <path d={DRC_SILHOUETTE_PATH} />
-              </clipPath>
-            </defs>
-            <g clipPath="url(#drc-silhouette-clip)">
-              {cellsWithData.map((cell) => {
-                const isHovered = hovered === cell.fullName
-                const d = cell.points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0]},${p[1]}`).join(' ') + ' Z'
-                return (
-                  <path
-                    key={cell.fullName}
-                    d={d}
-                    fill={cell.color}
-                    stroke="var(--card)"
-                    strokeWidth={isHovered ? 4 : 2}
-                    className="cursor-pointer transition-[stroke-width,filter] duration-150"
-                    style={{ filter: isHovered ? 'brightness(1.18)' : undefined }}
-                    onMouseEnter={() => setHovered(cell.fullName)}
-                    onMouseLeave={() => setHovered((h) => (h === cell.fullName ? null : h))}
-                    onClick={() => onSelect(cell.fullName)}
-                  >
-                    <title>{`${cell.fullName} — ${cell.taux}%`}</title>
-                  </path>
-                )
-              })}
-            </g>
-            <path d={DRC_SILHOUETTE_PATH} fill="none" stroke="var(--foreground)" strokeOpacity={0.15} strokeWidth={3} />
-
-            <circle
-              cx={KINSHASA_MARKER[0]}
-              cy={KINSHASA_MARKER[1]}
-              r={hovered === 'Kinshasa (capitale)' ? 13 : 10}
-              fill={provinceLegend[bandIndex(kinshasaTaux)].color}
-              stroke="var(--card)"
-              strokeWidth={2.5}
-              className="cursor-pointer transition-[r] duration-150"
-              style={{ filter: hovered === 'Kinshasa (capitale)' ? 'brightness(1.18)' : undefined }}
-              onMouseEnter={() => setHovered('Kinshasa (capitale)')}
-              onMouseLeave={() => setHovered((h) => (h === 'Kinshasa (capitale)' ? null : h))}
-              onClick={() => onSelect('Kinshasa (capitale)')}
-            >
-              <title>{`Kinshasa (capitale) — ${kinshasaTaux}%`}</title>
-            </circle>
+            {cellsWithData.map((cell) => {
+              const isHovered = hovered === cell.name
+              return (
+                <path
+                  key={cell.name}
+                  d={cell.d}
+                  fill={cell.color}
+                  stroke="var(--card)"
+                  strokeWidth={isHovered ? 3 : 1.2}
+                  className="cursor-pointer transition-[stroke-width,filter] duration-150"
+                  style={{ filter: isHovered ? 'brightness(1.2)' : undefined }}
+                  onMouseEnter={() => setHovered(cell.name)}
+                  onMouseLeave={() => setHovered((h) => (h === cell.name ? null : h))}
+                  onClick={() => onSelect(cell.name)}
+                >
+                  <title>{`${cell.name} — ${cell.taux}%`}</title>
+                </path>
+              )
+            })}
           </svg>
 
           {hovered && (
             <div className="pointer-events-none absolute left-2 top-2 rounded-md border border-border bg-card/95 px-2.5 py-1.5 text-[11px] font-semibold text-foreground shadow-sm">
-              {hovered} — {hovered === 'Kinshasa (capitale)' ? kinshasaTaux : tauxOf(hovered)}%
+              {hovered} — {tauxOf(hovered)}%
             </div>
           )}
         </div>
