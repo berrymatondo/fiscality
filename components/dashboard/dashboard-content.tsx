@@ -6,6 +6,7 @@ import { KpiCards } from '@/components/dashboard/kpi-cards'
 import { BudgetExecutionChart } from '@/components/dashboard/budget-execution-chart'
 import { DonutCard } from '@/components/dashboard/donut-card'
 import { MinistryChart } from '@/components/dashboard/ministry-chart'
+import { MinistryDrilldown } from '@/components/dashboard/ministry-drilldown'
 import { ProvinceMap } from '@/components/dashboard/province-map'
 import { ProvinceDrilldown } from '@/components/dashboard/province-drilldown'
 import { TreasuryCard } from '@/components/dashboard/treasury-card'
@@ -21,7 +22,7 @@ import { SettingsView } from '@/components/dashboard/settings-view'
 import { DualCurrencyAmount } from '@/components/dashboard/currency'
 import { CountUp } from '@/components/dashboard/count-up'
 import type { NavLabel } from '@/components/dashboard/sidebar'
-import { revenueBreakdown, expenseBreakdown, provinces } from '@/lib/data'
+import { revenueBreakdown, expenseBreakdown, provinces, ministryExecution } from '@/lib/data'
 import { exportDashboard } from '@/lib/export'
 
 function SectionHeading({ title, description }: { title: string; description: string }) {
@@ -268,7 +269,7 @@ export function DashboardContent({
             description="Taux d'exécution des dépenses par ministère à date"
           />
           <div className="animate-fade-up">
-            <MinistryChart />
+            <MinistryDrilldown data={ministryExecution} />
           </div>
         </>
       )

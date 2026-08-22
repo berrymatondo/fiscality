@@ -99,9 +99,12 @@ export function DualCurrencyAmount({
   const targetValue = typeof value === 'string' ? parseFrenchNumber(value) : value
   const animatedValue = useAnimatedNumber(targetValue)
   const numericValue = animate ? animatedValue : targetValue
-  const cdf = scale === 'billion' ? numericValue * 1e9 : numericValue
+  // Le taux CDF/USD est un ratio indépendant de l'échelle : diviser numericValue (en Mrd ou en
+  // unité) par ce taux donne directement l'équivalent USD dans la même échelle — pas besoin de
+  // repasser par les CDF bruts (×1e9) puis re-diviser, ce qui produisait un résultat 1e9 fois trop grand.
   const cdfText = numericValue.toLocaleString('fr-FR', { maximumFractionDigits: scale === 'billion' ? 1 : 0 })
-  const usdText = formatUsdFromCdf(cdf, rate, scale === 'billion' ? 2 : 0)
+  const usdValue = numericValue / rate
+  const usdText = usdValue.toLocaleString('fr-FR', { maximumFractionDigits: scale === 'billion' ? 2 : 0 })
 
   return (
     <span className={cn('inline-flex flex-col gap-1', className)}>

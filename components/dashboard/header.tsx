@@ -56,7 +56,7 @@ export function Header({
   }
 
   return (
-    <header className="flex flex-col gap-4 border-b border-border bg-card px-4 py-4 md:px-6 md:py-5 xl:flex-row xl:items-center xl:justify-between">
+    <header className="sticky top-0 z-30 flex flex-col gap-4 border-b border-border bg-card px-4 py-4 md:px-6 md:py-5 xl:flex-row xl:items-center xl:justify-between">
       <div className="flex items-start gap-3">
         <button
           type="button"
