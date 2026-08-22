@@ -188,12 +188,12 @@ const pageDocs: PageDoc[] = [
       "Classe les ministères selon leur taux d'exécution des dépenses à date, sous forme de barres horizontales.",
   },
   {
-    label: 'Provinces',
+    label: 'Exécution par province',
     href: '/provinces',
     icon: Map,
-    purpose: 'Exécution des dépenses par province.',
+    purpose: 'Exécution des dépenses par province, avec détail par territoire, ville et commune.',
     content:
-      "Combine une carte choroplèthe de la RDC (colorée selon le taux d'exécution) et un tableau détaillé par province.",
+      "Combine une carte choroplèthe de la RDC (colorée selon le taux d'exécution) et un tableau détaillé par province. Cliquez sur une province pour explorer ses territoires et villes, puis sur un territoire ou une ville pour voir ses communes.",
   },
   {
     label: 'Analyses',

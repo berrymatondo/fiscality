@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { budgetSections, budgetSectionTotal } from '@/lib/budget-sections'
 import { cn } from '@/lib/utils'
 import { DualCurrencyAmount, useExchangeRate } from '@/components/dashboard/currency'
+import { CountUp } from '@/components/dashboard/count-up'
 
 const columns = [
   ['voted', 'Créd. votés'], ['adjusted', 'Créd. après virements'],
@@ -102,7 +103,7 @@ export function TrackingTable() {
     <>
       <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-900 px-6 py-7 text-white shadow-lg md:px-8">
         <div className="absolute -right-10 -top-16 h-56 w-56 rounded-full bg-blue-400/20 blur-3xl" /><div className="absolute bottom-0 right-1/3 h-28 w-28 rounded-full bg-violet-400/15 blur-2xl" />
-        <div className="relative flex flex-col justify-between gap-5 md:flex-row md:items-center"><div><div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[.16em]"><Sparkles className="h-3.5 w-3.5 text-amber-300" />Pilotage intelligent</div><h2 className="text-2xl font-black tracking-tight md:text-3xl">Cockpit de pilotage ESB</h2><p className="mt-2 text-[13px] text-blue-100/80">Une lecture dynamique de la chaîne d’exécution budgétaire par section.</p></div><div className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur"><CircleGauge className="h-8 w-8 text-emerald-300" /><div><p className="text-2xl font-black">{(totalPaid / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}%</p><p className="text-[9px] uppercase tracking-wider text-blue-100/70">Taux global payé</p></div></div></div>
+        <div className="relative flex flex-col justify-between gap-5 md:flex-row md:items-center"><div><div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[.16em]"><Sparkles className="h-3.5 w-3.5 text-amber-300" />Pilotage intelligent</div><h2 className="text-2xl font-black tracking-tight md:text-3xl">Cockpit de pilotage ESB</h2><p className="mt-2 text-[13px] text-blue-100/80">Une lecture dynamique de la chaîne d’exécution budgétaire par section.</p></div><div className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur"><CircleGauge className="h-8 w-8 text-emerald-300" /><div><p className="text-2xl font-black"><CountUp value={`${(totalPaid / totalVoted * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}%`} /></p><p className="text-[9px] uppercase tracking-wider text-blue-100/70">Taux global payé</p></div></div></div>
       </section>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 xl:grid-cols-6">
@@ -110,7 +111,7 @@ export function TrackingTable() {
           <Card key={label} className="group relative overflow-hidden p-4 transition-all hover:-translate-y-1 hover:shadow-lg">
             <div className={cn('absolute inset-x-0 top-0 h-1 bg-gradient-to-r', tone)} />
             <div className="flex items-start justify-between gap-2"><p className="text-[9px] font-semibold uppercase text-muted-foreground">{label}</p><span className={cn('flex h-8 w-8 items-center justify-center rounded-lg transition-transform group-hover:scale-110', soft)}><Icon className="h-4 w-4" /></span></div>
-            <p className="mt-2 text-xl font-extrabold text-foreground">{value}</p>
+            <p className="mt-2 text-xl font-extrabold text-foreground"><CountUp value={value} /></p>
             {index < 4 && <p className="text-[9px] text-muted-foreground">≈ {usd([totalVoted, totalCommitted, totalPaid, totalOrdered - totalPaid][index])}</p>}
             <p className="mt-1 text-[10px] text-muted-foreground">{detail}</p>
           </Card>
@@ -126,8 +127,8 @@ export function TrackingTable() {
                 <div className="group rounded-xl border border-border bg-muted/20 p-3 transition-all hover:border-primary/30 hover:bg-card hover:shadow-md">
                   <div className={cn('mb-2 flex h-8 w-8 items-center justify-center rounded-lg text-white shadow-sm', pipelineTones[index])}>{(() => { const Icon = pipelineIcons[index]; return <Icon className="h-4 w-4" /> })()}</div>
                   <p className="text-[9px] font-bold uppercase text-muted-foreground">{step.label}</p>
-                  <p className="mt-1 text-sm font-extrabold text-foreground">{compact(step.value)}</p>
-                  {index > 0 && <p className="text-[10px] text-muted-foreground">{(step.value / pipeline[index - 1].value * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}% de l’étape précédente</p>}
+                  <p className="mt-1 text-sm font-extrabold text-foreground"><CountUp value={compact(step.value)} /></p>
+                  {index > 0 && <p className="text-[10px] text-muted-foreground"><CountUp value={`${(step.value / pipeline[index - 1].value * 100).toLocaleString('fr-FR', { maximumFractionDigits: 1 })}%`} /> de l’étape précédente</p>}
                 </div>
                 {index < pipeline.length - 1 && <span className="mx-auto hidden h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary lg:flex"><ArrowRight className="h-4 w-4" /></span>}
               </div>
@@ -156,8 +157,8 @@ export function TrackingTable() {
         <CardContent className="max-h-[70vh] overflow-auto px-0 pt-1">
           <table className="w-full min-w-[1600px] border-collapse text-left text-[11px] tabular-nums">
             <thead className="sticky top-0 z-10 bg-muted text-[10px] uppercase text-muted-foreground shadow-sm"><tr><th className="w-14 px-4 py-3 text-center">N°</th><th className="min-w-80 px-4 py-3">Sections</th>{columns.map(([key, label]) => <th key={key} className="min-w-44 px-4 py-3 text-right">{label}</th>)}<th className="px-4 py-3 text-right">Taux payé</th><th className="px-4 py-3 text-center">Alerte</th></tr></thead>
-            <tbody>{rows.map((row) => { const risk = riskOf(row); return <tr id={`section-${row.number}`} key={row.number} onClick={() => setSelected(row)} className="cursor-pointer border-t border-border hover:bg-muted/40"><td className="px-4 py-3 text-center text-muted-foreground">{row.number}</td><td className="px-4 py-3 font-semibold text-foreground">{row.section}</td>{columns.map(([key]) => <td key={key} className="whitespace-nowrap px-4 py-3 text-right"><DualCurrencyAmount value={toNumber(row[key])} className="items-end" showToggle={false} /></td>)}<td className="px-4 py-3 text-right font-bold text-primary">{rateOf(row).toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%</td><td className="px-4 py-3 text-center"><RiskBadge risk={risk} /></td></tr> })}</tbody>
-            {riskFilter === 'Tous' && !query && <tfoot className="sticky bottom-0 bg-primary text-primary-foreground"><tr className="font-bold"><td /><td className="px-4 py-3">TOTAL GÉNÉRAL</td>{columns.map(([key]) => <td key={key} className="whitespace-nowrap px-4 py-3 text-right"><DualCurrencyAmount value={toNumber(budgetSectionTotal[key])} className="items-end" secondaryClassName="text-primary-foreground/70" showToggle={false} /></td>)}<td className="px-4 py-3 text-right">86,9%</td><td /></tr></tfoot>}
+            <tbody>{rows.map((row) => { const risk = riskOf(row); return <tr id={`section-${row.number}`} key={row.number} onClick={() => setSelected(row)} className="cursor-pointer border-t border-border hover:bg-muted/40"><td className="px-4 py-3 text-center text-muted-foreground">{row.number}</td><td className="px-4 py-3 font-semibold text-foreground">{row.section}</td>{columns.map(([key]) => <td key={key} className="whitespace-nowrap px-4 py-3 text-right"><DualCurrencyAmount value={toNumber(row[key])} className="items-end" dual /></td>)}<td className="px-4 py-3 text-right font-bold text-primary">{rateOf(row).toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%</td><td className="px-4 py-3 text-center"><RiskBadge risk={risk} /></td></tr> })}</tbody>
+            {riskFilter === 'Tous' && !query && <tfoot className="sticky bottom-0 bg-primary text-primary-foreground"><tr className="font-bold"><td /><td className="px-4 py-3">TOTAL GÉNÉRAL</td>{columns.map(([key]) => <td key={key} className="whitespace-nowrap px-4 py-3 text-right"><DualCurrencyAmount value={toNumber(budgetSectionTotal[key])} className="items-end" secondaryClassName="text-primary-foreground/70" dual /></td>)}<td className="px-4 py-3 text-right"><CountUp value="86,9%" /></td><td /></tr></tfoot>}
           </table>
           {!rows.length && <p className="py-10 text-center text-sm text-muted-foreground">Aucune section trouvée.</p>}
         </CardContent>

@@ -7,6 +7,7 @@ import { BudgetExecutionChart } from '@/components/dashboard/budget-execution-ch
 import { DonutCard } from '@/components/dashboard/donut-card'
 import { MinistryChart } from '@/components/dashboard/ministry-chart'
 import { ProvinceMap } from '@/components/dashboard/province-map'
+import { ProvinceDrilldown } from '@/components/dashboard/province-drilldown'
 import { TreasuryCard } from '@/components/dashboard/treasury-card'
 import { PublicDebtCard } from '@/components/dashboard/public-debt-card'
 import { MacroCard } from '@/components/dashboard/macro-card'
@@ -18,6 +19,7 @@ import { BudgetProcessView } from '@/components/dashboard/budget-process-view'
 import { AnalysisView } from '@/components/dashboard/analysis-view'
 import { SettingsView } from '@/components/dashboard/settings-view'
 import { DualCurrencyAmount } from '@/components/dashboard/currency'
+import { CountUp } from '@/components/dashboard/count-up'
 import type { NavLabel } from '@/components/dashboard/sidebar'
 import { revenueBreakdown, expenseBreakdown, provinces } from '@/lib/data'
 import { exportDashboard } from '@/lib/export'
@@ -69,53 +71,14 @@ function BreakdownTable({
                     {row.name}
                   </td>
                   <td className="py-2 text-right font-semibold text-foreground">
-                    {row.value.toLocaleString('fr-FR', { minimumFractionDigits: 1 })}%
+                    <CountUp value={`${row.value.toLocaleString('fr-FR', { minimumFractionDigits: 1 })}%`} />
                   </td>
                   <td className="py-2 text-right text-muted-foreground">
-                    <DualCurrencyAmount value={amount} scale="billion" className="items-end" showToggle={false} />
+                    <DualCurrencyAmount value={amount} scale="billion" className="items-end" dual />
                   </td>
                 </tr>
               )
             })}
-          </tbody>
-        </table>
-      </CardContent>
-    </Card>
-  )
-}
-
-function ProvinceTable({ data }: { data: { name: string; taux: number }[] }) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Détail par province</CardTitle>
-        <CardDescription>(taux d&apos;exécution à date)</CardDescription>
-      </CardHeader>
-      <CardContent className="overflow-x-auto">
-        <table className="w-full min-w-[340px] text-[12px]">
-          <thead>
-            <tr className="text-left text-[10px] uppercase text-muted-foreground">
-              <th className="pb-2 font-semibold">Province</th>
-              <th className="pb-2 font-semibold">Taux d&apos;exécution</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((p) => (
-              <tr key={p.name} className="border-t border-border">
-                <td className="py-2.5 text-foreground">{p.name}</td>
-                <td className="py-2.5">
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-32 overflow-hidden rounded-full bg-muted">
-                      <div
-                        className="h-full rounded-full bg-primary"
-                        style={{ width: `${p.taux}%` }}
-                      />
-                    </div>
-                    <span className="font-semibold text-foreground">{p.taux}%</span>
-                  </div>
-                </td>
-              </tr>
-            ))}
           </tbody>
         </table>
       </CardContent>
@@ -131,14 +94,14 @@ function InvestmentsView() {
         title="Investissements Publics"
         description="Exécution des dépenses d'investissement à date"
       />
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div className="animate-fade-up grid grid-cols-2 gap-4 md:grid-cols-4" style={{ animationDelay: '80ms' }}>
         <Card className="p-4">
           <p className="text-[10px] uppercase text-muted-foreground">Part des dépenses</p>
-          <p className="mt-1 text-2xl font-extrabold text-primary">{invest?.value}%</p>
+          <p className="mt-1 text-2xl font-extrabold text-primary"><CountUp value={`${invest?.value ?? 0}%`} /></p>
         </Card>
         <Card className="p-4">
           <p className="text-[10px] uppercase text-muted-foreground">Taux d&apos;exécution</p>
-          <p className="mt-1 text-2xl font-extrabold text-warning">14,6%</p>
+          <p className="mt-1 text-2xl font-extrabold text-warning"><CountUp value="14,6%" /></p>
         </Card>
         <Card className="p-4">
           <p className="text-[10px] uppercase text-muted-foreground">Montant payé</p>
@@ -149,7 +112,7 @@ function InvestmentsView() {
           <p className="mt-1 text-2xl font-extrabold text-foreground">31/12/2025</p>
         </Card>
       </div>
-      <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+      <div className="animate-fade-up grid grid-cols-1 gap-4 xl:grid-cols-2" style={{ animationDelay: '200ms' }}>
         <MinistryChart />
         <BreakdownTable
           title="Répartition des dépenses par nature"
@@ -176,7 +139,7 @@ function ReportsView() {
         title="Rapports"
         description="Documents budgétaires et exports de données"
       />
-      <Card>
+      <Card className="animate-fade-up">
         <CardContent className="divide-y divide-border p-0">
           {reports.map((r) => (
             <div key={r.name} className="flex items-center justify-between gap-4 p-4">
@@ -224,7 +187,7 @@ export function DashboardContent({
             title="Recettes"
             description="Suivi de la mobilisation des recettes à date"
           />
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+          <div className="animate-fade-up grid grid-cols-1 gap-4 xl:grid-cols-2" style={{ animationDelay: '80ms' }}>
             <DonutCard
               title="Répartition des recettes à date"
               description="(en %)"
@@ -239,7 +202,9 @@ export function DashboardContent({
               data={revenueBreakdown}
             />
           </div>
-          <BudgetExecutionChart />
+          <div className="animate-fade-up" style={{ animationDelay: '200ms' }}>
+            <BudgetExecutionChart />
+          </div>
         </>
       )
     case 'Dépenses':
@@ -249,7 +214,7 @@ export function DashboardContent({
             title="Dépenses"
             description="Suivi de l'exécution des dépenses par nature"
           />
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+          <div className="animate-fade-up grid grid-cols-1 gap-4 xl:grid-cols-2" style={{ animationDelay: '80ms' }}>
             <DonutCard
               title="Répartition des dépenses à date par nature"
               description="(en %)"
@@ -264,7 +229,9 @@ export function DashboardContent({
               data={expenseBreakdown}
             />
           </div>
-          <MinistryChart />
+          <div className="animate-fade-up" style={{ animationDelay: '200ms' }}>
+            <MinistryChart />
+          </div>
         </>
       )
     case 'Trésorerie':
@@ -274,7 +241,9 @@ export function DashboardContent({
             title="Trésorerie"
             description="Situation et évolution des disponibilités de l'État"
           />
-          <TreasuryCard />
+          <div className="animate-fade-up">
+            <TreasuryCard />
+          </div>
         </>
       )
     case 'Dette publique':
@@ -284,7 +253,9 @@ export function DashboardContent({
             title="Dette publique"
             description="Encours et structure de la dette de l'État"
           />
-          <PublicDebtCard />
+          <div className="animate-fade-up">
+            <PublicDebtCard />
+          </div>
         </>
       )
     case 'Investissements Publics':
@@ -296,17 +267,19 @@ export function DashboardContent({
             title="Exécution par Ministère"
             description="Taux d'exécution des dépenses par ministère à date"
           />
-          <MinistryChart />
+          <div className="animate-fade-up">
+            <MinistryChart />
+          </div>
         </>
       )
-    case 'Provinces':
+    case 'Exécution par province':
       return (
         <>
           <SectionHeading
-            title="Provinces"
+            title="Exécution par province"
             description="Exécution des dépenses par province"
           />
-          <div className="flex items-center gap-2 text-[11px] font-medium">
+          <div className="animate-fade-up flex items-center gap-2 text-[11px] font-medium">
             {provincesPubliees ? (
               <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-primary">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -319,9 +292,8 @@ export function DashboardContent({
               </span>
             )}
           </div>
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-            <ProvinceMap />
-            <ProvinceTable data={provincesPubliees ?? provinces} />
+          <div className="animate-fade-up" style={{ animationDelay: '120ms' }}>
+            <ProvinceDrilldown data={provincesPubliees ?? provinces} />
           </div>
         </>
       )
@@ -332,7 +304,9 @@ export function DashboardContent({
             title="Indicateurs Macroéconomiques"
             description="Environnement macroéconomique et hypothèses budgétaires"
           />
-          <MacroCard />
+          <div className="animate-fade-up">
+            <MacroCard />
+          </div>
         </>
       )
     case 'Suivi des réformes':
@@ -342,13 +316,23 @@ export function DashboardContent({
             title="Suivi des réformes"
             description="Avancement des réformes budgétaires"
           />
-          <ReformsCard />
+          <div className="animate-fade-up">
+            <ReformsCard />
+          </div>
         </>
       )
     case 'Suivi de l’exécution (ESB)':
-      return <TrackingTable />
+      return (
+        <div className="animate-fade-up">
+          <TrackingTable />
+        </div>
+      )
     case 'Analyses':
-      return <AnalysisView />
+      return (
+        <div className="animate-fade-up">
+          <AnalysisView />
+        </div>
+      )
     case 'Alertes & Risques':
       return (
         <>
@@ -356,15 +340,25 @@ export function DashboardContent({
             title="Alertes & Risques"
             description="Points de vigilance sur l'exécution budgétaire"
           />
-          <AlertsCard />
+          <div className="animate-fade-up">
+            <AlertsCard />
+          </div>
         </>
       )
     case 'Rapports':
       return <ReportsView />
     case 'Processus budgétaire':
-      return <BudgetProcessView />
+      return (
+        <div className="animate-fade-up">
+          <BudgetProcessView />
+        </div>
+      )
     case 'Documentation':
-      return <DocumentationView />
+      return (
+        <div className="animate-fade-up">
+          <DocumentationView />
+        </div>
+      )
     default:
       return (
         <>

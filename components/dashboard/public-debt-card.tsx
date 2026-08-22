@@ -31,7 +31,7 @@ export function PublicDebtCard() {
                 )}
               >
                 <td className="py-2.5 text-foreground">{row.type}</td>
-                <td className="py-2.5 text-right text-foreground"><DualCurrencyAmount value={row.encours} scale="billion" className="items-end" showToggle={false} /></td>
+                <td className="py-2.5 text-right text-foreground"><DualCurrencyAmount value={row.encours} scale="billion" className="items-end" dual /></td>
                 <td className="py-2.5 text-right text-foreground">{row.pib}</td>
                 <td className="py-2.5 text-right">
                   <span className="inline-flex items-center gap-1 font-semibold text-success">

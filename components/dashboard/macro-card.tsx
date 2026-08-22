@@ -23,7 +23,7 @@ export function MacroCard() {
               <tr key={row.name} className="border-t border-border">
                 <td className="py-2 text-foreground">{row.name}</td>
                 <td className="py-2 text-right font-semibold text-foreground">
-                  {row.name.includes('PIB nominal') ? <DualCurrencyAmount value={row.value} scale="billion" className="items-end" showToggle={false} /> : row.value}
+                  {row.name.includes('PIB nominal') ? <DualCurrencyAmount value={row.value} scale="billion" className="items-end" dual /> : row.value}
                 </td>
                 <td
                   className={cn(

@@ -13,7 +13,7 @@ const sections: Record<string, NavLabel> = {
   parametres: 'Paramètres',
   recettes: 'Recettes', depenses: 'Dépenses', tresorerie: 'Trésorerie',
   'dette-publique': 'Dette publique', 'investissements-publics': 'Investissements Publics',
-  'execution-par-ministere': 'Exécution par Ministère', provinces: 'Provinces',
+  'execution-par-ministere': 'Exécution par Ministère', provinces: 'Exécution par province',
   'indicateurs-macroeconomiques': 'Indicateurs Macroéconomiques',
   'suivi-des-reformes': 'Suivi des réformes', 'tableau-esb': 'Suivi de l’exécution (ESB)',
   analyses: 'Analyses',

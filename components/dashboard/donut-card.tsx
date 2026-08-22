@@ -3,6 +3,7 @@
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { DualCurrencyAmount } from '@/components/dashboard/currency'
+import { CountUp } from '@/components/dashboard/count-up'
 
 type Segment = { name: string; value: number; color: string }
 
@@ -50,7 +51,7 @@ export function DonutCard({
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
             {centerUnit.includes('CDF') ? (
               <DualCurrencyAmount value={centerValue} scale="billion" className="items-center text-lg font-extrabold text-foreground" secondaryClassName="text-[9px]" />
-            ) : <><span className="text-lg font-extrabold text-foreground">{centerValue}</span><span className="text-[10px] font-medium text-muted-foreground">{centerUnit}</span></>}
+            ) : <><CountUp value={centerValue} className="text-lg font-extrabold text-foreground" /><span className="text-[10px] font-medium text-muted-foreground">{centerUnit}</span></>}
           </div>
         </div>
 
@@ -65,7 +66,7 @@ export function DonutCard({
                 <span className="text-foreground">{seg.name}</span>
               </span>
               <span className="font-bold text-foreground">
-                {seg.value.toLocaleString('fr-FR', { minimumFractionDigits: 1 })}%
+                <CountUp value={`${seg.value.toLocaleString('fr-FR', { minimumFractionDigits: 1 })}%`} />
               </span>
             </li>
           ))}

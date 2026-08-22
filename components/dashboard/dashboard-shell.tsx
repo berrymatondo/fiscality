@@ -40,7 +40,7 @@ export function DashboardShell({
         />
         <main className="flex-1 space-y-4 p-4 md:p-6">
           <PageHero section={section} />
-          <DashboardContent section={section} periodeLabel={periodeLabel} provincesPubliees={provincesPubliees} />
+          <DashboardContent key={section} section={section} periodeLabel={periodeLabel} provincesPubliees={provincesPubliees} />
         </main>
       </div>
     </div>

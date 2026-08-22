@@ -42,7 +42,7 @@ export const nav = [
   { label: 'Dette publique', href: '/dette-publique', icon: FileBarChart2, group: 'Exécution budgétaire' },
   { label: 'Investissements Publics', href: '/investissements-publics', icon: Building2, group: 'Exécution budgétaire' },
   { label: 'Exécution par Ministère', href: '/execution-par-ministere', icon: Layers, group: 'Analyses' },
-  { label: 'Provinces', href: '/provinces', icon: Map, group: 'Analyses' },
+  { label: 'Exécution par province', href: '/provinces', icon: Map, group: 'Analyses' },
   { label: 'Indicateurs Macroéconomiques', href: '/indicateurs-macroeconomiques', icon: LineChart, group: 'Analyses' },
   { label: 'Analyses', href: '/analyses', icon: BarChart3, group: 'Analyses' },
   { label: 'Suivi des réformes', href: '/suivi-des-reformes', icon: ClipboardCheck, group: 'Pilotage & contrôle' },
@@ -99,7 +99,7 @@ function NavList({
 }) {
   const sections = [
     { key: 'overview', label: "Vue d'ensemble", icon: LayoutDashboard, href: '/', children: [] },
-    { key: 'execution', label: 'Exécution budgétaire', icon: Wallet, href: '/depenses', children: ['Recettes', 'Dépenses', 'Exécution par Ministère', 'Provinces', 'Investissements Publics'] },
+    { key: 'execution', label: 'Exécution budgétaire', icon: Wallet, href: '/depenses', children: ['Recettes', 'Dépenses', 'Exécution par Ministère', 'Exécution par province', 'Investissements Publics'] },
     { key: 'finances', label: 'Finances publiques', icon: Landmark, href: '/tresorerie', children: ['Trésorerie', 'Dette publique', 'Indicateurs Macroéconomiques'] },
     { key: 'analyses', label: 'Analyses', icon: BarChart3, href: '/analyses', children: ['Analyses'] },
     { key: 'pilotage', label: 'Pilotage & contrôle', icon: ShieldCheck, href: '/suivi-des-reformes', children: ['Suivi des réformes', 'Suivi de l’exécution (ESB)', 'Alertes & Risques'] },

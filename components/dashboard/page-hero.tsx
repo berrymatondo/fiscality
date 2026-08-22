@@ -10,7 +10,7 @@ const descriptions: Record<NavLabel, string> = {
   'Dette publique': 'Suivi de l’encours, de la structure et de la soutenabilité de la dette publique.',
   'Investissements Publics': 'Pilotage des crédits et de la réalisation des investissements structurants.',
   'Exécution par Ministère': 'Comparaison des performances d’exécution budgétaire entre ministères.',
-  Provinces: 'Analyse territoriale de l’exécution budgétaire dans les provinces de la RDC.',
+  'Exécution par province': 'Analyse territoriale de l’exécution budgétaire dans les provinces de la RDC.',
   'Indicateurs Macroéconomiques': 'Lecture des principaux agrégats qui encadrent la programmation budgétaire.',
   'Suivi des réformes': 'Pilotage de l’avancement des réformes et des chantiers de modernisation.',
   'Suivi de l’exécution (ESB)': 'Une lecture dynamique de la chaîne d’exécution budgétaire par section.',

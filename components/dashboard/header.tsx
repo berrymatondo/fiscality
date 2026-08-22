@@ -15,6 +15,7 @@ import {
 import { ThemeToggle } from '@/components/theme-toggle'
 import { UserMenu } from '@/components/dashboard/user-menu'
 import { NotificationBell } from '@/components/dashboard/notification-bell'
+import { CurrencyToggle } from '@/components/dashboard/currency-toggle'
 import { exportDashboard } from '@/lib/export'
 
 const MONTHS = [
@@ -76,6 +77,8 @@ export function Header({
       </div>
 
       <div className="flex flex-wrap items-center gap-2 md:gap-3">
+        <CurrencyToggle />
+
         <DropdownMenu>
           <DropdownMenuTrigger className="flex items-center justify-between gap-6 rounded-md border border-border px-3 py-1.5 text-left transition-colors hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             <span className="leading-tight">

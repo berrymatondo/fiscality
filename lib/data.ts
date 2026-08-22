@@ -1,3 +1,5 @@
+import { PROVINCES_GEO } from '@/lib/provinces-geo'
+
 export const kpis = [
   {
     label: 'Recettes totales',
@@ -176,16 +178,7 @@ export const reforms = [
   { name: 'Transparence budgétaire', status: 'done' },
 ]
 
-export const provinces = [
-  { name: 'Kinshasa', taux: 52 },
-  { name: 'Kongo Central', taux: 44 },
-  { name: 'Haut-Katanga', taux: 48 },
-  { name: 'Nord-Kivu', taux: 33 },
-  { name: 'Sud-Kivu', taux: 31 },
-  { name: 'Tshopo', taux: 27 },
-  { name: 'Kasaï', taux: 22 },
-  { name: 'Équateur', taux: 18 },
-]
+export const provinces = PROVINCES_GEO.map((p) => ({ name: p.nom, taux: p.taux }))
 
 export const provinceLegend = [
   { label: '≥ 50%', color: 'oklch(0.34 0.13 258)' },
