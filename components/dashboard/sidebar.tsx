@@ -145,6 +145,19 @@ function AccountNav({ collapsed }: { collapsed?: boolean }) {
     >
       {saisieHref && (
         <Link
+          href="/cycle-de-vie"
+          title={collapsed ? 'Cycle de vie' : undefined}
+          className={cn(
+            'flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold text-sidebar-foreground transition-colors hover:bg-sidebar-accent/60',
+            collapsed && 'justify-center px-0',
+          )}
+        >
+          <Workflow className="h-4 w-4 shrink-0" />
+          {!collapsed && <span>Cycle de vie</span>}
+        </Link>
+      )}
+      {saisieHref && (
+        <Link
           href={saisieHref}
           title={collapsed ? saisieLabel : undefined}
           className={cn(

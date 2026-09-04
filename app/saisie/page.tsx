@@ -14,6 +14,7 @@ import { DOMAIN_LABELS, type Domain } from "@/lib/documents";
 import { TYPE_PREVISION_LABELS } from "@/lib/rubriques";
 import type { Role } from "@/lib/roles";
 import type { StatutSaisie } from "@/lib/generated/prisma/client";
+import { SaisieFilters, type SaisieFilterValues } from "@/components/dashboard/saisie/saisie-filters";
 
 import {
   saveLigneBudgetaire,
@@ -92,7 +93,24 @@ const REVERT_SOUMIS_ACTIONS: Record<Domain, (formData: FormData) => void> = {
   macro: revertSaisieMacroToSoumis,
 };
 
-export default async function SaisieIndexPage() {
+const FILTERABLE_STATUTS = new Set<StatutSaisie>(["BROUILLON", "SOUMIS", "VALIDE", "PUBLIE", "OP_SOUMIS", "PAYE"]);
+
+function parseFilters(params: Record<string, string | string[] | undefined>): SaisieFilterValues {
+  const rawStatut = Array.isArray(params.statut) ? params.statut[0] : params.statut;
+  const rawPeriode = Array.isArray(params.periode) ? params.periode[0] : params.periode;
+  return {
+    statut: rawStatut && FILTERABLE_STATUTS.has(rawStatut as StatutSaisie) ? rawStatut as StatutSaisie : undefined,
+    periode: rawPeriode && /^\d{4}-\d{2}$/.test(rawPeriode) ? rawPeriode : undefined,
+  };
+}
+
+function applySaisieFilters<T extends { statut: StatutSaisie; periode: string }>(rows: T[], filters: SaisieFilterValues): T[] {
+  return rows.filter((row) => (!filters.statut || row.statut === filters.statut) && (!filters.periode || row.periode === filters.periode));
+}
+
+export default async function SaisieIndexPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const params = await searchParams;
+  const filters = parseFilters(params);
   const session = await requireSession();
   const role = session.user.role as Role;
 
@@ -101,7 +119,7 @@ export default async function SaisieIndexPage() {
   }
 
   if (ADMIN_ROLES.includes(role)) {
-    return <AdminQueue />;
+    return <AdminQueue filters={filters} />;
   }
 
   if (role === "MINISTERE_FOCAL") {
@@ -114,11 +132,12 @@ export default async function SaisieIndexPage() {
     return (
       <UtilityShell eyebrow="Point focal Ministère" title="Mes saisies" subtitle="Demandes budgétaires par entité et par rubrique.">
         <AutoRefresh />
+        <SaisieFilters values={filters} />
         <SaisieList
           title={`${rows.length} saisie(s)`}
           createHref="/saisie/ministere/nouveau"
           editHrefBase="/saisie/ministere"
-          rows={rows}
+          rows={applySaisieFilters(rows, filters)}
           columns={[
             { label: "Entité", render: (r) => r.entite?.sigle ?? "—" },
             { label: "Rubrique", render: (r) => r.rubrique },
@@ -144,11 +163,12 @@ export default async function SaisieIndexPage() {
     return (
       <UtilityShell eyebrow="Point focal Province" title="Mes saisies" subtitle="Exécution budgétaire mensuelle.">
         <AutoRefresh />
+        <SaisieFilters values={filters} />
         <SaisieList
           title={`${rows.length} saisie(s)`}
           createHref="/saisie/province/nouveau"
           editHrefBase="/saisie/province"
-          rows={rows}
+          rows={applySaisieFilters(rows, filters)}
           columns={[
             { label: "Taux", render: (r) => formatMontant(r.tauxExecution, " %") },
             { label: "Recettes propres", render: (r) => formatMontant(r.recettesPropres) },
@@ -169,11 +189,12 @@ export default async function SaisieIndexPage() {
     return (
       <UtilityShell eyebrow="Direction Générale du Trésor" title="Mes saisies" subtitle="Situation de trésorerie mensuelle.">
         <AutoRefresh />
+        <SaisieFilters values={filters} />
         <SaisieList
           title={`${rows.length} saisie(s)`}
           createHref="/saisie/tresor/nouveau"
           editHrefBase="/saisie/tresor"
-          rows={rows}
+          rows={applySaisieFilters(rows, filters)}
           columns={[
             { label: "Solde général", render: (r) => formatMontant(r.soldeCompteGeneral) },
             { label: "Solde bancaire", render: (r) => formatMontant(r.soldeBancaire) },
@@ -195,11 +216,12 @@ export default async function SaisieIndexPage() {
     return (
       <UtilityShell eyebrow="Direction Générale de la Dette Publique" title="Mes saisies" subtitle="Encours et service de la dette.">
         <AutoRefresh />
+        <SaisieFilters values={filters} />
         <SaisieList
           title={`${rows.length} saisie(s)`}
           createHref="/saisie/dette/nouveau"
           editHrefBase="/saisie/dette"
-          rows={rows}
+          rows={applySaisieFilters(rows, filters)}
           columns={[
             { label: "Encours ext.", render: (r) => formatMontant(r.encoursExterieure) },
             { label: "Encours int.", render: (r) => formatMontant(r.encoursInterieure) },
@@ -220,11 +242,12 @@ export default async function SaisieIndexPage() {
     return (
       <UtilityShell eyebrow="Régies financières" title="Mes saisies" subtitle="Recettes réalisées par nature.">
         <AutoRefresh />
+        <SaisieFilters values={filters} />
         <SaisieList
           title={`${rows.length} saisie(s)`}
           createHref="/saisie/recettes/nouveau"
           editHrefBase="/saisie/recettes"
-          rows={rows}
+          rows={applySaisieFilters(rows, filters)}
           columns={[
             { label: "Fiscales", render: (r) => formatMontant(r.recettesFiscales) },
             { label: "Douanières", render: (r) => formatMontant(r.recettesDouanieres) },
@@ -247,11 +270,12 @@ export default async function SaisieIndexPage() {
     return (
       <UtilityShell eyebrow="Cellule macroéconomique" title="Mes saisies" subtitle="Indicateurs macroéconomiques mensuels.">
         <AutoRefresh />
+        <SaisieFilters values={filters} />
         <SaisieList
           title={`${rows.length} saisie(s)`}
           createHref="/saisie/macro/nouveau"
           editHrefBase="/saisie/macro"
-          rows={rows}
+          rows={applySaisieFilters(rows, filters)}
           columns={[
             { label: "Croissance", render: (r) => formatMontant(r.croissance, " %") },
             { label: "Inflation", render: (r) => formatMontant(r.inflation, " %") },
@@ -280,7 +304,7 @@ export default async function SaisieIndexPage() {
         orderBy: { periode: "desc" },
       }),
     ]);
-    const rows = mapQueueRowsMP(ministere, province);
+    const rows = applySaisieFilters(mapQueueRowsMP(ministere, province), filters);
     return (
       <UtilityShell
         eyebrow="Administration fonctionnelle (DGF)"
@@ -288,6 +312,7 @@ export default async function SaisieIndexPage() {
         subtitle="Renvoyez une saisie à la validation ou soumettez l'ordre de paiement à la Banque Centrale."
       >
         <AutoRefresh />
+        <SaisieFilters values={filters} />
         <PaiementQueueTable
           title={`${rows.length} saisie(s)`}
           description="Consultez, renvoyez à la validation (DGB) ou soumettez l'ordre de paiement (BCC)."
@@ -312,7 +337,7 @@ export default async function SaisieIndexPage() {
         orderBy: { periode: "desc" },
       }),
     ]);
-    const rows = mapQueueRowsMP(ministere, province);
+    const rows = applySaisieFilters(mapQueueRowsMP(ministere, province), filters);
     return (
       <UtilityShell
         eyebrow="Banque Centrale du Congo"
@@ -320,6 +345,7 @@ export default async function SaisieIndexPage() {
         subtitle="Confirmez l'exécution des paiements soumis par la DGF."
       >
         <AutoRefresh />
+        <SaisieFilters values={filters} />
         <PaiementQueueTable
           title={`${rows.length} ordre(s) de paiement`}
           description="Confirmer l'exécution notifie le ministère ou la province, la DGB et la DGF."
@@ -569,7 +595,7 @@ const CONFIRMER_EXECUTION_ACTIONS: Record<"ministere" | "province", (formData: F
   province: confirmerExecutionSaisieProvince,
 };
 
-async function AdminQueue() {
+async function AdminQueue({ filters }: { filters: SaisieFilterValues }) {
   const [pendingData, publishedData, payeesData] = await Promise.all([
     Promise.all([
       prisma.ligneBudgetaire.findMany({ where: { statut: { in: ["SOUMIS", "VALIDE"] } }, include: { ministere: true } }),
@@ -593,9 +619,9 @@ async function AdminQueue() {
     ]),
   ]);
 
-  const enAttente = mapQueueRows(...pendingData);
-  const publiees = mapQueueRows(...publishedData);
-  const payees = mapQueueRowsMP(...payeesData);
+  const enAttente = applySaisieFilters(mapQueueRows(...pendingData), filters);
+  const publiees = applySaisieFilters(mapQueueRows(...publishedData), filters);
+  const payees = applySaisieFilters(mapQueueRowsMP(...payeesData), filters);
 
   return (
     <UtilityShell
@@ -604,6 +630,7 @@ async function AdminQueue() {
       subtitle="Saisies soumises par les points focaux, en attente ou déjà publiées."
     >
       <AutoRefresh />
+      <SaisieFilters values={filters} />
       <SaisiesTable
         title={`${enAttente.length} saisie(s) en attente`}
         description="Valider fait passer une saisie soumise à l'état validé ; publier la rend officielle."
