@@ -15,6 +15,7 @@ import {
   AlertTriangle,
   FileText,
   BookOpen,
+  MonitorPlay,
   Workflow,
   ChevronDown,
   BarChart3,
@@ -48,6 +49,7 @@ export const nav = [
   { label: 'Suivi des réformes', href: '/suivi-des-reformes', icon: ClipboardCheck, group: 'Pilotage & contrôle' },
   { label: 'Suivi de l’exécution (ESB)', href: '/tableau-esb', icon: ListChecks, group: 'Pilotage & contrôle' },
   { label: 'Alertes & Risques', href: '/alertes-et-risques', icon: AlertTriangle, group: 'Pilotage & contrôle' },
+  { label: 'Tableau HTML annuel', href: '/tableau-html-annuel', icon: MonitorPlay, group: 'Ressources' },
   { label: 'Processus budgétaire', href: '/processus-budgetaire', icon: Workflow, group: 'Ressources' },
   { label: 'Rapports', href: '/rapports', icon: FileText, group: 'Ressources' },
   { label: 'Documentation', href: '/documentation', icon: BookOpen, group: 'Ressources' },
@@ -100,7 +102,7 @@ function NavList({
     { key: 'finances', label: 'Finances publiques', icon: Landmark, href: '/tresorerie', children: ['Trésorerie', 'Dette publique', 'Indicateurs Macroéconomiques'] },
     { key: 'analyses', label: 'Analyses', icon: BarChart3, href: '/analyses', children: ['Analyses'] },
     { key: 'pilotage', label: 'Pilotage & contrôle', icon: ShieldCheck, href: '/suivi-des-reformes', children: ['Suivi des réformes', 'Suivi de l’exécution (ESB)', 'Alertes & Risques'] },
-    { key: 'resources', label: 'Rapports & ressources', icon: Library, href: '/rapports', children: ['Rapports', 'Processus budgétaire', 'Documentation'] },
+    { key: 'resources', label: 'Rapports & ressources', icon: Library, href: '/rapports', children: ['Rapports', 'Tableau HTML annuel', 'Processus budgétaire', 'Documentation'] },
     { key: 'settings', label: 'Paramètres', icon: Settings, href: '/parametres', children: [] },
   ] as const
   const activeSection = sections.find((section) => section.children.some((label) => label === active))?.key

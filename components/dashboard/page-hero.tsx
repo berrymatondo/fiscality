@@ -16,13 +16,21 @@ const descriptions: Record<NavLabel, string> = {
   'Suivi de l’exécution (ESB)': 'Une lecture dynamique de la chaîne d’exécution budgétaire par section.',
   Analyses: 'Exploration multidimensionnelle des données par ministère, province, nature et période.',
   'Alertes & Risques': 'Identification et hiérarchisation des points de vigilance budgétaires.',
+  'Tableau HTML annuel': "Intégration d'un dashboard HTML autonome, sélectionné selon l'exercice budgétaire.",
   Rapports: 'Accès centralisé aux rapports, situations périodiques et exports de données.',
   'Processus budgétaire': 'Du cadrage à la reddition des comptes, une vision complète du cycle budgétaire.',
   Documentation: 'Guide des indicateurs, des fonctionnalités et des sources du tableau de bord.',
 }
 
 export function PageHero({ section }: { section: NavLabel }) {
-  if (section === 'Suivi de l’exécution (ESB)' || section === 'Processus budgétaire') return null
+  if (
+    section === 'Suivi de l’exécution (ESB)' ||
+    section === 'Processus budgétaire' ||
+    section === 'Tableau HTML annuel'
+  ) {
+    return null
+  }
+
   const item = nav.find((entry) => entry.label === section)!
   const Icon = item.icon
 

@@ -19,6 +19,7 @@ import { TrackingTable } from '@/components/dashboard/tracking-table'
 import { BudgetProcessView } from '@/components/dashboard/budget-process-view'
 import { AnalysisView } from '@/components/dashboard/analysis-view'
 import { SettingsView } from '@/components/dashboard/settings-view'
+import { AnnualHtmlDashboard } from '@/components/dashboard/annual-html-dashboard'
 import { DualCurrencyAmount } from '@/components/dashboard/currency'
 import { CountUp } from '@/components/dashboard/count-up'
 import type { NavLabel } from '@/components/dashboard/sidebar'
@@ -171,10 +172,12 @@ function ReportsView() {
 
 export function DashboardContent({
   section,
+  exercice,
   periodeLabel,
   provincesPubliees,
 }: {
   section: NavLabel
+  exercice: number
   periodeLabel?: string
   provincesPubliees?: { name: string; taux: number }[] | null
 }) {
@@ -346,6 +349,8 @@ export function DashboardContent({
           </div>
         </>
       )
+    case 'Tableau HTML annuel':
+      return <AnnualHtmlDashboard exercice={exercice} />
     case 'Rapports':
       return <ReportsView />
     case 'Processus budgétaire':

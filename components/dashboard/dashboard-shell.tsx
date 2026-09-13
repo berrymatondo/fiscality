@@ -22,6 +22,7 @@ export function DashboardShell({
   provincesPubliees: { name: string; taux: number }[] | null
 }) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const isAnnualHtmlPage = section === 'Tableau HTML annuel'
 
   return (
     <div className="flex min-h-screen bg-background">
@@ -38,9 +39,15 @@ export function DashboardShell({
           periode={periode}
           exercicesDisponibles={exercicesDisponibles}
         />
-        <main className="flex-1 space-y-4 p-4 md:p-6">
+        <main className={isAnnualHtmlPage ? 'flex-1' : 'flex-1 space-y-4 p-4 md:p-6'}>
           <PageHero section={section} />
-          <DashboardContent key={section} section={section} periodeLabel={periodeLabel} provincesPubliees={provincesPubliees} />
+          <DashboardContent
+            key={section}
+            section={section}
+            exercice={exercice}
+            periodeLabel={periodeLabel}
+            provincesPubliees={provincesPubliees}
+          />
         </main>
       </div>
     </div>
