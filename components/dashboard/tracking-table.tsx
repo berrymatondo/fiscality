@@ -122,7 +122,7 @@ export function TrackingTable() {
             <div className={cn('absolute inset-x-0 top-0 h-1 bg-gradient-to-r', tone)} />
             <div className="flex items-start justify-between gap-2"><p className="text-[9px] font-semibold uppercase text-muted-foreground">{label}</p><span className={cn('flex h-8 w-8 items-center justify-center rounded-lg transition-transform group-hover:scale-110', soft)}><Icon className="h-4 w-4" /></span></div>
             <p className="mt-2 text-xl font-extrabold text-foreground"><CountUp value={value} /></p>
-            {'raw' in item && <p className="text-[9px] text-muted-foreground">≈ {usd(item.raw)}</p>}
+            {item.raw !== undefined && <p className="text-[9px] text-muted-foreground">≈ {usd(item.raw)}</p>}
             <p className="mt-1 text-[10px] text-muted-foreground">{detail}</p>
           </Card>
         ))}
