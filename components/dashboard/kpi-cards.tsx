@@ -38,10 +38,20 @@ const valueStyles: Record<string, string> = {
   destructive: 'text-destructive',
 }
 
-export function KpiCards() {
+export function KpiCards({
+  visibleLabels,
+  compact = false,
+}: {
+  visibleLabels?: string[]
+  compact?: boolean
+}) {
+  const visibleKpis = visibleLabels
+    ? kpis.filter((kpi) => visibleLabels.includes(kpi.label))
+    : kpis
+
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-6">
-      {kpis.map((kpi, index) => {
+      {visibleKpis.map((kpi, index) => {
         const Icon = icons[kpi.icon]
         return (
           <Card
@@ -78,7 +88,7 @@ export function KpiCards() {
                     {kpi.unit}
                   </span>
                 )}
-                {kpi.meta && (
+                {!compact && kpi.meta && (
                   <p className="mt-0.5 text-[10px] text-muted-foreground">
                     {kpi.meta}{' '}
                     <span className="font-bold text-foreground">{kpi.metaValue}</span>
@@ -87,17 +97,19 @@ export function KpiCards() {
               </div>
             </div>
 
-            <div className="mt-3 flex items-center justify-between border-t border-border pt-2 text-[10px]">
-              <span className="text-muted-foreground">{kpi.compareLabel}</span>
-              <span
-                className={cn(
-                  'font-bold',
-                  kpi.compareTone === 'positive' ? 'text-success' : 'text-destructive',
-                )}
-              >
-                {kpi.compareValue}
-              </span>
-            </div>
+            {!compact && (
+              <div className="mt-3 flex items-center justify-between border-t border-border pt-2 text-[10px]">
+                <span className="text-muted-foreground">{kpi.compareLabel}</span>
+                <span
+                  className={cn(
+                    'font-bold',
+                    kpi.compareTone === 'positive' ? 'text-success' : 'text-destructive',
+                  )}
+                >
+                  {kpi.compareValue}
+                </span>
+              </div>
+            )}
           </Card>
         )
       })}

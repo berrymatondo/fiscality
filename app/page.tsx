@@ -1,13 +1,14 @@
 import { DashboardShell } from '@/components/dashboard/dashboard-shell'
 import { getExercicesDisponibles, getProvincesPubliees, resolvePeriode, formatPeriodeLabel } from '@/lib/dashboard-data'
 import { requireSession } from '@/lib/rbac'
+import type { Role } from '@/lib/roles'
 
 type PageProps = {
   searchParams: Promise<{ exercice?: string; periode?: string }>
 }
 
 export default async function Page({ searchParams }: PageProps) {
-  await requireSession()
+  const session = await requireSession()
 
   const { exercice, periode } = resolvePeriode(await searchParams)
   const [exercicesDisponibles, provincesPubliees] = await Promise.all([
@@ -23,6 +24,7 @@ export default async function Page({ searchParams }: PageProps) {
       periodeLabel={formatPeriodeLabel(periode)}
       exercicesDisponibles={exercicesDisponibles}
       provincesPubliees={provincesPubliees}
+      currentRole={session.user.role as Role}
     />
   )
 }

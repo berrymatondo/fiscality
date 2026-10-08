@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { CalendarDays, ChevronDown, CircleDollarSign, Download, FileCheck2, FileDown, FileText, Landmark, LoaderCircle, Pencil, Scale, ShieldCheck, Upload, Users, WalletCards } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { CountUp } from '@/components/dashboard/count-up'
+import { PDF_ACCENTS, PDF_COLORS, drawFooters, drawPageHeader, drawSectionTitle, fill, hexToRgb, ink, sanitizePdfText, stroke, tint, type Rgb } from '@/lib/pdf-theme'
 
 type Step = { id:string; title:string; action:string; activity:string; actors:string; date:string; icon:typeof Landmark }
 const phases:{title:string; subtitle:string; color:string; steps:Step[]}[]=[
@@ -77,47 +78,78 @@ export function BudgetProcessView(){
    const {jsPDF}=await import('jspdf')
    const pdf=new jsPDF({unit:'mm',format:'a4'})
    const pageWidth=pdf.internal.pageSize.getWidth(); const pageHeight=pdf.internal.pageSize.getHeight(); const margin=16; const contentWidth=pageWidth-margin*2
-   let y=18
-   const addHeader=()=>{pdf.setFillColor(15,35,69);pdf.rect(0,0,pageWidth,31,'F');pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(17);pdf.text('PROCESSUS BUDGETAIRE',margin,15);pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.text('Republique democratique du Congo - Ministere du Budget',margin,22);pdf.setTextColor(30,41,59);y=40}
-   const ensure=(height:number)=>{if(y+height>pageHeight-16){pdf.addPage();addHeader()}}
-   addHeader()
-   pdf.setFontSize(10);pdf.setTextColor(71,85,105);pdf.text(`Document généré le ${new Date().toLocaleDateString('fr-FR')} - ${all.length} étapes`,margin,y);y+=8
-   const introduction=pdf.splitTextToSize("Le processus budgétaire se déroule selon un schéma organisé, depuis la phase de préparation jusqu'à la présentation des résultats. À chaque étape, divers acteurs institutionnels et techniques sont impliqués pour garantir la planification, l'approbation, la mise en œuvre et la surveillance du budget de l'État.",contentWidth) as string[]
-   pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.setTextColor(30,41,59);pdf.text(introduction,margin,y);y+=introduction.length*4+8
-   pdf.setFont('helvetica','bold');pdf.setFontSize(13);pdf.setTextColor(15,35,69);pdf.text('PHASES DE LA PROCÉDURE',margin,y);y+=6
-   pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.setTextColor(100,116,139);pdf.text('Étapes · Activités principales · Intervenants · Dates',margin,y);y+=7
+   let y=drawPageHeader(pdf,{title:'Processus budgétaire',subtitle:'Du cadrage budgétaire à la reddition des comptes'})
+   const ensure=(height:number)=>{if(y+height>pageHeight-18){pdf.addPage();y=drawPageHeader(pdf,{title:'Processus budgétaire',compact:true})}}
+   // Chiffres clés.
+   const stats:[string,string,Rgb][]=[[String(phases.length),'phases',PDF_ACCENTS[0]],[String(all.length),'étapes',PDF_ACCENTS[3]],[String(chain.length),'étapes de la dépense',PDF_ACCENTS[1]]]
+   const statWidth=(contentWidth-8)/3
+   stats.forEach(([value,label,color],i)=>{const x=margin+i*(statWidth+4);fill(pdf,tint(color,0.9));pdf.roundedRect(x,y,statWidth,15,2.5,2.5,'F');fill(pdf,color);pdf.roundedRect(x,y,1.6,15,0.8,0.8,'F');ink(pdf,color);pdf.setFont('helvetica','bold');pdf.setFontSize(16);pdf.text(value,x+6,y+10.3);const valueWidth=pdf.getTextWidth(value);pdf.setFontSize(7.5);ink(pdf,PDF_COLORS.text);pdf.text(label.toUpperCase(),x+8+valueWidth,y+9.6)})
+   y+=22
+   const introduction=pdf.splitTextToSize("Le processus budgétaire se déroule selon un schéma organisé, depuis la phase de préparation jusqu'à la présentation des résultats. À chaque étape, divers acteurs institutionnels et techniques sont impliqués pour garantir la planification, l'approbation, la mise en œuvre et la surveillance du budget de l'État.",contentWidth-10) as string[]
+   fill(pdf,PDF_COLORS.zebra);pdf.roundedRect(margin,y,contentWidth,introduction.length*4.2+7,2,2,'F');pdf.setFont('helvetica','italic');pdf.setFontSize(9);ink(pdf,PDF_COLORS.text);pdf.text(introduction,margin+5,y+6);y+=introduction.length*4.2+15
+   y=drawSectionTitle(pdf,y,'Phases de la procédure')
    phases.forEach((phase,phaseIndex)=>{
-    ensure(18);pdf.setFillColor(235,241,250);pdf.roundedRect(margin,y,contentWidth,12,2,2,'F');pdf.setTextColor(15,35,69);pdf.setFont('helvetica','bold');pdf.setFontSize(11);pdf.text(`${phaseIndex+1}. ${phase.title.toUpperCase()}`,margin+4,y+5);pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.text(phase.subtitle,margin+4,y+9);y+=17
+    const color=hexToRgb(phase.color)
+    ensure(22)
+    fill(pdf,color);pdf.roundedRect(margin,y,contentWidth,14,2.5,2.5,'F')
+    fill(pdf,PDF_COLORS.white);pdf.circle(margin+8,y+7,4.2,'F');ink(pdf,color);pdf.setFont('helvetica','bold');pdf.setFontSize(10);pdf.text(String(phaseIndex+1),margin+8,y+8.4,{align:'center'})
+    ink(pdf,PDF_COLORS.white);pdf.setFontSize(11);pdf.text(phase.title.toUpperCase(),margin+16,y+6.2);pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.text(phase.subtitle,margin+16,y+10.8)
+    pdf.setFont('helvetica','bold');pdf.setFontSize(7.5);pdf.text(`${phase.steps.length} ÉTAPE${phase.steps.length>1?'S':''}`,pageWidth-margin-5,y+8.4,{align:'right'})
+    y+=19
     phase.steps.forEach((step)=>{
-     const activity=pdf.splitTextToSize(step.activity,contentWidth-10) as string[]
-     const actors=pdf.splitTextToSize(step.actors,contentWidth-10) as string[]
+     pdf.setFont('helvetica','normal');pdf.setFontSize(8.5)
+     const activity=pdf.splitTextToSize(step.activity,contentWidth-14) as string[]
+     pdf.setFontSize(8)
+     const actors=pdf.splitTextToSize(step.actors,contentWidth-14) as string[]
      // Hauteur complète : en-tête, titre, deux libellés, lignes de contenu et marges.
      // Cette réserve empêche notamment les longues listes d'intervenants de sortir du cadre.
-     const blockHeight=35+(activity.length+actors.length)*4
-     ensure(blockHeight)
-     pdf.setDrawColor(218,225,234);pdf.setFillColor(252,253,255);pdf.roundedRect(margin,y,contentWidth,blockHeight,2,2,'FD')
-     pdf.setTextColor(37,99,235);pdf.setFont('helvetica','bold');pdf.setFontSize(8);pdf.text(`ETAPE ${all.indexOf(step)+1}`,margin+4,y+6)
-     pdf.setTextColor(15,23,42);pdf.setFontSize(11);pdf.text(step.title,margin+4,y+12)
+     const blockHeight=33+activity.length*4.2+actors.length*3.9
+     ensure(blockHeight+4)
+     fill(pdf,PDF_COLORS.white);stroke(pdf,tint(color,0.7));pdf.setLineWidth(0.3);pdf.roundedRect(margin,y,contentWidth,blockHeight,2.5,2.5,'FD')
+     fill(pdf,color);pdf.roundedRect(margin,y,2.2,blockHeight,1.1,1.1,'F')
+     ink(pdf,color);pdf.setFont('helvetica','bold');pdf.setFontSize(7.5);pdf.text(`ÉTAPE ${all.indexOf(step)+1} · ${step.action.toUpperCase()}`,margin+7,y+6.5)
+     ink(pdf,PDF_COLORS.ink);pdf.setFontSize(12);pdf.text(step.title,margin+7,y+12.5)
      const schedule=getSchedule(step)
-     const startDate=new Date(`${schedule.start}T00:00:00`).toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'})
-     const endDate=new Date(`${schedule.end}T00:00:00`).toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'})
-     pdf.setFontSize(8);pdf.setTextColor(71,85,105);pdf.text(`Du ${startDate} au ${endDate}`,pageWidth-margin-4,y+12,{align:'right'})
-     let lineY=y+19;pdf.setFontSize(7);pdf.setFont('helvetica','bold');pdf.setTextColor(100,116,139);pdf.text('ACTIVITE PRINCIPALE',margin+4,lineY);lineY+=4;pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.setTextColor(30,41,59);pdf.text(activity,margin+4,lineY);lineY+=activity.length*4+2
-     pdf.setFont('helvetica','bold');pdf.setFontSize(7);pdf.setTextColor(100,116,139);pdf.text('INTERVENANTS',margin+4,lineY);lineY+=4;pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.setTextColor(30,41,59);pdf.text(actors,margin+4,lineY);y+=blockHeight+4
+     const startDate=new Date(`${schedule.start}T00:00:00`).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'})
+     const endDate=new Date(`${schedule.end}T00:00:00`).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'})
+     const dateLabel=sanitizePdfText(`${startDate}  »  ${endDate}`)
+     pdf.setFontSize(7.5);const dateWidth=pdf.getTextWidth(dateLabel)+8
+     fill(pdf,tint(color,0.88));pdf.roundedRect(pageWidth-margin-4-dateWidth,y+4,dateWidth,6.5,3.2,3.2,'F');ink(pdf,color);pdf.text(dateLabel,pageWidth-margin-4-dateWidth/2,y+8.4,{align:'center'})
+     let lineY=y+19.5
+     pdf.setFont('helvetica','bold');pdf.setFontSize(7);ink(pdf,PDF_COLORS.muted);pdf.text('ACTIVITÉ PRINCIPALE',margin+7,lineY);lineY+=4.2
+     pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);ink(pdf,PDF_COLORS.text);pdf.text(activity,margin+7,lineY);lineY+=activity.length*4.2+2.5
+     fill(pdf,tint(color,0.94));pdf.roundedRect(margin+5,lineY-3.8,contentWidth-9,actors.length*3.9+6.5,1.5,1.5,'F')
+     pdf.setFont('helvetica','bold');pdf.setFontSize(7);ink(pdf,color);pdf.text('INTERVENANTS',margin+7,lineY);lineY+=4
+     pdf.setFont('helvetica','normal');pdf.setFontSize(8);ink(pdf,PDF_COLORS.text);pdf.text(actors,margin+7,lineY)
+     y+=blockHeight+4
     })
+    y+=3
    })
-   ensure(28);pdf.setFillColor(15,35,69);pdf.roundedRect(margin,y,contentWidth,18,2,2,'F');pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(12);pdf.text('PROCESSUS DE LA DÉPENSE PUBLIQUE',margin+4,y+7);pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.text('La dépense publique se déroule généralement en quatre étapes consécutives :',margin+4,y+12);pdf.text("l’engagement, la liquidation, l’ordonnancement et le paiement.",margin+4,y+16);y+=24
+   ensure(40);y+=2
+   fill(pdf,PDF_COLORS.navy);pdf.roundedRect(margin,y,contentWidth,19,2.5,2.5,'F');fill(pdf,PDF_COLORS.yellow);pdf.roundedRect(margin,y,contentWidth,1.2,0.6,0.6,'F')
+   ink(pdf,PDF_COLORS.white);pdf.setFont('helvetica','bold');pdf.setFontSize(12);pdf.text('PROCESSUS DE LA DÉPENSE PUBLIQUE',margin+5,y+8);pdf.setFont('helvetica','normal');pdf.setFontSize(8);ink(pdf,[191,219,254]);pdf.text('Quatre étapes consécutives : engagement, liquidation, ordonnancement et paiement.',margin+5,y+14);y+=25
    chain.forEach(([number,title,description,owner])=>{
-    const lines=pdf.splitTextToSize(description,contentWidth-17) as string[];const height=Math.max(21,13+lines.length*4);ensure(height+3)
-    pdf.setFillColor(239,246,255);pdf.setDrawColor(191,219,254);pdf.roundedRect(margin,y,contentWidth,height,2,2,'FD');pdf.setFillColor(37,99,235);pdf.circle(margin+7,y+7,4,'F');pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(7);pdf.text(number,margin+7,y+8,{align:'center'});pdf.setTextColor(15,23,42);pdf.setFontSize(10);pdf.text(title,margin+14,y+6);pdf.setFontSize(7);pdf.setTextColor(37,99,235);pdf.text(`Responsable : ${owner}`,pageWidth-margin-4,y+6,{align:'right'});pdf.setFont('helvetica','normal');pdf.setFontSize(8);pdf.setTextColor(51,65,85);pdf.text(lines,margin+14,y+11);y+=height+3
+    const color:Rgb=owner.includes('Budget')?PDF_ACCENTS[0]:PDF_ACCENTS[3]
+    pdf.setFont('helvetica','normal');pdf.setFontSize(8.5)
+    const lines=pdf.splitTextToSize(description,contentWidth-22) as string[];const height=Math.max(20,13+lines.length*4.2);ensure(height+3)
+    fill(pdf,tint(color,0.93));stroke(pdf,tint(color,0.7));pdf.setLineWidth(0.3);pdf.roundedRect(margin,y,contentWidth,height,2.5,2.5,'FD')
+    fill(pdf,color);pdf.circle(margin+8,y+8,4.5,'F');ink(pdf,PDF_COLORS.white);pdf.setFont('helvetica','bold');pdf.setFontSize(8.5);pdf.text(number,margin+8,y+9.3,{align:'center'})
+    ink(pdf,PDF_COLORS.ink);pdf.setFontSize(11);pdf.text(title,margin+16,y+7)
+    const ownerLabel=owner.toUpperCase();pdf.setFontSize(6.5);const ownerWidth=pdf.getTextWidth(ownerLabel)+7
+    fill(pdf,color);pdf.roundedRect(pageWidth-margin-4-ownerWidth,y+3,ownerWidth,5.5,2.7,2.7,'F');ink(pdf,PDF_COLORS.white);pdf.text(ownerLabel,pageWidth-margin-4-ownerWidth/2,y+6.7,{align:'center'})
+    pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);ink(pdf,PDF_COLORS.text);pdf.text(lines,margin+16,y+12.5);y+=height+3
    })
-   ensure(25);y+=3;pdf.setFillColor(5,150,105);pdf.roundedRect(margin,y,contentWidth,12,2,2,'F');pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(11);pdf.text('PROCESSUS SIMPLIFIÉ',margin+4,y+8);y+=18
+   const green:Rgb=[5,150,105]
+   ensure(30);y+=5
+   y=drawSectionTitle(pdf,y,'Processus simplifié',green)
    simplifiedProcess.forEach((item,index)=>{
-    const lines=pdf.splitTextToSize(item,contentWidth-14) as string[];const height=Math.max(8,lines.length*4+3);ensure(height)
-    pdf.setFillColor(5,150,105);pdf.circle(margin+3,y+2.5,2.5,'F');pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(6);pdf.text(String(index+1),margin+3,y+3.3,{align:'center'});pdf.setTextColor(30,41,59);pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);pdf.text(lines,margin+9,y+3.5);y+=height
+    pdf.setFont('helvetica','normal');pdf.setFontSize(9)
+    const lines=pdf.splitTextToSize(item,contentWidth-16) as string[];const height=Math.max(9,lines.length*4.2+4.5);ensure(height)
+    fill(pdf,index%2===0?tint(green,0.93):PDF_COLORS.white);pdf.roundedRect(margin,y,contentWidth,height,1.5,1.5,'F')
+    fill(pdf,green);pdf.circle(margin+5,y+height/2,3,'F');ink(pdf,PDF_COLORS.white);pdf.setFont('helvetica','bold');pdf.setFontSize(7);pdf.text(String(index+1),margin+5,y+height/2+1.1,{align:'center'})
+    ink(pdf,PDF_COLORS.text);pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.text(lines,margin+11,y+height/2+1.3-(lines.length-1)*2.1);y+=height
    })
-   const pageCount=pdf.getNumberOfPages()
-   for(let page=1;page<=pageCount;page++){pdf.setPage(page);pdf.setFontSize(7);pdf.setTextColor(100,116,139);pdf.text(`Processus budgétaire - Ministère du Budget - Page ${page}/${pageCount}`,pageWidth/2,pageHeight-7,{align:'center'})}
+   drawFooters(pdf,'Processus budgétaire · Ministère du Budget · République Démocratique du Congo')
    pdf.save(`processus-budgetaire-${new Date().toISOString().slice(0,10)}.pdf`)
   }finally{setExporting(false)}
  }

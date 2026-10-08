@@ -11,6 +11,7 @@ export const ROLES = [
   "REGIE_FINANCIERE",
   "CELLULE_MACRO",
   "SUIVI_EVALUATION",
+  "DECIDEUR",
   "LECTEUR",
 ] as const;
 
@@ -29,6 +30,7 @@ export const ROLE_LABELS: Record<Role, string> = {
   REGIE_FINANCIERE: "Régie financière (DGI/DGDA/DGRAD)",
   CELLULE_MACRO: "Cellule macroéconomique",
   SUIVI_EVALUATION: "Suivi-Évaluation des réformes",
+  DECIDEUR: "Décideur",
   LECTEUR: "Lecteur / Partenaire",
 };
 

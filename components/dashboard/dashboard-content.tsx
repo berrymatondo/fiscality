@@ -1,6 +1,5 @@
 'use client'
 
-import { Download, FileText } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { KpiCards } from '@/components/dashboard/kpi-cards'
 import { BudgetExecutionChart } from '@/components/dashboard/budget-execution-chart'
@@ -16,6 +15,22 @@ import { AlertsCard } from '@/components/dashboard/alerts-card'
 import { ReformsCard } from '@/components/dashboard/reforms-card'
 import { DocumentationView } from '@/components/dashboard/documentation-view'
 import { TrackingTable } from '@/components/dashboard/tracking-table'
+import { ExpenseDetail, RevenueDetail } from '@/components/dashboard/revenue-detail'
+import { ReportsView } from '@/components/dashboard/reports-view'
+import { DecideurOverview } from '@/components/dashboard/decideur-overview'
+import {
+  PlfDepenses,
+  PlfInvestissements,
+  PlfMacro,
+  PlfOverview,
+  PlfPlaceholder,
+  PlfProvinces,
+  PlfRecettes,
+  PlfTableCard,
+  PlfBanner,
+} from '@/components/dashboard/plf-views'
+import { isPrevision } from '@/lib/exercices'
+import { depensesPlf2027 } from '@/lib/exercices/2027'
 import { BudgetProcessView } from '@/components/dashboard/budget-process-view'
 import { AnalysisView } from '@/components/dashboard/analysis-view'
 import { SettingsView } from '@/components/dashboard/settings-view'
@@ -23,8 +38,8 @@ import { AnnualHtmlDashboard } from '@/components/dashboard/annual-html-dashboar
 import { DualCurrencyAmount } from '@/components/dashboard/currency'
 import { CountUp } from '@/components/dashboard/count-up'
 import type { NavLabel } from '@/components/dashboard/sidebar'
+import type { Role } from '@/lib/roles'
 import { revenueBreakdown, expenseBreakdown, provinces, ministryExecution } from '@/lib/data'
-import { exportDashboard } from '@/lib/export'
 
 function SectionHeading({ title, description }: { title: string; description: string }) {
   void title
@@ -127,60 +142,60 @@ function InvestmentsView() {
   )
 }
 
-function ReportsView() {
-  const reports = [
-    { name: "Rapport d'exécution budgétaire", period: 'Mai 2024' },
-    { name: 'Situation de trésorerie', period: 'Mai 2024' },
-    { name: 'Bulletin de la dette publique', period: 'T1 2024' },
-    { name: 'Indicateurs macroéconomiques', period: 'Mai 2024' },
-    { name: 'Suivi des réformes budgétaires', period: 'S1 2024' },
-  ]
-  return (
-    <>
-      <SectionHeading
-        title="Rapports"
-        description="Documents budgétaires et exports de données"
-      />
-      <Card className="animate-fade-up">
-        <CardContent className="divide-y divide-border p-0">
-          {reports.map((r) => (
-            <div key={r.name} className="flex items-center justify-between gap-4 p-4">
-              <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent text-accent-foreground">
-                  <FileText className="h-4 w-4" />
-                </span>
-                <div>
-                  <p className="text-[13px] font-semibold text-foreground">{r.name}</p>
-                  <p className="text-[11px] text-muted-foreground">{r.period}</p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => exportDashboard('2024', r.period)}
-                className="inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-[12px] font-medium text-foreground transition-colors hover:bg-accent"
-              >
-                <Download className="h-3.5 w-3.5" />
-                Télécharger
-              </button>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
-    </>
-  )
-}
-
 export function DashboardContent({
   section,
   exercice,
   periodeLabel,
   provincesPubliees,
+  currentRole,
 }: {
   section: NavLabel
   exercice: number
   periodeLabel?: string
   provincesPubliees?: { name: string; taux: number }[] | null
+  currentRole: Role
 }) {
+  const isDecideur = currentRole === 'DECIDEUR'
+
+  // Exercice au stade de la prévision (PLF 2027) : vues dédiées, sans exécution.
+  if (isPrevision(exercice)) {
+    switch (section) {
+      case 'Recettes':
+        return <PlfRecettes />
+      case 'Dépenses':
+        return <PlfDepenses />
+      case 'Investissements Publics':
+        return <PlfInvestissements />
+      case 'Indicateurs Macroéconomiques':
+        return <PlfMacro />
+      case 'Exécution par province':
+        return <PlfProvinces />
+      case 'Dette publique':
+        return (
+          <>
+            <PlfBanner />
+            <div className="animate-fade-up">
+              <PlfTableCard
+                table={{ ...depensesPlf2027, title: 'Dette publique et frais financiers 2027' }}
+                filter={(r) => r.code === 'I' || r.code?.startsWith('1.') === true}
+              />
+            </div>
+          </>
+        )
+      case 'Trésorerie':
+      case 'Exécution par Ministère':
+      case 'Suivi des réformes':
+      case 'Suivi de l’exécution (ESB)':
+      case 'Analyses':
+      case 'Alertes & Risques':
+        return <PlfPlaceholder section={section} />
+      case "Vue d'ensemble":
+        return <PlfOverview isDecideur={isDecideur} />
+      default:
+        break
+    }
+  }
+
   switch (section) {
     case 'Paramètres':
       return <SettingsView />
@@ -209,6 +224,9 @@ export function DashboardContent({
           <div className="animate-fade-up" style={{ animationDelay: '200ms' }}>
             <BudgetExecutionChart />
           </div>
+          <div className="animate-fade-up" style={{ animationDelay: '320ms' }}>
+            <RevenueDetail />
+          </div>
         </>
       )
     case 'Dépenses':
@@ -235,6 +253,9 @@ export function DashboardContent({
           </div>
           <div className="animate-fade-up" style={{ animationDelay: '200ms' }}>
             <MinistryChart />
+          </div>
+          <div className="animate-fade-up" style={{ animationDelay: '320ms' }}>
+            <ExpenseDetail />
           </div>
         </>
       )
@@ -366,6 +387,8 @@ export function DashboardContent({
         </div>
       )
     default:
+      if (isDecideur) return <DecideurOverview />
+
       return (
         <>
           <KpiCards />

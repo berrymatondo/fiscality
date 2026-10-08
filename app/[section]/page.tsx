@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { DashboardShell } from '@/components/dashboard/dashboard-shell'
 import type { NavLabel } from '@/components/dashboard/sidebar'
 import { getExercicesDisponibles, getProvincesPubliees, resolvePeriode, formatPeriodeLabel } from '@/lib/dashboard-data'
+import { requireSession } from '@/lib/rbac'
+import type { Role } from '@/lib/roles'
 
 type PageProps = {
   params: Promise<{ section: string }>
@@ -40,6 +42,7 @@ export function generateStaticParams() {
 }
 
 export default async function SectionPage({ params, searchParams }: PageProps) {
+  const session = await requireSession()
   const { section } = await params
   const label = sections[section]
   if (!label) notFound()
@@ -58,6 +61,7 @@ export default async function SectionPage({ params, searchParams }: PageProps) {
       periodeLabel={formatPeriodeLabel(periode)}
       exercicesDisponibles={exercicesDisponibles}
       provincesPubliees={provincesPubliees}
+      currentRole={session.user.role as Role}
     />
   )
 }

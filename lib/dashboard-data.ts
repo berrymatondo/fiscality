@@ -1,5 +1,6 @@
 import "server-only";
 import { prisma } from "@/lib/prisma";
+import { exercicesAvecDonnees } from "@/lib/exercices";
 
 const MOIS_FR = [
   "Janvier",
@@ -18,11 +19,9 @@ const MOIS_FR = [
 
 /**
  * Période affichée par défaut quand aucune n'est demandée dans l'URL. Les données de référence
- * (lib/data.ts, lib/budget-sections.ts) reflètent l'exécution de l'exercice 2025 arrêtée au
- * 31/12/2025 — le repli doit correspondre à ce que le tableau de bord affiche réellement, pas à
- * la date du jour.
+ * (lib/data.ts, lib/budget-sections.ts) reflètent le rapport d'exécution à fin juin 2026.
  */
-const DEFAULT_PERIODE = "2025-12";
+const DEFAULT_PERIODE = "2026-06";
 
 /** Résout l'exercice/la période affichés à partir des paramètres d'URL, avec un repli sur la période de référence. */
 export function resolvePeriode(searchParams: { exercice?: string; periode?: string }) {
@@ -42,8 +41,9 @@ export function formatPeriodeLabel(periode: string): string {
 }
 
 /**
- * Années sélectionnables : l'exercice de référence (2025, celui des données statiques), l'année
- * en cours, et toute année pour laquelle une saisie existe réellement en base.
+ * Années sélectionnables : l'exercice de référence (2026, celui des données statiques), l'année
+ * en cours, les exercices du registre lib/exercices (dont le PLF 2027) et toute année pour laquelle
+ * une saisie existe réellement en base.
  */
 export async function getExercicesDisponibles(): Promise<number[]> {
   const [a, b, c, d, e, f] = await Promise.all([
@@ -59,6 +59,7 @@ export async function getExercicesDisponibles(): Promise<number[]> {
   const years = new Set<number>([
     referenceYear,
     currentYear,
+    ...exercicesAvecDonnees,
     ...[a, b, c, d, e, f].flat().map((r) => r.exercice),
   ]);
   return Array.from(years).sort((x, y) => y - x);

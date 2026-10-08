@@ -1,0 +1,1966 @@
+
+
+===== PAGE 1 =====
+RÉPUBLIQUE DÉMOCRATIQUE DU CONGO 
+ 
+MINISTÈRE DU BUDGET 
+ 
+   
+ 
+ 
+ 
+DOCUMENT N°3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Kinshasa, Septembre 2026
+RAPPORT D’EXECUTION DU 
+BUDGET DU POUVOIR CENTRAL 
+AU PREMIER SEMESTRE 2026  
+ 
+
+===== PAGE 2 =====
+SOMMAIRE 
+SOMMAIRE............................................................................................................................................... i 
+LISTE DES ACRONYMES ..................................................................................................................... ii 
+INTRODUCTION ................................................................................................................................... 4 
+I. CONTEXTE D’ELABORATION, STRUCTURE ET EXECUTION DE LA LOI DE 
+FINANCES 2026 ............................................................................................................................ 7 
+1.1. Contexte d’élaboration ..................................................................................................... 7 
+1.2. Structure de la Loi de Finances 2026 .............................................................................. 8 
+1.3. Exécution de la Loi de Finances à fin juin 2026 .......................................................... 9 
+II. EXECUTION DE LA LOI DE FINANCES A FIN JUIN 2026 ................................................ 12 
+2.1. Recettes mobilisées ......................................................................................................... 12 
+2.1.1. Recettes du Budget Général ................................................................................ 14 
+2.1.1.1. Recettes internes du Budget ........................................................................... 14 
+2.1.2. Recettes des Budgets annexes ........................................................................... 27 
+2.1.3. Recettes des Comptes Spéciaux ........................................................................ 28 
+2.2. Dépenses exécutées ........................................................................................................ 29 
+III. ANALYSE DU SOLDE BUDGETAIRE ....................................................................................... 39 
+IV. ANALYSE DE L’IMPACT DES RISQUES BUDGETAIRES SUR L’EXECUTION DU 
+BUDGET.......................................................................................................................................... 40 
+CONCLUSION ET RECOMMANDATIONS..................................................................................... 41 
+V. PERSPECTIVES A FIN DECEMBRE 2026 .............................................................................. 42 
+5.1 Perspectives d’exécution des recettes ..................................................................... 42 
+5.2 Perspectives des dépenses ........................................................................................... 42 
+
+===== PAGE 3 =====
+    
+ ii 
+ 
+LISTE DES ACRONYMES 
+BAD     : Banque Africaine de Développement 
+CPCM    : Comité Permanent de Cadrage Macroéconomique 
+DGDA   : Direction Générale des Douanes et Accises 
+DGI       : Direction Générale des Impôts 
+DGRAD : Direction Générale des Recettes Administratives, Judiciaires, Domaniales et 
+des Participations 
+DGPPB : Direction Générale des Politiques et Préparation Budgétaire 
+ETD       : Entité Territoriale Décentralisée 
+FC          : Franc Congolais 
+FEC       : Facilité Elargie de Crédit 
+FONER : Fonds National d’Entretien Routier 
+FRD       : Facilité pour la Résilience et la Durabilité 
+IPR         : Impôt Professionnel sur les Rémunérations 
+PGAI     : Plateforme de Gestion de l’Aide des Investissements 
+PIB         : Produit Intérieur Brut 
+RDC        : République Démocratique du Congo 
+TVA     : Taxe sur la Valeur Ajoutée 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 4 =====
+    
+ iii 
+ 
+LISTE DES TABLEAUX 
+ 
+ 
+  
+Tableau 1 Indicateurs macroéconomiques 2026-2027 
+Tableau 2 Structure de la Loi de finances 2026 
+Tableau 3 Recettes du Budget du pouvoir central à fin juin 2026 
+Tableau 4 Recettes des douanes et accises à fin juin 2026 
+Tableau 5 Recettes des impôts à fin juin 2026 
+Tableau 6 Recettes de la DGRAD hors pétroliers producteurs  
+Tableau 7 Recettes des pétroliers producteurs à fin juin 2026 
+Tableau 8 Recettes extérieures à fin juin 2026 
+Tableau 9 Recettes des Budgets annexes à fin juin 2026 
+Tableau 10 Exécution des Comptes spéciaux à fin juin 2026 
+Tableau 11 Dépenses du Budget général par rubrique à fin juin 2026 
+Tableau 12 Dépenses Exceptionnelles sur ressources propres  
+Tableau 13 Dépenses de la dette publique et financière  
+Tableau 14 Exécution des Investissements sur ressources propres à fin juin 2026 
+Tableau 15 Exécution physique du volet 1 à fin juillet 2026 
+
+===== PAGE 5 =====
+    
+ 4 
+ 
+INTRODUCTION 
+Dans le cadre du renforcement de la transparence, de la redevabilité et de la bonne 
+gouvernance dans la gestion des finances publiques, il est prévu l’élaboration du 
+rapport d’exécution à mi-parcours, l’un des documents qui accompagne le projet de loi 
+de finances de l’année selon les prescrits de l’article 79 de la LOFIP. 
+Il porte sur le suivi et l’évaluation de l’exécution de la loi de finances de l’année. Il vise 
+à apprécier le niveau de mise en œuvre des politiques publiques et des priorités 
+gouvernementales à travers l’évolution des recettes mobilisées, des dépenses 
+exécutées et du solde budgétaire. 
+L’analyse à fin juin constitue un outil d’aide à la décision permettant d’évaluer le rythme 
+d’exécution du budget, d’identifier les écarts entre les prévisions et les réalisations, 
+d’en analyser les principaux facteurs explicatifs et de dégager, le cas échéant, les 
+mesures correctives nécessaires pour améliorer les performances au second semestre. 
+Elle fournit également des éléments utiles à l’amélioration de la programmation 
+budgétaire et à la préparation de la Loi de finances 2027. 
+Ce rapport s’appuie principalement sur les données des états de suivi budgétaires (ESB) 
+à fin juin 2026  pour les dépenses . Il examine le niveau d’exécution des crédits par 
+rapport aux dotations autorisées, en mettant en évidence les rubriques budgétaires, 
+tandis que les informations communiquées par les Administrations financières servent 
+à l’analyse des recettes. Celle-ci porte sur les principaux actes générateurs et catégories 
+de ressources, en tenant compte notamment des mesures fiscales ayant influencé leur 
+mobilisation au cours de la période.  
+Il intègre également les données relatives aux  Budgets Annexes et aux Comptes 
+Spéciaux, afin de fournir une apprécia tion globale de l’exécution de la Loi de finances 
+de l’exercice 2026 et  la cohérence entre les ressources mobilisées, les dépenses 
+exécutées et les objectifs de politique publique. 
+Ainsi, le présent rapport permet d’apprécier les performances de l’exécution budgétaire 
+au premier semestre 2026, d’en dégager les principaux enseignements et d’identifier 
+les actions nécessaires à l’amélioration de la mobilisation des recettes, à la maîtr ise et 
+à l’efficacité des dépenses publiques, ainsi qu’à la préservation des équilibres 
+budgétaires. 
+Outre l’introduction et la conclusion, le rapport est structuré de la manière ci-après : 
+1. Contexte d’élaboration, structure et exécution de la Loi de Finances 2026 ; 
+2. Exécution de la Loi de finances à fin juin 2026 ; 
+3. Analyse du solde budgétaire ; 
+4. Analyse de l’impact des risques budgétaires sur l’exécution du budget ; 
+5. Perspectives d’exécution du budget à fin décembre 2026. 
+
+===== PAGE 6 =====
+    
+ 5 
+ 
+RESUME EXECUTIF 
+Au premier semestre 2026, l’exécution budgétaire s’est inscrite dans un contexte 
+marqué par des besoins importants de financement liés aux priorités sécuritaires, 
+sociales et d’investissement ainsi que par la nécessité de préserver les équilibres 
+macroéconomiques et la soutenabilité de la dette.  
+Pour l’amélioration de la mobilisation des recettes internes, l’élargissement de l’assiette 
+fiscale et la poursuite des réformes des Administrations financières ont été les leviers 
+essentiels activés pour l’atteinte des assignations. De même, la première émission 
+d’Eurobond mobilisant 1.25 milliards de dollars USD sur les marchés internationaux 
+constitue un  financement additionnel  mobilisé pour la réalisation  des projets 
+structurants notamment dans le secteur des infrastructures, de transport et de 
+l’énergie. Le Gouvernement s’est engagé à assurer la transparence des opérations 
+d’endettement et à soumettre toute émission d’Eurobond à l’autorisation préalable d u 
+Parlement.  
+A fin juin 2026, les recettes mobilisées au titre du Budget général se sont chiffrées à 
+21.652,9 milliards de FC  contre une prévision linéaire de l’ordre de 24.484,6 
+milliards de FC , soit un taux de réalisation de  88,4%.  Elles sont constituées des 
+recettes internes de 15.949,7 milliards de FC et des recettes extérieures de 5.703,2 
+milliards de FC. 
+En ce qui concerne les dépenses du Budget Général, elles sont exécutées à 19.923,3 
+milliards de FC contre une prévision linéaire de 22.710,4 milliards de FC, soit un 
+taux d’exécution de 87,7%. 
+Le solde budgétaire intérieur affiche un déficit de 627,4 milliards de FC. Il résulte de 
+l’écart entre les recettes courantes, après déduction des recettes extérieures tirées 
+d’Eurobonds, soit 14.339,6 milliards de FC , et les dépenses du Budget général 
+nettes de la dette extérieure, des frais financiers extérieurs, des investissements sur 
+ressources extérieures et des dépenses exceptionnelles extérieures, chiffrées à 
+14.967,0 milliards de FC. Ce résultat s’explique par la différence de périmètre entre 
+les deux soldes : l’apport des dons améliore le solde global, tandis que les opérations 
+intérieures demeurent déficitaires. 
+En perspectives, il sied d’envisager que l’exécution des dépenses doit, pour sa part, 
+concilier la prise en charge des priorités nationales avec la maîtrise des charges 
+récurrentes et l’amélioration de la qualité de la dépense en accordant une attention 
+particulière aux dépenses d’investissement et aux programmes à fort impact socio -
+économique, tel que le Programme de Développement Local des 145 Territoires (PDL-
+145T), qui constitue un important levier de développement des infrastructures et 
+d’amélioration de l’accès aux services de base dans les territoires. 
+
+===== PAGE 7 =====
+    
+ 6 
+ 
+L’enjeu est de renforcer le lien entre les ressources mobilisées, les crédits exécutés et 
+les résultats effectivement obtenus sur le terrain. 
+L’analyse à mi -parcours appelle également à une vigilance accrue sur les  risques 
+budgétaires, notamment ceux liés à une éventuelle baisse des recettes, à une évolution 
+des cours des matières premières, au coût et au refinancement de la dette, aux 
+garanties accordées par l’État et aux éventuels engagements hors budget. Le cadre 
+d’analyse des risques budgétaires en RDC met en exergue les risques présentant une 
+criticité élevée pour leur gestion ; il s’agit des risques sécuritaires (baisses des recettes 
+courantes et pression sur les dépenses sécuritaires), des risques liés aux catastrophes 
+naturelles et des risques sanitaires (survenance de la fièvre hémorragique Ebola).  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 8 =====
+    
+ 7 
+ 
+I. CONTEXTE D’ELABORATION, STRUCTURE ET EXECUTION DE LA LOI DE 
+FINANCES 2026 
+1.1. Contexte d’élaboration  
+La Loi de finances pour l’exercice 2026 a été élaborée dans un contexte marqué par la 
+révision, en cours d’exercice, des hypothèses et des priorités budgétaires initialement 
+retenues pour 2025. La Loi de finances de l’exercice 2025 avait été conçue dans un  
+contexte d’optimisme prudent, avec des perspectives de croissance principalement 
+soutenues par le secteur extractif et les services. Elle visait notamment à consolider la 
+mobilisation des recettes publiques, à financer les projets d’investissement priorit aires 
+inscrits dans le Programme d’Actions du Gouvernement et à poursuivre les efforts en 
+matière d’infrastructures, de santé et d’éducation, tout en préservant la soutenabilité 
+des finances publiques. 
+ L’évolution de la conjoncture au cours du premier semestre 2025 a conduit à une 
+réévaluation de certaines hypothèses initiales. La persistance des tensions sécuritaires 
+dans l’Est de la RDC a notamment exercé une pression accrue sur les finances publiques 
+et sur les priorités de l’action gouvernementale. À ces contraintes internes se sont 
+ajoutées les incertitudes liées à l’environnement économique international, notamment 
+l’évolution des ma rchés des matières premières. Le programme économique e t 
+financier soutenu par le FMI  a lui -même été adapté afin de tenir compte de ces 
+nouvelles réalités.  
+C’est dans ce contexte qu’est intervenue la Loi de finances rectificative n°25/044 du 28 
+juin 2025, destinée à actualiser les prévisions budgétaires et à adapter l’allocation des 
+ressources aux nouvelles contraintes de l’exercice. Cette révision a notamment permis 
+de tenir compte de l’évolution de la situation sécuritaire et des besoins prioritaires de 
+l’État, tout en maintenant les efforts de mobilisation des recettes et de maîtrise des 
+dépenses. La préparation de la Loi de finances 2026 s’est ainsi inscrite dans une logique 
+de consolidation et d’adaptation de la po litique budgétaire, de préservation d es 
+équilibres macroéconomiques et d’orientation davantage des ressources publiques vers 
+les secteurs prioritaires, notamment la sécurité, les infrastructures, la santé, l’éducation 
+et l’agriculture.  
+Par ailleurs, le cadre budgétaire de 2026 s’inscrit dans le prog ramme triennal conclu 
+avec le FMI. En effet, en janvier 2025, le Conseil d’administration du FMI avait approuvé 
+pour la RDC un accord de 38 mois au titre de la Facilité élargie de crédit (FEC), d’un 
+montant de 1,729 milliard de USD, ainsi qu’un accord de 38 mois au titre de la 
+Facilité pour la résilience et la durabilité (FRD), d’un montant de 1,038 milliard de 
+USD. Ces programmes visent notamment à préserver la stabilité macroéconomique, à 
+créer un espace budgétaire pour les dépenses prioritaires, à renforcer la gouvernance 
+
+===== PAGE 9 =====
+    
+ 8 
+ 
+et à accroître la résilience de l’écon omie face aux chocs, tel  que le changement 
+climatique.  
+Plutôt que de constituer une simple reconduction des orientations antérieures, la Loi 
+de finances 2026 traduit une volonté d’adapter la politique budgétaire aux réalités 
+économiques, sécuritaires et sociales du pays. Elle s’inscrit dans une perspective de 
+mobilisation accrue des ressources internes et de financement des priorités nationales, 
+tout en tenant compte des engagements pris dans le cadre des programmes soutenus 
+par le FMI.  
+Les indicateurs macroéconomiques ayant contribué à l’élaboration de la Loi de finances 
+pour l’exercice 2026 se présentent comme l’indique le tableau ci-dessous : 
+Tableau 1 : indicateurs macroéconomiques 2026 
+Cadrage macroéconomique 
+2026 
+ 
+VOTE 
+ 
+LFR 
+Taux de croissance 5,3% 5,6% 
+Taux d'inflation moyen 4,4% 3,5% 
+Taux de croissance mine 5,0% 6,7% 
+Taux de change moyen (FC/USD) 2 467,0 2 290,0 
+Taux de change fin période (FC/USD) 2 634,1 2 398,5 
+PIB nominal en milliards FC 269 291,9 278 612,3 
+PIB nominal en dollars USD 109,2 121,7 
+Source : Loi de finances 2026 
+1.2. Structure de la Loi de Finances 2026 
+Le budget du pouvoir central de l’exercice 2026 est élaboré et voté en équilibre, en 
+recettes et en dépenses, à hauteur de 54.335,8 milliards de FC tel que renseigné 
+dans le tableau ci-dessous : 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 10 =====
+    
+ 9 
+ 
+Tableau 2 : Structure de la Loi de Finances 2026 
+N° Rubrique BUDGET 2026 
+I. RECETTES 50.866.348.362.786 
+ 
+I.1. BUDGET GENERAL 45.420.798.895.981 
+ 
+1 RECETTES INTERNES  37.078.609.152.375 
+ 
+2 RECETTES EXTERIEURES 8.342.189.743.606 
+ 
+I.2. BUDGETS ANNEXES 892.065.836.164 
+I.3. COMPTES SPECIAUX 4.553.483.362.786 
+II. DEPENSES 50.866.348.362.786 
+ 
+II.1. BUDGET GENERAL 45.420.798.895.981 
+1 DETTE PUBLIQUE EN CAPITAL 2.011.321.662.288 
+2 FRAIS FINANCIERS 1.153.387.500.000 
+3 DEPENSES DE PERSONNEL 13.654.929.632.167 
+4 BIENS ET MATERIELS 5.276.391.558.979 
+5 TRANSFERT ET SUBVENTIONS 4.538.076.884.471 
+6 DEPENSES D’INVESTISSEMENTS  10548.341.387.848 
+7 DEPENSES EXCEPTIONNELLES 8.238.350.270.228 
+II.2. BUDGETS ANNEXES 892.065.836.164 
+II.3. COMPTES SPECIAUX 4.553.483.362.786 
+Source : Loi de finances de l’exercice 2026 
+ 
+1.3. Exécution de la Loi de Finances à fin juin 2026 
+L’exécution de la Loi de finances de l’exercice 2026 intervient dans un contexte national 
+et international particulièrement complexe, caractérisé par la persistance des tensions 
+sécuritaires dans l’Est du pays avec tous ses corolaires dont les pressions humanitaires, 
+l’évolution de l’environnement géopolitique international ainsi que la nécessité de 
+préserver les équilibres macroéconomiques et la soutenabilité des finances publiques. 
+1. Sur le plan sécuritaire, humanitaire et sanitaire 
+L’exécution du budget 2026 demeure fortement influencée par la situation sécuritaire 
+dans l’Est du pays. La persistance des conflits armés dans les provinces du Nord-Kivu, 
+Sud Kivu et de l’Ituri continue d’exercer une pression importante sur les finances 
+publiques, en raison de l’accroissement des besoins en matière de défense, de sécurité, 
+d’assistance humanitaire et de prise en charge des populations affectées. 
+
+===== PAGE 11 =====
+    
+ 10 
+ 
+Au-delà du contexte national, l’environnement géopolitique international demeure 
+marqué par la poursuite de la guerre russo -ukrainienne et par les tensions au Moyen-
+Orient lesquelles crises affectent les prix internationaux de l’énergie, des denrées 
+alimentaires et des matières premières, ainsi que les conditions de financement 
+extérieur.  
+2. Sur le plan diplomatique et politique 
+Face à la persistance de la crise sécuritaire dans l’Est, les autorités congolaises 
+poursuivent une stratégie diplomatique visant à mobiliser le soutien de la communauté 
+internationale et à rechercher une solution durable au conflit en s’appuyant notamment 
+sur les accords conclus le 27 juin 2025 et le 04 décembre 2025 à Washington DC entre 
+la RDC et le Rwanda, dans le cadre des efforts visant à promouvoir la paix et la stabilité 
+dans la région des Grands Lacs. 
+3. Sur le plan des finances publiques 
+Sur le plan budgétaire, l’exercice 2026 s’exécute dans un environnement caractérisé 
+par une forte sollicitation des ressources publiques. L’augmentation des dépenses liées 
+à la sécurité et à l’aide humanitaire intervient alors que le Gouvernement doit 
+simultanément préserver les crédits destinés aux investissements, aux services sociaux 
+de base et aux programmes prioritaires de développement. 
+4. Sur le plan du partenariat avec le Fonds Monétaire International 
+Le cadre macroéconomique de l’exercice 2026 s’inscrit dans la mise en œuvre des  
+programmes conclus avec le FMI le 15 janvier 2025. Ces programmes comprennent un 
+accord de tro is ans au titre de la  Facilité Elargie de C rédit (FEC), d’un montant 
+d’environ 1,73 milliard de US D, ainsi qu’un programme de trois ans au titre de 
+la Facilité pour la résilience et la durabilité (FRD), d’environ  1,04 milliard de USD, 
+montants correspondant à ceux approuvés par le Conseil d’Administration du FMI.  Le 
+programme soutenu par la FEC visant notamment à préserver la stabilité 
+macroéconomique, à renforcer la mobilisation des recettes intérieures, à améliorer la 
+gestion des finances publiques et à créer progressivement l’espace budgét aire 
+nécessaire au financement des priorités nationales. La FRD, quant à elle, accompagne 
+les réformes destinées à renforcer la résilience de l’économie congolaise face aux 
+changements climatiques et aux catastrophes naturelles, tout en favorisant l’intégration 
+des considérations climatiques dans les politiques publiques et la gestion des 
+investissements publics. En juin 2026, le Conseil d’A dministration du FMI a achevé la 
+troisième revue de l’accord au titre de la FEC et la deuxième revue au titre de la FRD. 
+Cette évaluation a permis de nouveaux décaissements d’environ 348,5 millions de 
+USD portant les décaissements cumulés au titre de la FEC à environ 1,03 milliard de 
+USD.  
+
+===== PAGE 12 =====
+    
+ 11 
+ 
+5. Sur le plan macroéconomique et monétaire 
+Malgré les contraintes sécuritaires et géopolitiques, l’économie congolaise a fait preuve 
+d’une certaine résilience. L’activité économique demeure notamment soutenue par la 
+performance du secteur extractif et par le renforcement progressif du secteur non 
+extractif. 
+6. Incidences sur l’exécution de la Loi de finances 2026 
+L’exécution de la Loi de finances 2026 se fait dans un contexte où les impératifs de 
+sécurité et de stabilité nationale doivent être conciliés avec les objectifs de 
+développement économique et social mettant en difficulté la capacité de l’État à 
+répondre à l’urgence sécuritaire, humanitaire et sanitaire (résurgence de la maladie à 
+virus EBOLA)  tout en préservant les ressources nécessaires au financement des 
+investissements et des services publics essentiels. 
+
+===== PAGE 13 =====
+    
+ 12 
+ 
+II. EXECUTION DE LA LOI DE FINANCES A FIN JUIN 2026 
+La situation préoccupante dans l’Est de la République, conjuguée aux répercussions 
+de la guerre russo-ukrainienne et aux tensions au Moyen-Orient, a exercé une forte 
+pression sur les finances publiques au cours de la période sous examen, contraignant 
+le Gouvernement à envisager l’élaboration d’une Loi de Finances rectificative pour 
+l’exercice 2026. Néanmoins, grâce à la poursuite d’une politique macroéconomique 
+prudente, à un suivi rigoureux de l’exécution budgétaire et au dynamisme de la 
+mobilisation des r ecettes domestiques, les équilibres fondamentaux ont été 
+préservés. Cette résilience demeure toutefois vulnérable aux fluctuations des cours 
+internationaux des matières premières. 
+À fin juin 2026, l’exécution du budget enregistre des recettes de 22.476,1 milliards 
+de FC contre des dépenses de 20.746,5 milliards de FC, soit un excédent dans 
+l’équilibre ressources-emplois de 1.729,6 milliards de FC et un solde budgétaire 
+intérieur déficitaire de l’ordre de 627,4 milliards de FC. 
+2.1. Recettes mobilisées 
+Les recettes publiques ont été mobilisées à hauteur de 22.476,1 milliards de FC 
+à fin juin 2026, soit un taux de réalisation de 88,4%, par rapport aux assignations 
+linéaires de 25.433,2 milliards de FC. Elles sont ventilées comme suit : 
+- Budget Général : 21.652,9 milliards de FC, soit un taux de réalisation de 
+95,3% par rapport aux assignations linéaires de 22.710,4 milliards de FC ; 
+- Budgets Annexes  : 28 millions de FC  contre les prévisions linéaires de 
+446,0 milliards de FC ; 
+- Comptes Spéciaux : 823,2 milliards de FC , soit un taux de réalisation de 
+36,2% par rapport aux prévisions de 2.276,7 milliards de FC. 
+ 
+ 
+ 
+ 
+
+===== PAGE 14 =====
+    
+ 13 
+ 
+Graphique 1 : Structure de réalisation à mi-parcours des recettes 
+ 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+ 
+Le tableau 3 ci-après indique le niveau de réalisation des recettes par grande nature. 
+Tableau 3 : Recettes du budget du pouvoir central à fin juin 2026 
+ 
+N° RUBRIQUES 
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE PREVISIONS LINEAIRES 
+6 MOIS 
+REALISATIONS A FIN 
+JUIN 
+TAUX  
+REAL 
+I. BUDGET GENERAL 45 420 798 895 981    22 710 399 447 991    21 652 889 223 797    95,3 
+I.1 RECETTES INTERNES 37 078 609 152 375    18 539 304 576 188    15 949 706 769 688    86,0 
+A. RECETTES COURANTES 34 819 169 455 276    17 409 584 727 638    14 655 403 749 688    84,2 
+      Recettes des Douanes et Accises 
+(DGDA) 8 299 629 688 549    4 149 814 844 274    3 770 473 651 300 90,9 
+  Recettes des Impôts (DGI)/ HORS  
+PETROLIERS PRODUCTEURS 19 851 292 080 412    9 925 646 040 206    8 165 347 509 595 82,3 
+  RECETTES NON FISCALES  6 039 884 010 845    3 019 942 005 422    2 549 880 034 473    84,4 
+  DGRAD/ Hors Pétroliers  5 094 990 580 669    2 547 495 290 334    2 509 851 034 473    98,5 
+  Autres Recettes /NON FISCALES 944 893 430 176    472 446 715 088    40 029 000 000 8,5 
+  Royalties (Contrat chinois) 749 893 430 176 374 946 715 088 0 0,0 
+  Autres recettes 195 000 000 000 97 500 000 000 40 029 000 000 41,1 
+Budget Général Budgets Annexes Comptes
+Spéciaux Total Recettes
+PREV. LIN. 6 MOIS 22,710 0,446 2,277 25,433
+REAL. FIN JUIN 21,653 0,000 0,823 22,476
+22,710
+0,446
+2,277
+25,433
+21,653
+0,000 0,823
+22,476
+ 0,000
+ 5,000
+ 10,000
+ 15,000
+ 20,000
+ 25,000
+ 30,000
+Loi de Finances Rectificative 2026
+(en mille milliards de FC)
+PREV. LIN. 6 MOIS REAL. FIN JUIN
+
+===== PAGE 15 =====
+    
+ 14 
+ 
+N° RUBRIQUES 
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE PREVISIONS LINEAIRES 
+6 MOIS 
+REALISATIONS A FIN 
+JUIN 
+TAUX  
+REAL 
+  PETROLIERS PRODUCTEURS 628 363 675 470    314 181 837 735    169 702 554 319    54,0 
+  DGI 248 707 919 588    124 353 959 794    65 077 347 139    52,3 
+  DGRAD 379 655 755 882    189 827 877 941    104 625 207 180    55,1 
+B. RECETTES EXCEPTIONNELLES 2 259 439 697 099    1 129 719 848 550    1 281 426 000 000 113,4 
+C. FONDS DE CONCOURS POUR LA 
+GUERRE   12 877 000 000     
+I.2 RECETTES EXTERIEURES 8 342 189 743 606    4 171 094 871 803    5 703 182 454 109 136,7 
+ 
+RECETTES EXTERIEURES 
+D'APPUIS BUDGETAIRES 2 762 406 885 671 1 381 203 442 836 1 203 843 510 815 87,2 
+ Emprunt programme 2 558 234 512 390 1 279 117 256 195 1 100 046 510 815 86,0 
+ Dons budgétaires 204 172 373 281 102 086 186 641 103 797 000 000 101,7 
+ 
+RECETTES EXTERIEURES DE 
+FINANCEMENT DES 
+INVESTISSEMENTS 
+5 579 782 857 935 2 789 891 428 968 4 499 338 943 294 161,3 
+ Dons projets 1 718 850 258 921 859 425 129 461 2 138 205 056 492 248,8 
+ Emprunts projets 2 356 516 766 870 1 178 258 383 435 2 045 356 008 136 173,6 
+ Eurobond 1 504 415 832 144 752 207 916 072 315 777 878 666 42,0 
+II. BUDGET ANNEXES 892 065 836 164    446 032 918 082    26 858 500  0,00 
+III. COMPTES SPECIAUX 4 553 483 630 641    2 276 741 815 321    823 199 776 009 36,2 
+TOTAL RECETTES 50 866 348 362 786    25 433 174 181 393    22 476 115 858 306 88,4 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+2.1.1. Recettes du Budget Général 
+Les recettes du Budget général réalisées à fin juin 2026 de l’ordre de 21.652,9 
+milliards de FC sont constituées des recettes internes de 15.949,7 milliards de 
+FC et des recettes extérieures de 5.703,1 milliards de FC. 
+2.1.1.1. Recettes internes du Budget 
+Les recettes internes mobilisées à fin juin 2026 à hauteur de 15.949,7 milliards 
+de FC contre les assignations linéaires de 18.539,3 milliards de FC, représentent 
+un taux de réalisation de 86,0%. Elles sont constituées des recettes courantes, des 
+recettes exceptionnelles, ainsi que les recettes de fonds de concours pour la guerre. 
+Les recettes courantes, de l’ordre de 14.655,4 milliards de FC, ont atteint un taux 
+de réalisation de 84,2% au regard de leurs assignations linéaires chiffrées à 
+17.409,6 milliards FC. Elles comprennent les recettes des douanes et accises, les 
+recettes des impôts, les recettes non fiscales ainsi que les recettes des pétroliers 
+producteurs. 
+
+===== PAGE 16 =====
+    
+ 15 
+ 
+ 
+a. Recettes des douanes et accises 
+Les recettes des douanes et accises mobilisées à fin juin 2026 se chiffrent à 3.770,5 
+milliards de FC. Comparées à leurs prévisions linéaires fixées à 4.149,8 milliards 
+de FC, elles accusent un taux de réalisation de 90,9%. Elles sont constituées de : 
+- Taxe sur la valeur ajoutée à l’importation de l’ordre de 1.426,5 milliards de 
+FC contre les assignations linéaires de 1.433,0 milliards de FC, soit un taux 
+de réalisation de 99,5% ; 
+- Droits d’accises : 1.020,0 milliards de FC contre les prévisions linéaires de 
+1.416,2 milliards de FC, soit un taux de réalisation de 72,0% ; 
+- Droits de douanes et autres droits à l’importation : 1.293,2 milliards de FC 
+contre les prévisions linéaires de 1.260,5 milliards de FC, soit un taux de 
+réalisation 102,6% ; 
+- Taxes à l’exportation : 9,1 milliards de FC contre les prévisions linéaires de 
+17,8 milliards de FC, soit un taux de réalisation de 51,1% ; 
+- Amendes et pénalités : 21,7 milliards de FC contre les prévisions linéaires 
+de 22,4 milliards de FC, soit un taux de réalisation de 97,0%. 
+Graphique 2 : Graphique des recettes des douanes et accises 
+  
+Source : Canevas des recettes, DGPPB, Juin 2026 
+Impôts
+gén. sur les
+b&s
+Droits
+d'accises
+Droits de
+douane
+Taxes à
+l'export.
+Amendes
+et
+pénalités
+Total
+DGDA
+PREV. LIN. 6 MOIS 1 433,0 1 416,2 1 260,5 17,8 22,4 4 149,8
+REAL. FIN JUIN 1 426,5 1 020,0 1 293,2 9,1 21,7 3 770,5
+1 433,0  1 416,2  1 260,5  
+17,8  22,4  
+4 149,8  
+1 426,5  
+1 020,0  
+1 293,2  
+9,1  21,7  
+3 770,5  
+ -
+  500,0
+ 1 000,0
+ 1 500,0
+ 2 000,0
+ 2 500,0
+ 3 000,0
+ 3 500,0
+ 4 000,0
+ 4 500,0
+DGDA (en milliards de FC)
+PREV. LIN. 6 MOIS REAL. FIN JUIN
+
+===== PAGE 17 =====
+    
+ 16 
+ 
+Ces réalisations sont présentées par nature dans le tableau n° 4 ci-après : 
+Tableau 4 : Recettes des douanes et accises à fin juin 2026 
+N° NATURE DES RECETTES 
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE PREVISIONS 
+LINEAIRES 6 MOIS 
+REALISATIONS A 
+FIN JUIN 
+TAUX  
+REAL 
+I. Impôts généraux sur les 
+biens et services 2 866 054 955 571 1 433 027 477 785 1 426 549 877 097 99,5 
+II. Droits d'accises 2 832 310 336 256 1 416 155 168 128 1 019 966 112 530 72,0 
+  Intérieur 1 964 973 185 642 982 486 592 821 800 432 916 428 81,5 
+  Importation 867 337 150 614 433 668 575 307 219 533 196 102 50,6 
+III. Droits de douane et autres 
+droits à l'importation 2 520 986 267 346 1 292 850 591 954 1 293 176 618 354 102,6 
+  Droit de Douane 2 520 973 690 676 1 260 486 845 338 1 292 850 591 954 102,6 
+  Autres Droits à l’importation 12 576 670 6 288 335 326 026 400 0,0 
+IV Taxes à l'exportation 35 556 767 072 17 778 383 536 9 083 591 991 51,1 
+  Droits de sortie minerais 1 747 347 315 873 673 657 520 949 239 59,6 
+  Droits de sortie des produits 
+agricoles et végétaux 33 809 419 757 16 904 709 878 8 562 642 751 50,7 
+V. Amendes et pénalités 44 721 362 305 22 360 681 152 21 697 911 329 97,0 
+TOTAL 8 299 629 688 549 4 149 814 844 274 3 770 473 671 300 90,9 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+Les niveaux des réalisations respectivement de 105% par rapport à la loi de 
+finances initiale et 90,9% pour la loi de finances rectificative, observés sur les 
+recettes de douanes et accises sont dus aux facteurs ci-après : 
+- l’apport des mesures portant sur l’exclusion de la subvention pétrolière dans 
+le secteur minier ; 
+- l’imposition de l’acide sulfurique aux droits d’accises ; 
+-  l’effort de service impulsé par l’émulation des directions provinciales 
+matérialisé par la signature des contrats de performances entre la Direction 
+Générale et les Directions provinciales. 
+Toutefois, la non application de certaines mesures et la promulgation tardive de la 
+loi de finances rectificative ont entravé la mobilisation des recettes au premier 
+semestre. Il s’agit notamment de :  
+- l’exclusion de la subvention pétrolière dans le secteur des brassicoles, 
+
+===== PAGE 18 =====
+    
+ 17 
+ 
+télécommunication, forestier ; 
+- l’imposition aux droits d’accises aux taux de droit commun des carburants 
+importés par les miniers et leurs sous-traitants ; 
+- l’application des nouveaux taux prévus dans la loi de finances rectificative. 
+b. Recettes des impôts 
+Les recettes des impôts hors pétroliers producteurs collectées à fin juin 2026 se 
+chiffrent à 8.165,3 milliards de FC . Par rapport aux prévisions linéaires de 
+9.925,6 milliards de FC, elles accusent un taux de réalisation de 82,3%. 
+Elles sont ventilées comme suit : 
+- Impôts sur les revenus des personnes physiques :  724,8 milliards de FC 
+contre les prévisions linéaires de 1.769,5 milliards de FC, soit un taux de 
+réalisation de 41,0% ; 
+- Prélèvements : 232,5 milliards de FC contre les prévisions  linéaires de 
+514,7 milliards de FC, soit un taux de réalisation de 45,2% ; 
+- Impôts sur les sociétés et autres revenus des sociétés  : 968,6 milliards de 
+FC contre les prévisions linéaires de 2.451,5 milliards de FC, soit un taux 
+de réalisation de 39,5% ; 
+- Impôts généraux sur les biens et services : 1.901,3 milliards de FC contre 
+les prévisions  linéaires de 3.177,6 milliards de FC , soit un taux de 
+réalisation de 59,8% ; 
+- Autres recettes : 160,2 milliards de FC contre les prévisions linéaires de 
+282,1 milliards de FC, soit un taux de réalisation de 56,8% ; 
+- Impôts professionnels sur les rémunérations : 659,5 milliards de FC contre 
+les prévisions linéaires de 284,7 milliards de FC, soit un taux de réalisation 
+de 231,7% ; 
+- Impôts sur les bénéfices et profits : 3.518,4 milliards de FC contre les 
+prévisions linéaires de 1.445,5 milliards de FC, soit un taux de réalisation 
+de 243,4%. 
+ 
+ 
+
+===== PAGE 19 =====
+    
+ 18 
+ 
+Graphique 3 : recettes des Impôts hors pétroliers producteurs 
+ 
+    Source : Canevas des recettes, DGPPB, Juin 2026 
+Les détails y relatifs sont repris dans le tableau 5 ci-dessous. 
+Tableau 5 : Recettes des impôts à fin juin 2026 
+N° NATURE DES RECETTES 
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE PREVISIONS 
+LINEAIRES 6 MOIS 
+REALISATIONS A 
+FIN JUIN 
+TAUX 
+REAL 
+I. IMPOTS SUR LES REVENUS DES 
+PERSONNES PHYSIQUES 3 538 920 710 953 1 769 460 355 476 724 782 277 632 41,0 
+  IRPP revenus salariaux et assimilés 2 917 092 221 919 1 458 546 110 960 677 229 420 032 46,4 
+  IRPP au titre de revenu des capitaux 
+mobiliers 616 923 847 357 308 461 923 678 47 221 226 166 15,3 
+  IRPP au titre de plus-values réalisées 
+par les personnes physiques 1 885 688 090 942 844 045 8 997 181 1,0 
+  IRPP personnel domestique et des 
+microentreprises 444 060 000 222 030 000 0 0,0 
+  IRPP sur les bénéfices/régime réel 2 574 893 587 1 287 446 793 185 245 024 14,4 
+  IRPP sur les bénéfices des entreprises 
+de petite taille 0 0 137 389 228  
+II PRELEVEMENT 1 029 443 794 136 514 721 897 068 232 546 487 476 45,2 
+IRPP Prélève
+ments IS
+Impôts
+gén.
+sur les
+b&s
+Autres
+recette
+s
+Impôts
+sur les
+rém.
+IBP
+Total
+DGI /
+HPP
+PREV. LIN. 6 MOIS 1 769,5 514,7 2 451,5 3 177,6 282,1 284,7 1 445,5 9 925,6
+REAL. FIN JUIN 724,8 232,5 968,6 1 901,3 160,2 659,5 3 518,4 8 165,3
+1 769,5  
+514,7  
+2 451,5  3 177,6  
+282,1  284,7  
+1 445,5  
+9 925,6  
+724,8  232,5  968,6  1 901,3  
+160,2  659,5  3 518,4  
+8 165,3  
+ -
+ 2 000,0
+ 4 000,0
+ 6 000,0
+ 8 000,0
+ 10 000,0
+ 12 000,0
+DGI
+Hors Pétroliers Producteurs
+(en milliards de FC)
+PREV. LIN. 6 MOIS REAL. FIN JUIN
+
+===== PAGE 20 =====
+    
+ 19 
+ 
+N° NATURE DES RECETTES 
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE PREVISIONS 
+LINEAIRES 6 MOIS 
+REALISATIONS A 
+FIN JUIN 
+TAUX 
+REAL 
+  
+PEEEPE (Prélèvement Exceptionnel à 
+charge des Entreprises Employant un 
+Personnel Expatrié) 
+565 934 958 072 282 967 479 036 68 277 878 854 24,1 
+  
+PSPPNR (Prélèvement sur les 
+Sommes payées aux Prestataires de 
+Services Non-Résidents)   
+301 160 455 180 150 580 227 590 79 469 168 126 52,8 
+  
+PSRCMVPNR (Prélèvement sur les 
+Revenus des Capitaux Mobiliers 
+versés à des Personnes Non 
+Résidentes 
+162 348 380 883 81 174 190 442 84 799 440 497 104,5 
+ III IMPÖTS SUR LES SOCIETES ET 
+AUTRES REVENUS DES SOCIETES 4 903 064 506 864 2 451 532 253 432 968 608 757 829 39,5 
+  
+IS des Grandes et Moyennes 
+entreprises non pétrolières de 
+production 
+4 432 711 215 528 2 216 355 607 764 343 782 476 746 15,5 
+ Impôt Spécial sur les profits 
+Excédentaires (ISPE)  470 353 291 337 235 176 645 668 624 826 281 083 265,7 
+IV IMPÖTS ET TAXES SUR LES 
+BIENS ET SERVICES 6 355 259 685 379 3 177 629 842 689 1 901 257 374 760 59,8 
+  Taxe sur la Valeur Ajoutée 6 355 259 685 379 3 177 629 842 689 1 901 257 374 760 59,8 
+V AUTRES RECETTES 564 237 778 702 282 118 889 351 160 219 792 786 56,8 
+  Immatriculations des véhicules 5 151 657 875 2 575 828 938 1 759 827 442 68,3 
+. Vente des imprimés 862 839 250 431 419 625 998 014 465 231,3 
+  Amendes et pénalités 558 223 281 577 279 111 640 788 157 461 950 879 56,4 
+ TOTAL (I+II+III+IV+V) 16 390 926 476 034 8 195 463 238 017 3 987 405 693 302 48,7 
+ 
+RECETTES DES IMPOTS 
+CEDULAIRES/REVENU 2025 ET 
+RESIDUELLES 
+3 460 365 604 378 1 730 182 802 189 4 177 941 816 293 241,5 
+ IMPOTS SUR LES 
+REMUNERATIONS 569 404 997 152 284 702 498 576 659 543 856 807 231,7 
+ 
+IMPÖTS SUR LES BENEFICES ET 
+PROFITS ET SUR LES REVENUS 
+DES CAPITAUX MOBILIERS 
+2 890 960 607 226 1 445 480 303 613 3 518 397 959 485 243,4 
+TOTAL GENERAL 19 851 292 080 412 9 925 646 040 206 8 165 347 509 595 82,3 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+Il s’observe une régression dans l’appréciation des performances des recettes des 
+impôts, principalement expliquée par le fait que les attentes des réalisations au titre 
+d’impôts sur les biens et services (TVA) accusent un écart considérable par rapport 
+aux recettes réelles. Cette situation s’explique par les difficultés rencontrées dans 
+
+===== PAGE 21 =====
+    
+ 20 
+ 
+l’implémentation de la facture normalisée, certes opérationnelle. Aussi convient-il de 
+relever l’impact négatif de l’appréciation brusque du franc congolais enregistrée en 
+fin d’année 2025. 
+c. Recettes non fiscales 
+Les recettes non fiscales, hors pétroliers producteurs, encadrées par la DGRAD 
+réalisées à fin juin 2026 se situent à 2.509,8 milliards de FC contre les prévisions 
+linéaires de 2.547,5 milliards de FC, soit un taux de réalisation de 98,5 %. Les 
+autres recettes non fiscales mobilisées au cours de la période sous examen se 
+chiffrent à 40,0 milliards des CDF, ramenant le total des recettes non fiscales à 
+2.549,9 milliards de FC. 
+Les détails y relatifs sont repris dans le tableau 6 ci-dessous. 
+Tableau 6 : Recettes de la DGRAD hors pétroliers producteurs à fin juin 
+2026  
+N° MINISTERES ET SERVICES  
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE PREVISIONS 
+LINEAIRES 6  MOIS 
+REALISATIONS A 
+FIN JUIN 
+TAUX  
+REAL  
+I. RECETTES ADMINISTRATIVES 1 640 336 709 946 820 168 354 973 599 476 842 877 73,1 
+22 AFFAIRES ETRANGERES 54 330 159 780    27 165 079 890    8 706 076 453    32,0 
+25.a INTÉRIEUR ET SECURITE 5 564 919 616 2 617 378 007    840 969 027    32,1 
+25.b INTÉRIEUR / RELATION AVEC LES PARTIS 
+POLITIQUES 995 950 800 497 975 400 366 123 455 73,5 
+29 ECONOMIE NATIONALE 12 195 880 157 6 097 940 079 930 078 543 15,3 
+30 FINANCES 47 222 398 548 23 611 199 274 19 326 881 617 81,9 
+31 BUDGET 1 872 196 008 936 098 004 415 562 470 44,4 
+32 PLAN 118 739 314 59 369 657  33 758 048 56,9 
+37 SANTE PUBLIQUE 414 173 085 183 207 086 542 592 162 655 657 228 78,5 
+40 ENSEIGNEMENT SUPERIEUR ET 
+UNIVERSITAIRE  16 208 392 046 8 104 196 023 1 381 413 706 17,0 
+41 RECHERCHE SCIENTIFIQUE ET 
+INNOVATION TECHNOLOGIQUE 12 795 196 6 397 598 13 521 050 211,3 
+42 INFRASTRUCTURES ET TRAVAUX PUBLICS 3 471 461 526 1 735 730 763 1 055 265 639 60,8 
+44 AGRICULTURE 53 553 346 736 26 776 673 368 13 475 961 892 50,3 
+46 INDUSTRIE 45 161 940 861 22 580 970 431 11 693 895 517 51,8 
+47 COMMERCE EXTERIEUR 112 294 530 904 56 147 265 452 45 019 578 330 80,2 
+50 RESSOURCES HYDRAULIQUES ET 
+ELECTRICITE 44 815 306 993 22 407 653 496 28 631 957 922 127,8 
+51 TRANSPORTS ET VOIES DE 
+COMMUNICATION 111 834 877 704 55 917 438 852 18 193 393 485 32,5 
+52 AUTORITE DE REGULATION DES PTT 152 719 728 158 76 359 864 079 95 802 755 679 125,5 
+52 
+POSTES, TÉLÉPHONES ET NOUVELLES 
+TECHNOLOGIES DE L'INFORMATION ET DE 
+LA COMMUNICATION 
+401 247 063 772 200 623 531 886 126 027 741 873 62,8 
+53 COMMUNICATION ET MEDIAS 1 974 396 648 987 198 324 618 195 908 62,6 
+57 TOURISME 5 282 823 943 2 641 411 972 800 866 171 30,3 
+58 CULTURE ET ARTS 5 160 959 050 2 580 479 525 1 187 253 369 46,0 
+60  SPORTS ET LOISIRS 2 961 596 093 1 480 798 046 1 674 822 248 113,1 
+62 EMPLOI ET TRAVAIL  88 295 022 934 44 147 511 467 37 413 808 666 84,7 
+63 PREVOYANCE SOCIALE 1 172 202 654 586 101 327 66 829 247 11,4 
+
+===== PAGE 22 =====
+    
+ 21 
+ 
+N° MINISTERES ET SERVICES  
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE PREVISIONS 
+LINEAIRES 6  MOIS 
+REALISATIONS A 
+FIN JUIN 
+TAUX  
+REAL  
+64 AFFAIRES SOCIALES - - 22 375 496  
+82 PECHE ET ELEVAGE 7 151 433 523 3 575 716 761 1 872 149 001 52,4 
+86 DIRECTION GÉNÉRALE DE MIGRATION 
+(DGM) 50 422 478 125 25 211 239 063 21 249 950 836 84,3 
+90 ENTREPREUNARIAT, PETITES ET 
+MOYENNES ENTREPRISES 453 187 276 226 593 638 0 0 
+II. RECETTES JUDICIAIRES 179 232 825 287 89 616 412 643 36 872 496 192 41,1 
+15 CHANCELLERIE DES ORDRES NATIONAUX 558 262 682 279 131 341 793 868 289 284,4 
+34 JUSTICE, GARDE DES SCEAUX ET DROITS 
+HUMAINS 25 734 402 410 12 867 201 205 1 863 107 403 14,5 
+85 POLICE NATIONALE 114 369 860 195 57 184 930 097 22 632 988 281 39,6 
+87 COURS, TRIBUNAUX ET PARQUETS 38 570 300 000 19 285 150 000 11 582 532 219 60,1 
+III. RECETTES DOMANIALES 2 852 142 295 690 1 426 071 147 845 1 349 829 122 725 94,7 
+27 DEFENSE NATIONALE 7 308 756 000 3 654 378 000 1 559 316 406 42,7 
+43 URBANISME ET HABITAT 38 196 349 745 19 098 174 873 10 941 216 931 57,3 
+48 MINES  2 146 303 924 495 1 073 151 962 248 953 362 831 063 88,8 
+49 HYDROCARBURES 40 273 527 545 20 136 763 773 25 843 311 982 128,3 
+55 AFFAIRES FONCIÈRES 130 530 876 885 65 265 438 442 49 426 508 946 75,7 
+56 ENVIRONNEMENT ET DEVELOPPEMENT 
+DURABLE 489 528 861 020 244 764 430 510 308 695 937 397 126,1 
+IV. RECETTES DE PARTICIPATIONS 423 278 749 747 211 639 374 873 523 672 572 680    247,4 
+74 PORTEFEUILLE 423 278 749 747 211 639 374 873 523 672 572 680    247,4 
+TOTAL DGRAD Hors Pétroliers 5 094 990 580 669 2 547 495 290 335 2 509 851 034 473    98,5 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+Graphique 4 : Recettes de la DGRAD hors pétroliers producteurs à fin juin 
+2026  
+ 
+ 
+  Source : Canevas des recettes, DGPPB, Juin 2026 
+ 
+Le niveau de réalisations des recettes non fiscales à fin juin 2026 s’explique par les 
+facteurs ci-après :  
+ 
+Recettes
+Adm.
+Recettes
+Judic.
+Recettes
+Dom.
+Recettes de
+Particip.
+Total DGRAD
+/ HPP
+PREV. LIN. 6 MOIS 820,2 89,6 1 426,1 211,6 2 547,5
+REAL. FIN JUIN 599,5 36,9 1 349,8 523,7 2 509,9
+820,2  
+89,6  
+1 426,1  
+211,6  
+2 547,5  
+599,5  
+36,9  
+1 349,8  
+523,7  
+2 509,9  
+ -
+  500,0
+ 1 000,0
+ 1 500,0
+ 2 000,0
+ 2 500,0
+ 3 000,0
+DGRAD Hors Pétroliers Producteurs
+(en milliards de FC)
+PREV. LIN. 6 MOIS REAL. FIN JUIN
+
+===== PAGE 23 =====
+    
+ 22 
+ 
+- le paiement au mois de juin, de la redevance minière par les opérateurs du 
+secteur n’ayant pas utilisé leurs quotas d’exportation de cobalt alloués pour la 
+période du 1er janvier au 30 juin 2026, à la suite du communiqué n°2026/003 
+de l’Autorité de Régulation et de Contrôle des Substances Minérales 
+Stratégiques (ARECOMS) ; 
+- le paiement des dividendes par les sociétés minières d’exploitation ; 
+- les échéances de paiement des droits, taxes et redevances de certains 
+secteurs ; 
+- le paiement par TFM de 225.571.090.000,00 FC, au titre de quotité de      
+25 % de pas de porte et Royalties ou Prime de cession et redevance 
+supplémentaire dont bénéficient les entreprises du Portefeuille de l’Etat ; 
+- le résultat des missions de contrôle mixte diligentées en 2025 ; 
+Aussi convient -il de relever quelques difficultés rencontrées par la DGRAD dans la 
+mobilisation des recettes, notamment :  
+- la création des Fonds Spéciaux sous -forme d’Etablissements publics 
+bénéficiant des quotités des recettes non fiscales ; 
+-  le retard enregistré dans la configuration dans la plateforme SYDONIA, des 
+arrêtés interministériels de la Santé Publique, Agriculture, Pêche et Elevage.        
+d. Recettes des pétroliers producteurs 
+Les recettes des pétroliers producteurs ont été mobilisées à hauteur de 169,7 
+milliards de FC à fin juin, contre les prévisions linéaires de 314,2 milliards de 
+FC, soit un taux de réalisation de 54,0%. 
+Les réalisations des recettes des pétroliers producteurs sont présentées par 
+Administration Financière dans le tableau 7. 
+Tableau 7 : Recettes des pétroliers producteurs à fin juin 2026 
+Code 
+- At 
+CODE 
+NATURE DE RECETTES 
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE 
+PREVISIONS 
+LINEAIRES 6 
+MOIS 
+REALISATIONS 
+A FIN JUIN 
+TAUX 
+REAL 
+I DGI 248 707 919 588 124 353 959 794 65 077 347 139 52,3 
+ Pétroliers / Régime IS 186 151 232 667 93 075 616 333 29 604 578 507 31,8 
+ Pétroliers / Impôts cédulaires (recettes résiduelles) 62 556 686 922 31 278 343 461 35 472 768 631 133,4 
+
+===== PAGE 24 =====
+    
+ 23 
+ 
+Code 
+- At 
+CODE 
+NATURE DE RECETTES 
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE 
+PREVISIONS 
+LINEAIRES 6 
+MOIS 
+REALISATIONS 
+A FIN JUIN 
+TAUX 
+REAL 
+II. DGRAD 379 655 755 882 189 827 877 941 104 625 207 
+180 55,1 
+a. Hydrocarbures 263 689 644 644 131 844 822 322 85 058 103 690 64,5 
+ Loyers 263 689 644 644 131 844 822 322 85 058 103 690 64,5 
+ Marge distribuable 184 793 973 989 92 396 986 995 65 007 619 468 70,4 
+ Royalties des sociétés pétrolières (PERENCOREP) 78 895 670 655 39 447 835 328 20 050 484 222 50,8 
+b. Portefeuille 115 966 111 238 57 983 055 619 19 567 103 490 33,7 
+ Dividendes des Pétroliers producteurs 115 966 111 238 57 983 055 619 19 567 103 490 33,7 
+ Dividendes On shore 40 986 858 633 20 493 429 317  0,0 
+ Participations Off shore 74 979 252 605 37 489 626 303 19 567 103 490 52,2 
+Pétroliers producteurs 628 363 675 470 314 181 837 735 169 702 554 
+319 54,0 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+Graphique 5 : Recettes des pétroliers producteurs à fin juin 2026 
+ 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+Ces réalisations comprennent notamment les recettes relatives à l’Impôt sur le 
+Bénéfice et Profits (IBP) perçu par la Direction Générale des Impôts à hauteur de 
+65,1 milliards de FC  et la part des recettes non fiscales de l’ordre de 104,6 
+milliards de FC , constituées de la marge distribuable de 65,0 milliards de FC , 
+des royalties de 20,1 milliards FC et des participations off-shore de 19,6 milliards 
+FC.  
+DGI DGRAD TOTAL PP
+PREV. LIN. 6 MOIS 124,4 189,8 314,2
+REAL. FIN JUIN 65,1 104,6 169,7
+124,4  
+189,8  
+314,2  
+65,1  
+104,6  
+169,7  
+ -
+  50,0
+  100,0
+  150,0
+  200,0
+  250,0
+  300,0
+  350,0
+Pétroliers Producteurs
+(en milliards de FC)
+PREV. LIN. 6 MOIS REAL. FIN JUIN
+
+===== PAGE 25 =====
+    
+ 24 
+ 
+Cette contreperformance est due essentiellement à la chute du cours du baril brent 
+sur le marché international, à la baisse de la production de pétrole brut liée à 
+l’épuisement des gisements ainsi qu’à la hausse des charges d’exploitation 
+corollairement à cette diminution de la production.  
+e. Recettes exceptionnelles 
+Les recettes exceptionnelles, constituées principalement des obligations du trésor, 
+ont été mobilisées à hauteur de 1.281,4 milliards de FC , contre une prévision 
+linéaire de 1.129,7 milliards de FC, soit 113,4% de réalisation. 
+Graphique 6 : Recettes Exceptionnelles à fin juin 2026 
+ 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+f. Fonds de concours pour la guerre 
+Les recettes de fonds de concours pour la guerre, dont les prévisions étaient nulles 
+pour l’exercice 2026, ont été mobilisées, au premier semestre 2026, à hauteur de 12,9 
+milliards de FC. 
+2.1.1.2. Recettes extérieures  
+Le niveau des décaissements des bailleurs enregistrés à fin juin 2026 au titre des 
+recettes extérieures se chiffre à 5.703,2 milliards de FC  contre les prévisions 
+linéaires de 4.171,1 milliards de FC, soit un taux de réalisation de 136,7%. Il se 
+rapporte d’une part, aux recettes d’appuis budgétaires et d’autre part, aux r ecettes 
+de financement des investissements.  
+ 
+ 
+ 
+ 
+PREV. LIN. 6 MOIS REAL. FIN JUIN
+Recettes Exeptionnelles 1 129,7 1 281,4
+1 129,7  
+1 281,4  
+ 1 050,0
+ 1 100,0
+ 1 150,0
+ 1 200,0
+ 1 250,0
+ 1 300,0
+Recettes Exceptionnelles
+(en milliards de FC)
+
+===== PAGE 26 =====
+    
+ 25 
+ 
+ 
+Graphique 7 : Recettes extérieures à fin juin  
+ 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+Ces décaissements sont repris dans le tableau 10 ci-dessous. 
+Tableau 8 : Recettes Extérieures à fin juin 2026 
+NATURE DES RECETTES 
+ LOI DE FINANCES RECTIFICATIVE 2026  
+ VOTE  
+ PREVISIONS 
+LINEAIRES 6 MOIS  
+ REALISATIONS A 
+FIN JUIN  TX REAL 
+RECETTES EXTERIEURES    8 342 189 743 606      4 171 094 871 803      5 703 182 454 109   136,7 
+RECETTES EXTERIEURES D'APPUI 
+BUDGETAIRE 
+   2 762 406 885 671      1 381 203 442 836      1 203 843 510 815   87,2 
+Emprunt programme    2 558 234 512 390      1 279 117 256 195      1 100 046 510 815   86,0 
+Banque Mondiale       469 079 412 390         234 539 706 195                                     
+-     0,0 
+FMI (FEC)       581 000 000 000         290 500 000 000         814 896 821 940   280,5 
+FMI (RST)       605 155 100 000         302 577 550 000                                     
+-     0,0 
+FRD       903 000 000 000         451 500 000 000         285 149 688 875   63,2 
+Dons budgétaires       204 172 373 281         102 086 186 641         103 797 000 000   101,7 
+Banque Mondiale       204 172 373 281         102 086 186 641         103 797 000 000   101,7 
+RECETTES EXTERIEURES DE FINANCEMENT 
+DES INVESTISSEMENTS 5 579 782 857 935 2 789 891 428 968 4 499 338 943 294 161,3 
+Dons projets    1 718 850 258 921         859 425 129 461      2 138 205 056 492   248,8 
+Banque Mondiale    1 152 331 500 046         576 165 750 023      1 529 800 604 725   265,5 
+Recettes d'Appui
+Budgétaire
+Recettes de
+Financement des
+Investissements
+Total Recettes
+Extérieurs
+PREV. LIN. 6 MOIS 1 381,2 2 789,9 4 171,1
+REAL. FIN JUIN 1 203,8 4 499,3 5 703,1
+1 381,2  
+2 789,9  
+4 171,1  
+1 203,8  
+4 499,3  
+5 703,1  
+ -
+ 1 000,0
+ 2 000,0
+ 3 000,0
+ 4 000,0
+ 5 000,0
+ 6 000,0
+Recettes Extérieures 
+(en milliards de FC)
+PREV. LIN. 6 MOIS REAL. FIN JUIN
+
+===== PAGE 27 =====
+    
+ 26 
+ 
+NATURE DES RECETTES 
+ LOI DE FINANCES RECTIFICATIVE 2026  
+ VOTE  
+ PREVISIONS 
+LINEAIRES 6 MOIS  
+ REALISATIONS A 
+FIN JUIN  TX REAL 
+Banque Africaine de Développement       131 970 294 145           65 985 147 073           63 412 390 000   96,1 
+Union Européenne       400 565 363 950         200 282 681 975         497 935 130 926   248,6 
+France                                     
+-             21 439 545 760    
+GAVI         33 983 100 780           16 991 550 390           17 123 434 421   100,8 
+Fonds International pour le Développement 
+Agricole (FIDA)                                     
+-                8 493 950 660    
+Emprunts projets    2 356 516 766 870      1 178 258 383 435      2 045 356 008 136   173,6 
+Banque Mondiale    1 700 950 700 593         850 475 350 297      1 622 440 390 160   190,8 
+Banque Africaine de Développement       409 550 441 392         204 775 220 696         155 384 040 398   75,9 
+Inde                                     
+-                1 043 374 128    
+Organisation des Pays Exportateurs du Pétrole                                     
+-                6 256 771 457    
+OFID 
+                                  
+-     
+                                  
+-             14 571 002 482    
+BADEA       100 270 040 760           50 135 020 380                                     
+-     0,0 
+Chine       145 745 584 125           72 872 792 063                                     
+-     0,0 
+AFREXIMBANK           124 391 987 668    
+EXIMBANK OF INDIA                2 396 951 015    
+GEMCORP           118 871 490 828    
+Eurobond    1 504 415 832 144         752 207 916 072         315 777 878 666   42,0 
+TOTAL RECETTES EXTERIEURES    8 342 189 743 606      4 171 094 871 803      5 703 182 454 109   136,7 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+Les recettes d’appuis budgétaires ont été décaissées à hauteur de 1.203,8 milliards 
+de FC au titre de : 
+- Emprunts-programmes : 1.100,0 milliards de FC financés par le FMI ; 
+- Dons budgétaires : 103,8 milliards de FC financés par la Banque Mondiale. 
+Quant aux recettes extérieures de financement des investissements, elles s’élèvent, à 
+fin juin 2026, à 4.499,3 milliards de FC et sont constituées de : 
+- Dons projets : 2.138,2 milliards de FC financés par : 
+• Banque Mondiale : 1.529,8 milliards de FC ; 
+• Banque Africaine de Développement (BAD) : 63,4 milliards de FC ; 
+• Union Européenne : 497,9 milliards de FC ; 
+• France : 21,4 milliards de FC ; 
+• FIDA : 8,5 milliards de FC ; 
+• GAVI : 17,1 milliards de FC. 
+
+===== PAGE 28 =====
+    
+ 27 
+ 
+- Emprunts projets : 2.045,3 milliards de FC et répartis comme suit :  
+• Banque Mondiale : 1.622,4 milliards de FC ; 
+• Banque Africaine de Développement (BAD) : 155,4 milliards de FC ; 
+• Inde : 1,0 milliards de FC ; 
+• Organisation des pays producteurs du pétrole : 6,3 milliards de FC ; 
+• AfreximBank : 124,4 milliards de FC ; 
+• EximBank of India : 2,4 milliards de FC ; 
+• Gemcorp : 118, 9 milliards de FC. 
+- Eurobond : 315,8 milliards de FC. 
+2.1.2. Recettes des Budgets annexes 
+Les recettes des budgets annexes sont constituées de recettes propres des 
+établissements publics d’enseignement supérieur et universitaire, des hôpitaux 
+généraux de référence et des budgets annexes reclassés.  
+A fin juin 2026, seules les statistiques du Centre Culturel le Zoo, un des Budgets 
+Annexes Reclassés, n’ont pu être captées, à hauteur de 0,027 milliard de FC. 
+  Tableau n°9 : Recettes des budgets annexes à fin juin 2026 
+N° NATURE DE RECETTES 
+LOI DE FINANCES RECTIFICATIVE 2026 
+VOTE PREVISIONS 
+LINEAIRES 6 MOIS 
+REALISATIONS A 
+FIN JUIN 
+TAUX 
+REAL 
+  RECETTES DES UNIVERSITES ET INSTITUTS 
+SUPERIEURES 415 620 587 585 207 810 293 792     
+  RECETTES DES HOPITAUX GENERAUX DE 
+REFERENCE 314 669 241 939 157 334 620 969     
+  BUDGETS ANNEXES RECLASSES 161 776 006 641 80 888 003 320 26 858 500  0,0  
+  TOTAL BUDGETS ANNEXES 892 065 836 164 446 032 918 082 26 858 500  0,0  
+Source : DGPPB 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 29 =====
+    
+ 28 
+ 
+ 
+Graphique 8 : Recettes des Budgets annexes à fin juin 
+ 
+Source : Canevas des recettes, DGPPB, Juin 2026 
+2.1.3. Recettes des Comptes Spéciaux 
+A fin juin 2026, les recettes de cette catégorie se chiffrent à 823,2 milliards de FC 
+contre les prévisions linéaires de 2.276,7 milliards de FC , soit un taux de 
+réalisation de 36,2%.  
+Les recettes concernant les comptes d’affection spéciale sont reprises dans le tableau 
+12 ci-après : 
+Tableau 10 : Recettes des comptes spéciaux à fin juin 2026 
+N° RUBRIQUES 
+LOI DE FINANCES RECTIFICATIVE 2025 
+VOTE PREVISIONS 
+LINEAIRES 6 MOIS 
+REALISATIONS A FIN 
+JUIN 
+Tx réal. 
+(%) 
+1 Fonds National d'Entretien Routier/Foner 447 990 157 908 223 995 078 954 257 061 625 812 114,8 
+2 Fonds de Promotion de l'Education et de 
+la formation/FPEF 15 205 515 987 7 602 757 993 1 827 930 431  24,0 
+3 Fonds de Promotion Culturelle/FPC 23 783 628 168 11 891 814 084 7 633 060 338 64,2 
+4 Fonds de Promotion de l'Industrie/FPI 1 700 056 257 399 850 028 128 699 0 0,0 
+5 Régie des Voies Aériennes (RVA)/ (Go-
+Pass) 104 755 153 638 52 377 576 819 0  0,0  
+Recettes des
+Universités et
+Instituts
+Supérieurs
+Recettes des
+Hôpitaux
+Généraux de
+Référence
+Budgets Annexes
+Reclassés
+Total Budgets
+Annexes
+PREV. LIN. 6 MOIS 207,8 157,3 80,9 446,0
+REAL. FIN JUIN 0,027 0,027
+207,8  
+157,3  
+80,9  
+446,0  
+0,027 0,027
+ -
+  50,0
+  100,0
+  150,0
+  200,0
+  250,0
+  300,0
+  350,0
+  400,0
+  450,0
+  500,0
+Budgets Annexes 
+(en milliards de FC)
+PREV. LIN. 6 MOIS REAL. FIN JUIN
+
+===== PAGE 30 =====
+    
+ 29 
+ 
+N° RUBRIQUES 
+LOI DE FINANCES RECTIFICATIVE 2025 
+VOTE PREVISIONS 
+LINEAIRES 6 MOIS 
+REALISATIONS A FIN 
+JUIN 
+Tx réal. 
+(%) 
+6 Fonds de Promotion du Tourisme/FPT 89 388 074 213 44 694 037 106 0  0,0  
+7 Fonds Forestier National / FFN 30 904 796 859 15 452 398 429 9 331 843 230  60,4 
+8 Fonds Minier des Générations 
+Futures/FOMIN 268 159 026 606 134 079 513 303 152 283 106 933  113,6 
+9 
+Fonds de Soutien et de Développement 
+des FARDC et Services de Sécurité (FSD-
+FARDC) 
+532 435 946 003 266 217 973 001 0 0,0 
+10 Fonds National de Réparation des Victimes 
+de Violences Sexuelles (FONAREV) 632 333 652 898 316 166 826 449 209 389 272 033  66,2 
+11 Fonds d'Intervention pour l'Environnement 104 488 020 901 52 244 010 451 2 011 378 940   3,8 
+12 
+Fonds d'Investissement Stratégique de la 
+République Démocratique du CONGO 
+(FIS-RDC) 
+201 921 555 575 100 960 777 788 183 661 558 290  181,9 
+13 Fonds de Développement du Service 
+Universel (FDSU) 32 011 844 487 16 005 922 243    
+ Fonds de Promotion de la Santé (FPS) 370 050 000 000 185 025 000 000   
+TOTAL 4 553 483 630 641 2 276 741 815 321 823 199 776 009 36,2 
+ 
+ 
+2.2. Dépenses exécutées  
+ 
+La mobilisation des recettes de cette période a permis au Gouvernement de la 
+République de faire face aux dépenses telles qu’exécutées pendant cette période. Ces 
+dépenses ont atteint un niveau de 20.746,5 milliards de FC  contre une prévision 
+linéaire de 25.433,2 milliards de FC, soit un taux d’exécution de 81,6%. 
+Les dépenses du Budget Général s’élèvent à 19.923,3 milliards de FC contre une 
+prévision linéaire de 22.710,4 milliards de FC, soit un taux d’exécution de 87,7%. 
+Quant aux dépenses des Budgets Annexes, elles ont été exécutées à hauteur de leur 
+niveau des recettes soit, 0,027 milliards de FC contre une prévision linéaire de 446,0 
+milliards de FC, soit un taux d’exécution de  moins d’un pourcent ; de même, celles 
+se rapportant aux Comptes Spéciaux ont été exécutées à hauteur de 823,2 milliards 
+de FC contre une prévision linéaire de 2.276,7 milliards de FC dégageant un taux 
+d’exécution de 36,2%. 
+2.1. Dépenses du Budget Général par rubrique budgétaire 
+Les détails sur l’exécution du Budget du Pouvoir Central par rubriqu e sont repris dans 
+le tableau ci-dessous : 
+ 
+
+===== PAGE 31 =====
+    
+ 30 
+ 
+ 
+Tableau n° 11 : Dépenses du Budget général par rubrique 
+N°  Étiquettes de lignes  Votés  Prév. inéaires  Exécution  T. 
+Exéc.  
+1 Bourse d'Études 31 565 000 000  15 782 500 000  -  -  
+2 Charges Communes 641 201 021 763  320 600 510 882  347 611 883 080  108,4  
+3 Contrepartie des Projets 100 000 000 000  50 000 000 000  307 400 036 930  614,8  
+4 Dépenses Exceptionnelles sur Ressources 
+Propres 8 238 350 270 228  4 119 175 135 114  649 533 395 576  15,8  
+5 Dette Publique 2 011 321 662 288  1 005 660 831 144  468 321 195 259  46,6  
+6 Financement des Réformes 135 560 527 815  67 780 263 908  150 064 608 803  221,4  
+7 Fonctionnement des Institutions 1 800 453 916 816  900 226 958 408  1 507 819 419 964  167,5  
+8 Fonctionnement des Ministères 2 679 218 606 561  1 339 609 303 281  2 908 411 406 082  217,1  
+9 Fonds de Péréquation 744 632 995 450  372 316 497 725  -  -  
+10 Frais Financiers 1 153 387 500 000  576 693 750 000  64 342 462 192  11,2  
+11 Interventions Économiques, Sociales, 
+Culturelles et Scientifiques 1 175 439 685 481  587 719 842 741  738 439 524 006  125,6  
+12 Investissements sur Eurobond 1 504 415 832 144  752 207 916 072  -  -  
+13 Invest sur Ressources Extérieures 4 075 367 025 791  2 037 683 512 896  4 499 338 943 294  220,8  
+14 Investissements sur Ressources Propres 1 972 457 425 623  986 228 712 812  777 404 222 738  78,8  
+15 Investissements sur Transfert aux Provinces Et 
+ETD 1 401 574 678 664  700 787 339 332  133 820 975 701  19,1  
+16 Investissements sur Cession Actifs miniers 
+(Contrat Chinois) 749 893 430 176  374 946 715 088  -  -  
+17 Mise à la Retraite 250 000 000 000  125 000 000 000  49 500 507 939  39,6  
+18 Rémunérations 13 654 929 632 167  6 827 464 816 084  6 369 142 766 324  93,3  
+19 Rétrocession aux Régies Financières 1 864 308 716 723  932 154 358 362  731 604 555 539  78,5  
+20 Subventions aux Organismes Auxiliaires 150 000 000 000  75 000 000 000  7 082 267 362  9,4  
+21 Subventions aux Services Déconcentrés 19 957 486 023  9 978 743 012  -  -  
+22 Transfert aux Provinces et ETD 
+(Fonctionnement) 923 344 914 358  461 672 457 179  212 881 941 908  46,1  
+23 TVA Remboursable 143 418 567 909  71 709 283 955  566 278 166  0,8  
+Total général 45 420 798 895 981  22 710 399 447 990  19 923 286 390 863  87,7  
+Source : DGPPB, ESB à fin juin 2026 
+ 
+1°. Charges communes 
+Exécutées à hauteur de 347,6 milliards de FC contre une prévision linéaire de 320,6 
+milliards de FC, les dépenses des charges communes ont connu un taux d’exécution 
+de 108,4%. 
+Les dépenses effectuées ont permis de rencontrer les besoins en frais relatifs au 
+paiement ci -après : 
+- communication et télécommunication ; 
+-  location immobilière (baux et loyers) et satellite ; 
+
+===== PAGE 32 =====
+    
+ 31 
+ 
+- alimentation en eau et énergie électrique ; 
+- prise en charge médicale des fonctionnaires et agents de l’Etat ; 
+-  frais funéraires  des fonctionnaires et agents de l’Etat. 
+2°. Dépenses exceptionnelles sur ressources propres 
+Le Gouvernement de la République a débloqué 649,5 milliards de FC pendant cette 
+période pour faire face aux dépenses exceptionnelles contre 4.119,2 milliards de FC 
+des prévisions linéaires, soit un taux d’exécution de 15,8%.  
+Les détails de ces dépenses sont ventilés dans le tableau ci-dessous : 
+Tableau n° 12 : Dépenses Exceptionnelles sur ressources propres 
+N°  Section  Nature  Projet  Votés  Prév. Linéaires  Exécution  Tx. 
+Exéc.  
+25 
+INTÉRIEUR, SECURITE, 
+DECENTRALISATION ET AFFAIRES 
+COUTUMIERES 
+1 071 333 935 923  535 666 967 962  29 015 723 780  5,4  
+ 
+ 56183 Frais secrets 
+de recherche 
+ 127 753 399 793  63 876 699 896  -  -  
+   Dépenses 
+sécuritaires 127 753 399 793  63 876 699 896  -  -  
+ 66431 Fonds spécial 
+d’intervention 
+ 943 580 536 131  471 790 268 065  29 015 723 780  6,2  
+   Dépenses 
+sécuritaires 902 869 286 131  451 434 643 065  20 795 582 583  4,6  
+   
+Opérations 
+d'identif de la 
+population 
+40 711 250 000  20 355 625 000  8 220 141 197  40,4  
+27 DEFENSE ET ANCIENS COMBATTANTS 6 430 492 674 035  3 215 246 337 017  538 016 366 148  16,7  
+ 
+ 56183 Frais secrets 
+de recherche 
+ 5 510 840 450 942  2 755 420 225 471  163 295 971 019  5,9  
+   Dépenses 
+sécuritaires 5 510 840 450 942  2 755 420 225 471  163 295 971 019  5,9  
+ 66431 Fonds spécial 
+d’intervention 
+ 919 652 223 093  459 826 111 546  374 720 395 129  81,5  
+   Dépenses 
+sécuritaires 419 652 223 092  209 826 111 546  -  -  
+   Dotation FSD-
+FARDC 500 000 000 000  250 000 000 000  374 720 395 129  149,9  
+   Dépenses 
+sécuritaires 43 966 000 000  21 983 000 000  -  -  
+70 ACTIONS HUMANITAIRES ET 
+SOLIDARITE NATIONALE 107 500 000 000  53 750 000 000  39 734 389 647  73,9  
+  66432 
+Interv 
+catastrophes 
+naturelles, cal 
+ 107 500 000 000  53 750 000 000  39 734 389 647  73,9  
+
+===== PAGE 33 =====
+    
+ 32 
+ 
+N°  Section  Nature  Projet  Votés  Prév. Linéaires  Exécution  Tx. 
+Exéc.  
+   
+Réserve pour 
+sinistres et 
+calamités 
+77 500 000 000  38 750 000 000  39 734 389 647  102,5  
+   Sans Projet 30 000 000 000  15 000 000 000  -  -  
+77 COMMISSION ELECTORALE 
+NATIONALE INDEPENDANTE 175 000 000 000  87 500 000 000  42 766 916 000  48,9  
+ 
+ 66431 Fonds spécial 
+d’intervention 
+ 175 000 000 000  87 500 000 000  42 766 916 000  48,9  
+   Opérations 
+électorales 175 000 000 000  87 500 000 000  42 766 916 000  48,9  
+Total général 8 238 350 270 228  4 119 175 135 114  649 533 395 576  15,8  
+Source : DGPPB, ESB à fin juin 2026  
+Ces dépenses ont servi notamment : 
+- au paiement des factures spécifiques pour le renforcement de la sécurité ;  
+- au paiement de la prime de guerre en faveur des militaires et policiers dans  
+les zones d’opérations ; 
+- à la couverture des besoins relatifs au recrutement et à la formation urgente 
+des militaires ;  
+- à la prise en charge des populations fuyant la guerre à l’Est du pays ; 
+3°. Dette publique et frais financiers 
+A fin juin 2026, le paiement du principal de la dette publique et des frais financiers  a 
+été effectué respectivement à hauteur de  468,3 milliards de FC  sur une prévision 
+linéaire de 1.005,0 milliards de FC, soit 46,6% et 64,3 milliards de FC sur une 
+prévision linéaire de 576,7 milliards de FC , ce qui dégage un taux d’exécution de 
+11,2%. 
+Les détails sur l’exécution de la dette publique et des frais financiers du pouvoir central 
+sont repris dans le tableau ci-dessous : 
+ Tableau n° 13 : Dépenses de la dette publique et frais financiers 
+N°  Rubrique  Article  Nature  Votés  Prév. 
+Linéaires  Exécution  Tx. Exéc.  
+1 Dette Publique 2 011 321 662 288  1 005 660 831 144  468 321 195 259  46,6  
+ 
+ 1162 DETTE EXTERIEURE 811 321 662 288  405 660 831 144  392 616 612 569  96,8  
+   11621 Club de Paris 15 361 228 785  7 680 614 392  -  -  
+   11623 Club de Kinshasa  420 049 707 569  210 024 853 784  116 743 636 690  55,6  
+   11624 Dette Multilatérale 375 910 725 935  187 955 362 967  275 872 975 879  146,8  
+ 1171 DETTE INTERIEURE 1 200 000 000 000  600 000 000 000  75 704 582 689  12,6  
+   11711 Dette Sociale 695 089 046 369  347 544 523 185  18 730 554 267  5,4  
+
+===== PAGE 34 =====
+    
+ 33 
+ 
+N°  Rubrique  Article  Nature  Votés  Prév. 
+Linéaires  Exécution  Tx. Exéc.  
+   11712 Dette commerciale 469 087 260 386  234 543 630 193  56 974 028 423  24,3  
+   11713 Dette Financière 35 823 693 245  17 911 846 623  -  -  
+2 Frais Financiers 1 153 387 500 000  576 693 750 000  64 342 462 192  11,2  
+ 
+ 2671 INTERETS SUR LA DETTE 
+INTERIEURE 788 000 000 000  394 000 000 000  -  -  
+   26711 Intérêts sur la dette 
+financière intérieure 302 589 154 140  151 294 577 070  -  -  
+   26712 Intérêts moratoires 175 118 342 180  87 559 171 090  -  -  
+   26713 Intérêts titrisés 310 292 503 680  155 146 251 840  -  -  
+ 2672 INTERETS SUR LA DETTE 
+EXTERIEURE  365 387 500 000  182 693 750 000  64 342 462 192  35,2  
+   26721 Intérêts sur Club de 
+Paris 110 703 961  55 351 981  -  -  
+   26723 Intérêts sur Club de 
+Kinshasa 128 924 098 588  64 462 049 294  11 983 550 204  18,6  
+   26724 Intérêts sur la dette 
+multilatérale 236 352 697 450  118 176 348 725  52 358 911 988  44,3  
+Total général 3 164 709 162 288  1 582 354 581 144  532 663 657 451  33,7  
+          Source : DGPPB, ESB à fin juin 2026 
+Hormis les frais financiers, la dette publique a été exécutée à hauteur de 468,3 
+milliards de FC contre les prévisions linéaires de 1.005,7 milliards de FC, soit un 
+taux d’exécution de 46,6%. Il s’agit des paiements de la dette extérieure pour un 
+montant de 392,6 milliards de FC au profit du Club de Kinshasa ( 116,7 milliards 
+de FC ) et la dette Multilatérale ( 275,9 milliards de FC)  ainsi que de la dette 
+intérieure de l’ordre de 75,7 milliards de FC composée de la dette commerciale (56,9 
+milliards de FC) et la dette sociale (18,7 milliards de FC). 
+Quant aux frais financiers, ils ont enregistré un taux d’exécution de 11,2% découlant 
+d’un import de 64,3 milliards de FC contre une prévision linéaire de 576,7 milliards 
+de FC. 
+Ces montants ont permis de payer essentiellement les frais financiers extérieur s au 
+titre des intérêts sur la dette extérieure. 
+4°. Interventions économiques, sociales, culturelles et scientifiques  
+A fin juin  2026, les interventions économiques, sociales, culturelles et scientifiques 
+renseignent une exécution de 738,4 milliards de FC contre une prévision linéaire de 
+587,7 milliards de FC, dégageant ainsi un taux d’exécution de 125,6%. 
+Ces interventions ont concerné notamment les paiements en faveur de : 
+- animateurs et supporteur , préparatifs et participation  des léopards football 
+seniors à la coupe du monde Fifa 2026 à hauteur de 85,6 milliards de FC ; 
+
+===== PAGE 35 =====
+    
+ 34 
+ 
+-  la caisse de solidarité nationale et de gestion humanitaire  pour les opérations 
+de prépositionnement de stocks stratégiques : 60,0 milliards de FC ; 
+- fonds d'inve stissement stratégique relatif à  l’opérationnalisation du fis -RDC : 
+7,4 milliards de FC ; 
+- Ministère de l'inté rieur pour désintéressement des différents prestataires 
+(sinistrés de N'djili) : 5,7 milliards de FC ; 
+- l'Assemblée Nationale relative au fonds spécial d'intervention pour un total de : 
+21,2 milliards de FC ; 
+- la Régie des Voies Fluviales relative au plan d'urge nce de grandes basses eaux 
+2026 : 3,4 milliards de FC ; 
+- la Minière de Bakwanga (MIBA) en vue de répondre à une situation sociale 
+particulièrement sensible : 19,2 milliards de FC. 
+5°. Rémunérations 
+Les rémunérations payées à fin juin se sont chiffrées à 6.369,1 milliards de FC contre 
+une prévision linéaire de 6.827,5 milliards de FC , soit un taux d’exécution de 
+93,3%. 
+Les principales actions phares du Gouvernement exécutées  au premier semestre  ont 
+permis de régulariser progressivement des cas notamment : 
+- Présidence : réajustement et déblocage des 582 Inspecteurs des finances ; 
+- Primature : prise en charge des salaires de 20membres du cabinet du Premier 
+Ministre ;  
+- Secrétariat général du gouvernement  : intégration de la paie complémentaire 
+des Emoluments des membres du Gouvernement au Cabinet ;  
+-  Education Nationale et Nouvelle Citoyenneté  : prise en compte des avantages 
+de quelques membres du Secrétariat Général ; 
+- Enseignement supérieur et universitaire  : régularisations diverses 
+d'administration au Secrétariat Général et quelques professeurs dans différents 
+établissements de l'ESU 
+- Affaires Etrangères  : intégration de la paie complémentaire du secteur 
+diplomatique en faveur de 1234 diplomates 
+- Coopération internationale, régionale et francophonie  : intégration de la paie 
+complémentaire de 1.435 agents du secteur diplomatique (la coopération 
+internationale, l'Intégration Régionale et la Francophonie). 
+ 
+
+===== PAGE 36 =====
+    
+ 35 
+ 
+6°. Investissement sur ressources propres 
+A fin juin 2026 , les fonds prévus au titre d’investissement sur ressources propres 
+renseignent une exécution de 777,4 milliards de FC contre une prévision linéaire de 
+986,2 milliards de FC , soit un taux d’exécution de 78,8% portés essentiellement 
+par les projets du Gouvernement Central. 
+Les détails relatifs aux investissements sur ressources propres sont renseignés dans le 
+tableau ci-dessous : 
+Tableau n° 14 : Exécution des Investissements sur ressources propres  à fin 
+juin 2026 
+Code  Section  Votés  Prév. 
+Linéaires  Exécution  Tx. 
+Exéc.  
+10 PRÉSIDENCE DE LA RÉPUBLIQUE 35 338 033 236  17 669 016 618  77 099 207 086  436,4  
+25 
+INTÉRIEUR, SECURITE, 
+DECENTRALISATION ET AFFAIRES 
+COUTUMIERES 
+85 280 925 847  42 640 462 924  3 996 885 810  9,4  
+27 DEFENSE ET ANCIENS COMBATTANTS 114 636 229 305  57 318 114 653  19 397 871 347  33,8  
+30 FINANCES 18 159 027 950  9 079 513 975  318 844 466  3,5  
+31 BUDGET 28 695 348 705  14 347 674 352  560 163 204  3,9  
+37 SANTE PUBLIQUE, HYGIENE ET 
+PREVOYANCE SOCIALE 115 414 913 071  57 707 456 536  19 565 864 070  33,9  
+40 
+ENSEIGNEMENT SUPÉRIEUR ET 
+UNIVERSITAIRE, RECHERCHE 
+SCIENTIFIQUE ET INNOVATION 
+21 068 023 834  10 534 011 917  75 060 836 530  712,6  
+42 INFRASTRUCTURES ET TRAVAUX 
+PUBLICS 213 951 844 021  106 975 922 011  267 464 267 438  250,0  
+50 RESSOURCES HYDRAULIQUES ET 
+ELECTRICITE 234 731 934 807  117 365 967 404  19 245 112 200  16,4  
+51 
+TRANSPORTS, VOIES DE 
+COMMUNICATION ET 
+DESENCLAVEMENT 
+292 843 505 740  146 421 752 870  294 695 170 586  201,3  
+Total général 1 972 457 425 623  986 228 712 812  777 404 222 738  78,8  
+Source : DGPPB, à fin juin 2026 
+Ces investissements ont principalement porté sur le développement et la modernisation 
+des infrastructures aéroportuaires, la construction et la réhabilitation des voiries 
+urbaines, l’aménagement des routes de desserte agricole, ainsi que sur la réalisation 
+d’infrastructures universitaires et d’autres travaux structurants. 
+À ce titre, les principaux projets financés comprennent notamment : 
+
+===== PAGE 37 =====
+    
+ 36 
+ 
+- le projet de développement et de construction de la nouvelle aérogare de 
+l’Aéroport international de N’djili, pour un montant de 213,8 milliards de FC ; 
+- le Programme d’urgence de la Ville de Kinshasa et les projets de lutte contre 
+l’érosion, notamment les projets de voirie exécutés par l’Office des Voiries et 
+Drainage (OVD), pour 211,0 milliards de FC ; 
+- le projet de construction de l’avenue Kulumba, pour 21,1 milliards de FC ; 
+- le projet de construction de douze (12) universités modernes, pour 74,8 
+milliards de FC ; 
+- le projet de construction de l’aérogare ainsi que de réhabilitation et d’extension 
+des infrastructures aéroportuaires de Lubumbashi, pour 64,2 milliards de FC. 
+7°. Investissement sur ressources extérieures 
+Les investissements sur ressources extérieures ont été exécutés à hauteur de 4.499,3 
+milliards de FC contre une prévision linéaire de 2.037,7 milliards de FC, soit un 
+taux d’exécution de 220,8%. 
+Ces décaissements ont servi au financement des projets notamment dans le secteur 
+de la  santé, de l’environnement, l’éducation nationale, des infrastructures, de 
+l’urbanisme et habitat dans le cadre des projets suivants : 
+- unis pour des paysages durables : 110,1 milliards de FC ; 
+- projet Multisectoriel de Nutrition et de Santé (PMNS): 215,5 milliards de FC ; 
+- projet de développement multisectoriel et de résilience urbaine de Kinshasa (Kin 
+Elenda, PDMRUK) : 82,3 milliards de FC ; 
+- projet du programme d'accès aux services d'eau potable et d'assainissement 
+(PASEA) phase 1 : 65 728 347 609 milliards de FC 
+- Unis pour l'Education : 36,3 milliards de FC 
+ 
+2.3. Budgets annexes 
+A fin juin 2026 , les dépenses des budgets annexes ont été exécutées globalement à 
+hauteur de 0,027 milliards de FC contre une prévision linéaire de 446,0 milliards 
+de FC.  
+2.4. Comptes spéciaux 
+Les dépenses des Comptes spéciaux ont été exécutées dans son ensemble à hauteur 
+de 823,2 milliards de FC contre une prévision linéaire de 2.276,7 milliards de FC, 
+soit un taux d’exécution de 36,2%. 
+ 
+ 
+ 
+
+===== PAGE 38 =====
+    
+ 37 
+ 
+2.5. PROGRAMME DE DEVELOPPEMENT LOCAL DE 145 (PDL-145T) 
+Le PDL-145T s’inscrit dans la politique nationale de développement territorial visant à 
+transformer profondément les cadres de vie ruraux et à promouvoir un aménagement 
+équilibré du territoire. Ce programme ambitionne de : 
+- Réduire significativement les disparités territoriales en assurant un accès 
+équitable aux infrastructures sociales de base. 
+- Favoriser le développement local inclusif et participer activement à la lutte contre 
+la pauvreté. 
+- Renforcer la gouvernance locale en dotant les territoires de moyens adaptés 
+pour mieux répondre aux besoins des populations. 
+Durée et financement 
+Initialement prévu pour une durée de trois ans, ce programme est en cours d’exécution 
+avec un financement mixte, combinant des ressources internes et externes. Le coût 
+global s’élève à environ 1,6 milliard de dollars américains. 
+Le tableau ci-dessous présente succinctement l’état d'avancement du premier volet du 
+PDL-145T. 
+Tableau 15 : Exécution physique du PDL-145T à fin juillet 2026 
+OUVRAGES  BCeCo PNUD CFEF TOTAL 
+Total ouvrages prévus 731 764 635 2130 
+Ecoles 414 424 360 1198 
+Centres de santé 269 286 232 787 
+Bâtiments administratifs 48 54 43 145 
+Total  ouvrages non démarrés (T1) 14 23 0 37 
+Ecoles 7 13 0 20 
+Centres de santé 5 10 0 15 
+Bâtiments administratifs 2 0 0 2 
+Total ouvrages démarrés mais ajournés (T2) 22 1 23 46 
+Ecoles 12 0 8 20 
+Centres de santé 9 0 15 24 
+Bâtiments administratifs 1 1 0 2 
+Total  ouvrages démarrés (en cours, en arrêt et achevés) 
+(T3) 694 740 612 2046 
+Ecoles 395 411 352 1158 
+Centres de santé 255 276 217 748 
+Bâtiments administratifs 45 53 43 141 
+Total ouvrages restants (T4) 36 24 23 83 
+Ecoles 19 13 8 40 
+Centres de santé 14 10 15 39 
+
+===== PAGE 39 =====
+    
+ 38 
+ 
+OUVRAGES  BCeCo PNUD CFEF TOTAL 
+Bâtiments administratifs 3 1 0 4 
+Total ouvrages achevés (T5) 370 341 387 1098 
+Ecoles 220 196 233 649 
+Centres de santé 133 121 117 371 
+Bâtiments administratifs 17 24 37 78 
+Source : Comité Technique de Suivi du PDL 145-T 
+Dans la première composante du programme, le Gouvernement a lancé la construction 
+des écoles, des centres de santé et des bâtiments administratifs des territoires ainsi 
+que les études de faisabilité relative à la réhabilitation des routes. 
+A ce jour, comme l’indique le tableau ci-dessus, nous avons 1.098 ouvrages achevés 
+dont 649 écoles, 371 centres de santé et 78 bâtiments administratifs. 
+Exécution physique du volet 1 
+A ce jour, les montants effectivement reçus par le programme sont les suivants : 
+- 523 millions USD en 2022 dont 511 millions des fonds DTS et 12 millions du 
+Trésor Public ; 
+- 59,7 millions USD en 2024 (remboursement de DTS) ; 
+- 25,63 millions USD en 2025 (remboursement de DTS) ; 
+Gap de 26 millions USD 
+Le Gouvernement promet de décaisser, dans les jours qui suivent, un montant de 
+150.000.000 USD afin de prendre en charge +/- 3700 Km de routes de desserte 
+agricole. 
+Enjeux et perspectives 
+Pour assurer la bonne réalisation des objectifs du PDL-145T, le Gouvernement entend: 
+- accélérer la mobilisation des fonds restants, notamment par une meilleure 
+coordination entre le gouvernement et le FMI ; 
+- renforcer les capacités des structures locales responsables de la mise en œuvre 
+afin de garantir la qualité et la durabilité des infrastructures ; 
+- intégrer les populations locales dans le processus décisionnel  pour assurer que 
+les réponses apportées correspondent bien à leurs besoins réels ; 
+- mettre en place un système de suivi-évaluation efficace visant à mesurer l’impact 
+du programme et ajuster les actions si nécessaire. 
+ 
+  
+
+===== PAGE 40 =====
+    
+ 39 
+ 
+III. ANALYSE DU SOLDE BUDGETAIRE 
+A fin juin 2026, il se dégage un solde global déficitaire de 2.885,8 milliards de FC. 
+Ce résultat correspond à la différence entre les recettes courantes, augmentées des 
+dons budgétaires et des dons projets, soit 16.897,4 milliards de FC, et les dépenses 
+du Budget général, dédui tes de la dette intérieure et des frais financiers extérieurs, 
+établies à 19.783,2 milliards de FC. 
+En revanche, le solde budgétaire intérieur ressort déficitaire de 627,4 milliards de 
+FC. Il résulte de l’écart entre les recettes courantes, après déduction des rece ttes 
+extérieures tirées d’ Eurobonds, soit 14.339,6 milliards de FC , et les dépenses du 
+Budget général nettes de la dette extérieure, des frais financiers extérieurs, des 
+investissements sur ressources extérieures et des dépenses exceptionnelles 
+extérieures, chiffrées à 14.967,0 milliards de FC . Ce résultat s’explique par la 
+différence de périmètre entre les deux soldes : l’apport des dons améliore le solde 
+global, tandis que les opérations intérieures demeurent déficitaires. 
+Le déficit ainsi observé a été  couvert essentiellement par des emprunts intérieurs, 
+notamment à travers les émissions nettes de  bons et obligations du Trésor  sur le 
+marché domestique. La stratégie de financement, conforme aux pratiques usuelles de 
+gestion de  trésorerie de l’État, maintient la dépendance aux ressources internes et 
+exerce une certaine pression sur le marché financier local. 
+Il convient toutefois de relever que le  Gouvernement n’a pas dépassé les limites du 
+critère de déficit de 2.000,0 milliards de FC, tel que défini dans le Mémorandum des 
+Politiques Économiques et Financières (MPEF), conclu dans le cadre du programme 
+appuyé par le FMI. Ainsi, le respect des engag ements traduit la discipline budgétaire 
+relative et la volonté afin de maintenir la crédibilité du pays vis-à-vis de ses partenaires 
+financiers.  
+
+===== PAGE 41 =====
+    
+ 40 
+ 
+IV. ANALYSE DE L’IMPACT DES RISQUES BUDGETAIRES SUR L’EXECUTION 
+DU BUDGET 
+L’exécution du budget au premier semestre 2026  a été perturbée du fait de la 
+survenance de certains événements aléatoires qualifiés des risques budgétaires, 
+abordés en détail dans le Document n°8 intitulé « Déclaration sur les Risques 
+Budgétaires 2025-2027 » (DRB en sigle). 
+Concrètement, les risques budgétaires qui ont impacté de manière significative 
+l’exécution du budget de l’exercice 2026  sont notamment les risques sécuritaires, 
+sanitaires et ceux liés aux catastrophes naturelles au niveau national. 
+S’agissant des risques sécuritaires, il convient de noter que l’agression de l’armée 
+Rwandaise, matérialisée par l’occupation de plusieurs grandes villes du pays, telles que 
+Goma et Bukavu depuis le mois janvier 2025, a exercé une forte pression sur les 
+dépenses exceptionnelles sur ressources propres liées aux opérations sécuritaires. 
+Pour la période sous étude, cette agression a entraîné des manques à gagner en termes 
+de recettes fiscales et non fiscales  à recouvrer dans la partie Est du Congo . En effet, 
+les recettes non recouvrées dans cette partie du pays continuent à impacter le niveau 
+de mobilisation de celles-ci dans toutes les administrations financières.  
+  
+
+===== PAGE 42 =====
+    
+ 41 
+ 
+CONCLUSION ET RECOMMANDATIONS  
+Au premier semestre, l ’exécution de la Lo i de Finances 2026  s’est déroulée dans un 
+contexte économique, sécuritaire et social particulièrement contraignant, marqué par 
+la persistance du conflit dans l’Est du pays, les ajustements macroéconomiques, et les 
+impératifs de financement des priorités gouvernementales. 
+Malgré ces défis, les résultats enregistrés traduisent une résilience notable du cadre 
+budgétaire. Les recettes propres mobilisées inférieures aux prévisions, avec le recours 
+aux ressources additionnelles, ont permis de couvrir l’essentiel des dépenses engagées, 
+avec un solde budgétaire intérieur déficitaire de 627,4 milliards de FC. 
+La surconsommation observée dans les dépenses de fonctionnement, notamment 
+celles des institutions et ministères, appelle à un renforcement de la discipline 
+budgétaire. Par ailleurs , le retard pris dans la mise en œuvre de certains  projets 
+structurants souligne  la nécessité d’améliorer la coordination avec les partenaires 
+techniques et financiers. 
+Dans cette perspective, le Gouvernement entend : 
+- renforcer la mobilisation des recettes intérieures par  l’élargissement de l’assiette 
+fiscale et l’amélioration du processus de recouvrement ; 
+- assurer une meilleure planification et priorisation des dépenses, en particulier celles 
+à fort impact socio-économique ; 
+- accélérer la mise en œuvre des projets d’investissement, notamment ceux inscrits 
+dans le Programme de Développement Local des 145 Territoires (PDL-145T) ; 
+- poursuive les réformes structurelles, en vue de renforcer la soutenabilité des 
+finances publiques et de favoriser une croissance inclusive. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+===== PAGE 43 =====
+    
+ 42 
+ 
+V. PERSPECTIVES A FIN DECEMBRE 2026 
+Les perspectives à fin décembre sont le reflet de la Loi de Finances rectifié e qui 
+présente un budget en  équilibre, en recettes et en dépenses, à hauteur de 50.866,3 
+milliards de FC équivalant à 22,2 milliards de USD, dégageant une régression de 
+6,4% par rapport au budget initial chiffré à 54.335,8 milliards de FC . Les 
+perspectives à fin décembre se présentent comme suit : 
+5.1 Perspectives d’exécution des recettes 
+Au regard du niveau de mobilisation des recettes enregistrées au premier semestre, 
+les perspectives au second semestre 2026 reposent notamment sur le renforcement 
+des actions de recouvrement, l’amélioration du rendement des administrations 
+financières et l a mise en œuvre des mesures destinées à élargir l’assiette fiscale, la 
+lutte contre la fraude et l’évasion fiscale, l’amélioration du civisme fiscal et la 
+mobilisation des recettes exceptionnelles ainsi que des ressources extérieures prévues.   
+A fin décembre, les perspectives des recettes se présentent comme suit : 
+- Budget général : 45.420,8 milliards de FC, correspondant à 19,8 milliards de 
+USD et dégageant un taux de régression de 7,2% par rapport à la prévision initiale 
+de 48.969,3 milliards de FC ; 
+- Budgets annexes : 892,1 milliards de FC équivalant à 389,6 millions de USD 
+soit un taux de régression de 7,3% de son niveau initial ; 
+- Comptes spéciaux : 4.553,5 milliards de FC équivalant à 1,9 milliard de USD, 
+soit une augmentation de 3,4% de son niveau initial. 
+Les recettes du Budget général comprennent les recettes internes de 37.078,6 
+milliards de FC équivalant à 16,2 milliards de USD et les recettes extérieures de 
+8.342,2 milliards de FC correspondant à 3,6 milliards de USD. 
+5.2 Perspectives des dépenses  
+Au regard du niveau d’exécution des dépenses enregistrées au premier semestre 2026, 
+les perspectives pour le second semestre devraient être menées vers la poursuite et le 
+cas échéant, l’accélération de l’exécution des équilibres des dépenses prioritaires tout 
+en veillant au respect des é quilibres budgétaires et de disponibilités de trésoreries. A 
+cet effet, une attention particulière devra être accordée à l’amélioration du rythme 
+d’exécution des crédits notamment en faveur des investissements publics et des 
+secteurs prioritaires, ainsi qu’à la maîtrise des dépenses de fonctionnement.  
+L’objectif sera d’assurer une meilleure adéquation entre la programmation des 
+dépenses, les engagements pris et les capacités réelles de mobilisation des ressources. 
+S’agissant des dépenses du Budget général, elles sont ventilées comme suit : 
+
+===== PAGE 44 =====
+    
+ 43 
+ 
+1. Dette publique et frais financiers : 3.164,7 milliards de FC, soit un taux 
+d’accroissement de 6,6% par rapport à leur niveau initial de 2.967,8 milliards 
+de FC ;  
+2. Rémunérations : 13.654,9 milliards de FC, soit un accroissement de 0,8%. 
+Elles représentent 30,1% des dépenses du budget général, 39,3% des recettes 
+courantes ; 
+3. Biens, matériels et prestations (fonctionnement) : 5.276,4 milliards de 
+FC, représentant 11,6% des dépenses du Budget général et une régression de 
+3,6% par rapport à leur niveau initial ; 
+4. Transferts et subventions : 4.538,1 milliards de FC, représentant 10,0% 
+des dépenses du Budget général et un accroissement de 5,8% par rapport à 
+leur niveau initial ; 
+5. Dépenses d’investissement : 10.548,3 milliards de FC, représentant 
+23,2% des dépenses du Bu dget général et une régression  de 34,1% par 
+rapport à leur niveau initial ;  
+6. Dépenses exceptionnelles : 8.238,4 milliards de FC, représentant 18,1% 
+des dépenses du Budget général avec un taux d’accroissement de 23,3% par 
+rapport à leur niveau initial. 
+ 
+ 
+ 
+ 

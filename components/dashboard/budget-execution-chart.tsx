@@ -19,7 +19,7 @@ const data = budgetExecution.map((item) => ({
   Exécution: item.execution,
 }))
 
-export function BudgetExecutionChart() {
+export function BudgetExecutionChart({ showRates = true }: { showRates?: boolean }) {
   return (
     <Card>
       <CardHeader>
@@ -30,7 +30,7 @@ export function BudgetExecutionChart() {
         <div className="mb-2 flex items-center gap-5 text-[11px]">
           <span className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-sm bg-[var(--chart-5)] opacity-40" />
-            Prévisions annuelles
+            Prévisions linéaires (6 mois)
           </span>
           <span className="flex items-center gap-1.5">
             <span className="h-2.5 w-2.5 rounded-sm bg-primary" />
@@ -76,7 +76,7 @@ export function BudgetExecutionChart() {
                     value: number
                     index: number
                   }
-                  const taux = budgetExecution[index].taux
+                  const taux = showRates ? budgetExecution[index].taux : null
                   return (
                     <text
                       x={x + width / 2}
@@ -84,7 +84,7 @@ export function BudgetExecutionChart() {
                       textAnchor="middle"
                       style={{ fontSize: 10, fontWeight: 700, fill: 'var(--foreground)' }}
                     >
-                      {value.toLocaleString('fr-FR')} ({taux})
+                      {value.toLocaleString('fr-FR')}{taux ? ` (${taux})` : ''}
                     </text>
                   )
                 }}

@@ -5,6 +5,7 @@ import { Sidebar, type NavLabel } from '@/components/dashboard/sidebar'
 import { Header } from '@/components/dashboard/header'
 import { DashboardContent } from '@/components/dashboard/dashboard-content'
 import { PageHero } from '@/components/dashboard/page-hero'
+import type { Role } from '@/lib/roles'
 
 export function DashboardShell({
   section,
@@ -13,6 +14,7 @@ export function DashboardShell({
   periodeLabel,
   exercicesDisponibles,
   provincesPubliees,
+  currentRole,
 }: {
   section: NavLabel
   exercice: number
@@ -20,6 +22,7 @@ export function DashboardShell({
   periodeLabel: string
   exercicesDisponibles: number[]
   provincesPubliees: { name: string; taux: number }[] | null
+  currentRole: Role
 }) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const isAnnualHtmlPage = section === 'Tableau HTML annuel'
@@ -47,6 +50,7 @@ export function DashboardShell({
             exercice={exercice}
             periodeLabel={periodeLabel}
             provincesPubliees={provincesPubliees}
+            currentRole={currentRole}
           />
         </main>
       </div>
