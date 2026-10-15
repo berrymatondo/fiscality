@@ -31,6 +31,7 @@ import {
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { useSession } from '@/lib/auth-client'
 import { SAISIE_HREF_BY_ROLE, saisieNavLabel, type Role } from '@/lib/roles'
@@ -96,6 +97,11 @@ function NavList({
   onSelect: (label: NavLabel) => void
   collapsed?: boolean
 }) {
+  const searchParams = useSearchParams()
+  const withCurrentFilters = (href: string) => {
+    const query = searchParams.toString()
+    return query ? `${href}?${query}` : href
+  }
   const sections = [
     { key: 'overview', label: "Vue d'ensemble", icon: LayoutDashboard, href: '/', children: [] },
     { key: 'execution', label: 'Exécution budgétaire', icon: Wallet, href: '/depenses', children: ['Recettes', 'Dépenses', 'Exécution par Ministère', 'Exécution par province', 'Investissements Publics'] },
@@ -116,8 +122,8 @@ function NavList({
         const expanded = openGroup === section.key
         const sectionActive = active === section.label || section.children.some((label) => label === active)
         return <div key={section.key} className="mb-1">
-          {direct ? <Link href={section.href} onClick={() => onSelect(section.label as NavLabel)} title={collapsed ? section.label : undefined} className={cn('flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold transition-colors',collapsed&&'justify-center px-0',sectionActive?'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm':'text-sidebar-foreground hover:bg-sidebar-accent/60')}><Icon className="h-4 w-4 shrink-0"/>{!collapsed&&<span className="flex-1">{section.label}</span>}</Link> : <button type="button" onClick={() => setOpenGroup(expanded ? null : section.key)} className={cn('flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-[13px] font-semibold transition-colors',sectionActive?'text-sidebar-accent-foreground':'text-sidebar-foreground hover:bg-sidebar-accent/60')}><Icon className="h-4 w-4 shrink-0"/><span className="flex-1">{section.label}</span><ChevronDown className={cn('h-3.5 w-3.5 transition-transform',expanded&&'rotate-180')}/></button>}
-          {!collapsed && !direct && expanded && <div className="ml-5 mt-1 space-y-0.5 border-l border-sidebar-border pl-2">{section.children.map((childLabel) => {const item=nav.find((entry)=>entry.label===childLabel)!;const ChildIcon=item.icon;const isActive=active===item.label;return <Link key={item.label} href={item.href} onClick={()=>onSelect(item.label)} className={cn('flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium transition-colors',isActive?'bg-sidebar-accent text-sidebar-accent-foreground':'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-foreground')}><ChildIcon className="h-3.5 w-3.5 shrink-0"/><span>{item.label}</span></Link>})}</div>}
+          {direct ? <Link href={withCurrentFilters(section.href)} onClick={() => onSelect(section.label as NavLabel)} title={collapsed ? section.label : undefined} className={cn('flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold transition-colors',collapsed&&'justify-center px-0',sectionActive?'bg-sidebar-accent text-sidebar-accent-foreground shadow-sm':'text-sidebar-foreground hover:bg-sidebar-accent/60')}><Icon className="h-4 w-4 shrink-0"/>{!collapsed&&<span className="flex-1">{section.label}</span>}</Link> : <button type="button" onClick={() => setOpenGroup(expanded ? null : section.key)} className={cn('flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-[13px] font-semibold transition-colors',sectionActive?'text-sidebar-accent-foreground':'text-sidebar-foreground hover:bg-sidebar-accent/60')}><Icon className="h-4 w-4 shrink-0"/><span className="flex-1">{section.label}</span><ChevronDown className={cn('h-3.5 w-3.5 transition-transform',expanded&&'rotate-180')}/></button>}
+          {!collapsed && !direct && expanded && <div className="ml-5 mt-1 space-y-0.5 border-l border-sidebar-border pl-2">{section.children.map((childLabel) => {const item=nav.find((entry)=>entry.label===childLabel)!;const ChildIcon=item.icon;const isActive=active===item.label;return <Link key={item.label} href={withCurrentFilters(item.href)} onClick={()=>onSelect(item.label)} className={cn('flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium transition-colors',isActive?'bg-sidebar-accent text-sidebar-accent-foreground':'text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-foreground')}><ChildIcon className="h-3.5 w-3.5 shrink-0"/><span>{item.label}</span></Link>})}</div>}
         </div>
       })}
     </nav>
@@ -126,8 +132,14 @@ function NavList({
 
 function AccountNav({ collapsed }: { collapsed?: boolean }) {
   const { data: session } = useSession()
+  const searchParams = useSearchParams()
   const [configOpen, setConfigOpen] = useState(false)
   if (!session) return null
+
+  const withCurrentFilters = (href: string) => {
+    const query = searchParams.toString()
+    return query ? `${href}?${query}` : href
+  }
 
   const role = session.user.role as Role
   const isAdmin = role === 'SUPER_ADMIN' || role === 'ADMIN_DGB'
@@ -147,7 +159,7 @@ function AccountNav({ collapsed }: { collapsed?: boolean }) {
     >
       {saisieHref && (
         <Link
-          href="/cycle-de-vie"
+          href={withCurrentFilters('/cycle-de-vie')}
           title={collapsed ? 'Cycle de vie' : undefined}
           className={cn(
             'flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold text-sidebar-foreground transition-colors hover:bg-sidebar-accent/60',
@@ -160,7 +172,7 @@ function AccountNav({ collapsed }: { collapsed?: boolean }) {
       )}
       {saisieHref && (
         <Link
-          href={saisieHref}
+          href={withCurrentFilters(saisieHref)}
           title={collapsed ? saisieLabel : undefined}
           className={cn(
             'flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold text-sidebar-foreground transition-colors hover:bg-sidebar-accent/60',
@@ -173,7 +185,7 @@ function AccountNav({ collapsed }: { collapsed?: boolean }) {
       )}
       {isAdmin && (
         <Link
-          href="/admin/users"
+          href={withCurrentFilters('/admin/users')}
           title={collapsed ? 'Administration des comptes' : undefined}
           className={cn(
             'flex items-center gap-3 rounded-md px-3 py-2.5 text-[13px] font-semibold text-sidebar-foreground transition-colors hover:bg-sidebar-accent/60',
@@ -206,14 +218,14 @@ function AccountNav({ collapsed }: { collapsed?: boolean }) {
           {!collapsed && configOpen && (
             <div className="ml-5 mt-1 space-y-0.5 border-l border-sidebar-border pl-2">
               <Link
-                href="/admin/ministeres"
+                href={withCurrentFilters('/admin/ministeres')}
                 className="flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium text-muted-foreground transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
               >
                 <Landmark className="h-3.5 w-3.5 shrink-0" />
                 <span>Ministères</span>
               </Link>
               <Link
-                href="/admin/provinces"
+                href={withCurrentFilters('/admin/provinces')}
                 className="flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium text-muted-foreground transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
               >
                 <Map className="h-3.5 w-3.5 shrink-0" />
@@ -245,7 +257,7 @@ function AccountNav({ collapsed }: { collapsed?: boolean }) {
           {!collapsed && configOpen && (
             <div className="ml-5 mt-1 space-y-0.5 border-l border-sidebar-border pl-2">
               <Link
-                href="/ministere/entites"
+                href={withCurrentFilters('/ministere/entites')}
                 className="flex items-center gap-2.5 rounded-md px-3 py-2 text-[11px] font-medium text-muted-foreground transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
               >
                 <Building2 className="h-3.5 w-3.5 shrink-0" />
