@@ -176,7 +176,7 @@ export function TrackingTable() {
         </div>
       )}
 
-      <p className="text-[11px] text-muted-foreground">Source : Ministère du Budget - Rapport d'exécution du budget du pouvoir central au premier semestre 2026, tableau n° 11.</p>
+      <p className="text-[11px] text-muted-foreground">Source : Ministère du Budget - Rapport d&apos;exécution du budget du pouvoir central au premier semestre 2026, tableau n° 11.</p>
     </>
   )
 }

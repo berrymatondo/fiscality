@@ -28,6 +28,7 @@ import {
   PlfRecettes,
   PlfTableCard,
   PlfBanner,
+  PlfCreditsSections,
 } from '@/components/dashboard/plf-views'
 import { isPrevision } from '@/lib/exercices'
 import { depensesPlf2027 } from '@/lib/exercices/2027'
@@ -170,6 +171,8 @@ export function DashboardContent({
         return <PlfMacro />
       case 'Exécution par province':
         return <PlfProvinces />
+      case 'Exécution par Ministère':
+        return <PlfCreditsSections />
       case 'Dette publique':
         return (
           <>
@@ -183,7 +186,6 @@ export function DashboardContent({
           </>
         )
       case 'Trésorerie':
-      case 'Exécution par Ministère':
       case 'Suivi des réformes':
       case 'Suivi de l’exécution (ESB)':
       case 'Analyses':

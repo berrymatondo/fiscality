@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo, useState } from 'react'
 import {
   Bar,
   BarChart,
@@ -12,11 +13,17 @@ import {
   XAxis,
   YAxis,
 } from 'recharts'
-import { ArrowDownRight, ArrowUpRight, CalendarClock, FileText, HandCoins, Info, Landmark, Scale, Wallet, type LucideIcon } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, CalendarClock, FileText, HandCoins, Info, Landmark, Scale, Search, Wallet, type LucideIcon } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { DualCurrencyAmount } from '@/components/dashboard/currency'
 import { DonutCard } from '@/components/dashboard/donut-card'
 import { getExerciceInfo } from '@/lib/exercices'
+import {
+  creditsParSectionProgrammeTitre2027,
+  effectifsRemuneres2027,
+  pdlParProvinceTerritoire2027,
+  SOURCE_DOCUMENT_1_ANNEXES_2027,
+} from '@/lib/exercices/2027-annexes'
 import {
   actionsPhares2027,
   contexteInternational2027,
@@ -41,6 +48,7 @@ import { cn } from '@/lib/utils'
 const COLORS = ['var(--chart-1)', 'var(--chart-2)', 'var(--chart-3)', 'oklch(0.55 0.16 300)', 'var(--chart-4)', 'oklch(0.62 0.14 200)']
 const mrd = (fc: number | null) => (fc ?? 0) / 1e9
 const fmt = (v: number, digits = 1) => v.toLocaleString('fr-FR', { minimumFractionDigits: digits, maximumFractionDigits: digits })
+const fmtInt = (v: number) => v.toLocaleString('fr-FR')
 const findRow = (table: PlfTable, code: string) => table.rows.find((r) => r.code === code)!
 
 export function PlfBanner() {
@@ -453,6 +461,9 @@ export function PlfDepenses() {
         <PlfTableCard table={depensesPlf2027} />
       </div>
       <div className="animate-fade-up" style={{ animationDelay: '300ms' }}>
+        <PlfEffectifsRemuneres />
+      </div>
+      <div className="animate-fade-up" style={{ animationDelay: '360ms' }}>
         <NotesGrid title="Actions phares du budget 2027" groups={actionsPhares2027} />
       </div>
     </>
@@ -550,6 +561,272 @@ export function PlfMacro() {
   )
 }
 
+function SearchBox({ value, onChange, placeholder }: { value: string; onChange: (value: string) => void; placeholder: string }) {
+  return (
+    <label className="relative block min-w-0 flex-1">
+      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+      <input
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        placeholder={placeholder}
+        className="h-10 w-full rounded-md border border-input bg-background pl-9 pr-3 text-[12px] font-medium outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
+      />
+    </label>
+  )
+}
+
+function PlfPdlTerritoires() {
+  const [provinceCode, setProvinceCode] = useState('ALL')
+  const [query, setQuery] = useState('')
+  const provinces = pdlParProvinceTerritoire2027.filter((row) => row.level === 0)
+  const total = pdlParProvinceTerritoire2027.find((row) => row.level === 0 && row.code === '01')
+    ? provinces.reduce((sum, row) => sum + row.plf2027, 0)
+    : 0
+  const selectedProvince = provinces.find((row) => row.code === provinceCode) ?? null
+  const normalizedQuery = query.trim().toLocaleLowerCase('fr-FR')
+  const rows = useMemo(() => {
+    return pdlParProvinceTerritoire2027.filter((row) => {
+      const inProvince = provinceCode === 'ALL' || row.code === provinceCode || row.provinceCode === provinceCode
+      const matchesQuery =
+        normalizedQuery.length === 0 ||
+        row.code.toLocaleLowerCase('fr-FR').includes(normalizedQuery) ||
+        row.label.toLocaleLowerCase('fr-FR').includes(normalizedQuery)
+      return inProvince && matchesQuery
+    })
+  }, [normalizedQuery, provinceCode])
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Programme de développement local par province et territoire</CardTitle>
+        <CardDescription>Comparaison LF 2026, LFR 2026 et PLF 2027 · Annexe XV, pages 77 à 79</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-[260px_1fr]">
+          <select
+            value={provinceCode}
+            onChange={(event) => setProvinceCode(event.target.value)}
+            className="h-10 rounded-md border border-input bg-background px-3 text-[12px] font-semibold outline-none focus:border-primary"
+          >
+            <option value="ALL">Toutes les provinces</option>
+            {provinces.map((province) => (
+              <option key={province.code} value={province.code}>
+                {province.code} · {province.label}
+              </option>
+            ))}
+          </select>
+          <SearchBox value={query} onChange={setQuery} placeholder="Rechercher une province, un territoire ou un code" />
+        </div>
+        {selectedProvince && (
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+            <div className="rounded-lg border border-border p-3">
+              <p className="text-[10px] font-bold uppercase text-muted-foreground">LF 2026</p>
+              <Amount value={selectedProvince.loiFinances2026} />
+            </div>
+            <div className="rounded-lg border border-border p-3">
+              <p className="text-[10px] font-bold uppercase text-muted-foreground">LFR 2026</p>
+              <Amount value={selectedProvince.loiRectificative2026} />
+            </div>
+            <div className="rounded-lg border border-primary/30 bg-primary/5 p-3">
+              <p className="text-[10px] font-bold uppercase text-primary">PLF 2027</p>
+              <Amount value={selectedProvince.plf2027} />
+            </div>
+          </div>
+        )}
+        <div className="max-h-[70vh] overflow-auto rounded-lg border border-border">
+          <table className="w-full min-w-[980px] border-collapse text-left text-[11px] tabular-nums">
+            <thead className="sticky top-0 z-10 bg-muted text-[10px] uppercase text-muted-foreground shadow-sm">
+              <tr>
+                <th className="px-4 py-3">Code</th>
+                <th className="min-w-80 px-4 py-3">Province / territoire</th>
+                <th className="px-4 py-3 text-right">LF 2026</th>
+                <th className="px-4 py-3 text-right">LFR 2026</th>
+                <th className="px-4 py-3 text-right">PLF 2027</th>
+                <th className="px-4 py-3 text-right">Évolution vs LFR</th>
+                <th className="px-4 py-3 text-right">Part PLF</th>
+                <th className="px-4 py-3 text-right">Page</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={row.code} className={cn('border-t border-border hover:bg-muted/50', row.level === 0 ? 'bg-muted/40 font-bold text-foreground' : 'text-muted-foreground')}>
+                  <td className="px-4 py-2.5 font-semibold text-foreground">{row.code}</td>
+                  <td className="px-4 py-2.5" style={{ paddingLeft: `${16 + row.level * 18}px` }}>{row.label}</td>
+                  <td className="whitespace-nowrap px-4 py-2.5 text-right"><Amount value={row.loiFinances2026} /></td>
+                  <td className="whitespace-nowrap px-4 py-2.5 text-right"><Amount value={row.loiRectificative2026} /></td>
+                  <td className="whitespace-nowrap px-4 py-2.5 text-right font-semibold text-foreground"><Amount value={row.plf2027} /></td>
+                  <td className="px-4 py-2.5 text-right"><Evolution lfr={row.loiRectificative2026} plf={row.plf2027} /></td>
+                  <td className="px-4 py-2.5 text-right">{fmt((row.plf2027 / total) * 100, 2)}%</td>
+                  <td className="px-4 py-2.5 text-right text-muted-foreground">{row.page}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot className="sticky bottom-0 bg-primary text-primary-foreground">
+              <tr className="font-bold">
+                <td className="px-4 py-3" colSpan={2}>Total Annexe XV</td>
+                <td className="px-4 py-3 text-right"><DualCurrencyAmount value={mrd(total)} scale="billion" className="items-end" secondaryClassName="text-primary-foreground/70" dual animate={false} /></td>
+                <td className="px-4 py-3 text-right"><DualCurrencyAmount value={mrd(total)} scale="billion" className="items-end" secondaryClassName="text-primary-foreground/70" dual animate={false} /></td>
+                <td className="px-4 py-3 text-right"><DualCurrencyAmount value={mrd(total)} scale="billion" className="items-end" secondaryClassName="text-primary-foreground/70" dual animate={false} /></td>
+                <td className="px-4 py-3 text-right">0,0%</td>
+                <td className="px-4 py-3 text-right">100,00%</td>
+                <td className="px-4 py-3 text-right">77-79</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p className="text-[11px] text-muted-foreground">Source : {SOURCE_DOCUMENT_1_ANNEXES_2027}, Annexe XV.</p>
+      </CardContent>
+    </Card>
+  )
+}
+
+function PlfEffectifsRemuneres() {
+  const [query, setQuery] = useState('')
+  const total = effectifsRemuneres2027.find((row) => row.section === 'TOTAL')
+  const normalizedQuery = query.trim().toLocaleLowerCase('fr-FR')
+  const rows = useMemo(() => {
+    return effectifsRemuneres2027.filter((row) => {
+      if (row.section === 'TOTAL') return false
+      return (
+        normalizedQuery.length === 0 ||
+        row.section.toLocaleLowerCase('fr-FR').includes(normalizedQuery) ||
+        (row.specificiteCode ?? '').toLocaleLowerCase('fr-FR').includes(normalizedQuery) ||
+        row.label.toLocaleLowerCase('fr-FR').includes(normalizedQuery)
+      )
+    })
+  }, [normalizedQuery])
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Plafonds d&apos;autorisations des emplois rémunérés</CardTitle>
+        <CardDescription>Effectifs LFR 2026, PLF 2027 et actions nouvelles · Annexe XVI, pages 80 à 84</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_220px_220px]">
+          <SearchBox value={query} onChange={setQuery} placeholder="Rechercher une section ou une spécificité" />
+          <div className="rounded-lg border border-border px-3 py-2">
+            <p className="text-[10px] font-bold uppercase text-muted-foreground">PLF 2027</p>
+            <p className="text-xl font-extrabold text-foreground">{fmtInt(total?.plf2027 ?? 0)}</p>
+          </div>
+          <div className="rounded-lg border border-border px-3 py-2">
+            <p className="text-[10px] font-bold uppercase text-muted-foreground">Actions nouvelles</p>
+            <p className="text-xl font-extrabold text-success">+{fmtInt(total?.actionNouvelle ?? 0)}</p>
+          </div>
+        </div>
+        <div className="max-h-[58vh] overflow-auto rounded-lg border border-border">
+          <table className="w-full min-w-[760px] text-left text-[11px] tabular-nums">
+            <thead className="sticky top-0 z-10 bg-muted text-[10px] uppercase text-muted-foreground shadow-sm">
+              <tr>
+                <th className="px-4 py-3">Code</th>
+                <th className="min-w-80 px-4 py-3">Section / spécificité</th>
+                <th className="px-4 py-3 text-right">LFR 2026</th>
+                <th className="px-4 py-3 text-right">PLF 2027</th>
+                <th className="px-4 py-3 text-right">Action nouvelle</th>
+                <th className="px-4 py-3 text-right">Page</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, i) => (
+                <tr key={`${row.section}-${row.specificiteCode ?? 'section'}-${i}`} className={cn('border-t border-border hover:bg-muted/50', row.level === 0 ? 'bg-muted/40 font-bold text-foreground' : 'text-muted-foreground')}>
+                  <td className="px-4 py-2.5 font-semibold text-foreground">{row.specificiteCode ?? row.section}</td>
+                  <td className="px-4 py-2.5" style={{ paddingLeft: `${16 + row.level * 18}px` }}>{row.label}</td>
+                  <td className="px-4 py-2.5 text-right">{fmtInt(row.lfr2026)}</td>
+                  <td className="px-4 py-2.5 text-right font-semibold text-foreground">{fmtInt(row.plf2027)}</td>
+                  <td className={cn('px-4 py-2.5 text-right font-semibold', row.actionNouvelle > 0 ? 'text-success' : 'text-muted-foreground')}>{row.actionNouvelle > 0 ? '+' : ''}{fmtInt(row.actionNouvelle)}</td>
+                  <td className="px-4 py-2.5 text-right text-muted-foreground">{row.page}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-[11px] text-muted-foreground">Source : {SOURCE_DOCUMENT_1_ANNEXES_2027}, Annexe XVI.</p>
+      </CardContent>
+    </Card>
+  )
+}
+
+export function PlfCreditsSections() {
+  const [query, setQuery] = useState('')
+  const [kind, setKind] = useState<'all' | 'section' | 'programme' | 'titre'>('all')
+  const total = creditsParSectionProgrammeTitre2027.find((row) => row.kind === 'total')?.amount ?? depensesPlf2027.total.plf ?? 1
+  const normalizedQuery = query.trim().toLocaleLowerCase('fr-FR')
+  const rows = useMemo(() => {
+    return creditsParSectionProgrammeTitre2027.filter((row) => {
+      if (row.kind === 'total') return false
+      const matchesKind = kind === 'all' || row.kind === kind
+      const code = [row.section, row.program, row.titre].filter(Boolean).join('.')
+      const matchesQuery =
+        normalizedQuery.length === 0 ||
+        code.toLocaleLowerCase('fr-FR').includes(normalizedQuery) ||
+        row.label.toLocaleLowerCase('fr-FR').includes(normalizedQuery)
+      return matchesKind && matchesQuery
+    })
+  }, [kind, normalizedQuery])
+
+  return (
+    <>
+      <PlfBanner />
+      <Card className="animate-fade-up">
+        <CardHeader>
+          <CardTitle>Crédits par section, programme et titre</CardTitle>
+          <CardDescription>Présentation détaillée du PLF 2027 · Annexe XVII, pages 85 à 105</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 gap-3 lg:grid-cols-[180px_1fr_240px]">
+            <select
+              value={kind}
+              onChange={(event) => setKind(event.target.value as typeof kind)}
+              className="h-10 rounded-md border border-input bg-background px-3 text-[12px] font-semibold outline-none focus:border-primary"
+            >
+              <option value="all">Tous les niveaux</option>
+              <option value="section">Sections</option>
+              <option value="programme">Programmes</option>
+              <option value="titre">Titres</option>
+            </select>
+            <SearchBox value={query} onChange={setQuery} placeholder="Rechercher une section, un programme, un titre ou un code" />
+            <div className="rounded-lg border border-border px-3 py-2">
+              <p className="text-[10px] font-bold uppercase text-muted-foreground">Total officiel</p>
+              <DualCurrencyAmount value={mrd(total)} scale="billion" className="items-start font-extrabold text-foreground" dual animate={false} />
+            </div>
+          </div>
+          <div className="max-h-[72vh] overflow-auto rounded-lg border border-border">
+            <table className="w-full min-w-[900px] text-left text-[11px] tabular-nums">
+              <thead className="sticky top-0 z-10 bg-muted text-[10px] uppercase text-muted-foreground shadow-sm">
+                <tr>
+                  <th className="px-4 py-3">Niveau</th>
+                  <th className="px-4 py-3">Code</th>
+                  <th className="min-w-96 px-4 py-3">Intitulé</th>
+                  <th className="px-4 py-3 text-right">PLF 2027</th>
+                  <th className="px-4 py-3 text-right">Part du total</th>
+                  <th className="px-4 py-3 text-right">Page</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, i) => {
+                  const level = row.kind === 'section' ? 0 : row.kind === 'programme' ? 1 : 2
+                  const code = row.kind === 'section' ? row.section : row.kind === 'programme' ? `${row.section}.${row.program}` : `${row.section}.${row.program}.${row.titre}`
+                  return (
+                    <tr key={`${row.kind}-${code}-${i}`} className={cn('border-t border-border hover:bg-muted/50', level === 0 ? 'bg-muted/40 font-bold text-foreground' : level === 1 ? 'font-semibold text-foreground' : 'text-muted-foreground')}>
+                      <td className="px-4 py-2.5 capitalize">{row.kind}</td>
+                      <td className="px-4 py-2.5 font-semibold text-foreground">{code}</td>
+                      <td className="px-4 py-2.5" style={{ paddingLeft: `${16 + level * 18}px` }}>{row.label}</td>
+                      <td className="whitespace-nowrap px-4 py-2.5 text-right"><Amount value={row.amount} /></td>
+                      <td className="px-4 py-2.5 text-right">{fmt((row.amount / total) * 100, 2)}%</td>
+                      <td className="px-4 py-2.5 text-right text-muted-foreground">{row.page}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[11px] text-muted-foreground">Source : {SOURCE_DOCUMENT_1_ANNEXES_2027}, Annexe XVII. Les lignes reprennent les niveaux publiés : section, programme et titre.</p>
+        </CardContent>
+      </Card>
+    </>
+  )
+}
+
 export function PlfProvinces() {
   const transfert = retrocessionProvinces2027.find((r) => r.label.startsWith('8.'))!
   const repartition = retrocessionProvinces2027.slice(retrocessionProvinces2027.findIndex((r) => r.label.startsWith('9.')) + 1).slice(0, 3)
@@ -568,6 +845,9 @@ export function PlfProvinces() {
           })),
         ]}
       />
+      <div className="animate-fade-up" style={{ animationDelay: '120ms' }}>
+        <PlfPdlTerritoires />
+      </div>
       <Card className="animate-fade-up" style={{ animationDelay: '160ms' }}>
         <CardHeader>
           <CardTitle>Calcul des 40 % des recettes à caractère national</CardTitle>

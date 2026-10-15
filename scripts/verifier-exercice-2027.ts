@@ -9,6 +9,11 @@ import {
   retrocessionProvinces2027,
   type PlfTable,
 } from "../lib/exercices/2027";
+import {
+  creditsParSectionProgrammeTitre2027,
+  effectifsRemuneres2027,
+  pdlParProvinceTerritoire2027,
+} from "../lib/exercices/2027-annexes";
 
 const anomalies: string[] = [];
 const fmt = (v: number) => (v / 1e9).toLocaleString("fr-FR", { maximumFractionDigits: 1 });
@@ -64,6 +69,31 @@ check("Tableau 5 · emplois", equilibrePlf2027.total, equilibrePlf2027.emplois.r
 
 const partsPag = piliersPag2027.reduce((s, p) => s + p.part, 0);
 if (Math.abs(partsPag - 100) > 0.05) anomalies.push(`Piliers du PAG : somme des parts ${partsPag} %`);
+
+const pdlProvinces = pdlParProvinceTerritoire2027.filter((r) => r.level === 0);
+const pdlTerritoires = pdlParProvinceTerritoire2027.filter((r) => r.level === 1);
+check("Annexe XV · total provinces PDL (PLF)", 824718610629, pdlProvinces.reduce((s, r) => s + r.plf2027, 0), 0);
+check("Annexe XV · total territoires PDL (PLF)", 824718610629, pdlTerritoires.reduce((s, r) => s + r.plf2027, 0), 0);
+if (pdlProvinces.length !== 25) anomalies.push(`Annexe XV : ${pdlProvinces.length} province(s) extraites au lieu de 25`);
+if (pdlTerritoires.length !== 145) anomalies.push(`Annexe XV : ${pdlTerritoires.length} territoire(s) extraits au lieu de 145`);
+
+const totalEffectifs = effectifsRemuneres2027.find((r) => r.section === "TOTAL");
+if (!totalEffectifs) {
+  anomalies.push("Annexe XVI : total des effectifs introuvable");
+} else {
+  check("Annexe XVI · effectifs LFR 2026", 1444347, totalEffectifs.lfr2026, 0);
+  check("Annexe XVI · effectifs PLF 2027", 1482547, totalEffectifs.plf2027, 0);
+  check("Annexe XVI · actions nouvelles", 38200, totalEffectifs.actionNouvelle, 0);
+}
+
+const totalCredits = creditsParSectionProgrammeTitre2027.find((r) => r.kind === "total");
+if (!totalCredits) {
+  anomalies.push("Annexe XVII : total des crédits introuvable");
+} else {
+  const budgetGeneral = depensesPlf2027.rows.find((r) => r.code === "A")?.plf;
+  if (!budgetGeneral) anomalies.push("Annexe XVII : ligne Budget général introuvable dans le tableau des dépenses");
+  else check("Annexe XVII · total officiel des crédits du Budget général", budgetGeneral, totalCredits.amount, 0);
+}
 
 if (anomalies.length === 0) {
   console.log("✔ Données PLF 2027 cohérentes.");
