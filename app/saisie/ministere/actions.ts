@@ -10,7 +10,7 @@ import { notifySaisieSoumise, notifySaisieStatutChange, notifyRole, notifyUser }
 import { logAudit, getAuditTrail } from "@/lib/audit";
 import { slugifyCode, formatReference } from "@/lib/reference";
 import { formatUsdFromCdf } from "@/lib/currency";
-import { DEFAULT_USD_CDF_EXCHANGE_RATE } from "@/lib/settings";
+import { getTauxExercice } from "@/lib/exchange-rates";
 import { TYPE_PREVISION_LABELS } from "@/lib/rubriques";
 import { STATUT_LABELS, formatMontant } from "@/components/dashboard/saisie/shared";
 import type { RapportData } from "@/components/dashboard/saisie/generate-rapport-pdf";
@@ -370,7 +370,7 @@ export async function getRapportLigneBudgetaire(id: string): Promise<RapportData
     (role === "MINISTERE_FOCAL" && ligne.ministereId === session.user.ministereId);
   if (!isAllowed) throw new Error("Non autorisé.");
 
-  const historique = await getAuditTrail("ministere", ligne.id);
+  const [historique, tauxLigne] = await Promise.all([getAuditTrail("ministere", ligne.id), getTauxExercice(ligne.exercice)]);
 
   return {
     titre: "Demande budgétaire",
@@ -388,7 +388,7 @@ export async function getRapportLigneBudgetaire(id: string): Promise<RapportData
         label: "Montant demandé",
         value:
           ligne.montantDemande !== null
-            ? `${formatMontant(ligne.montantDemande)} (env. ${formatUsdFromCdf(Number(ligne.montantDemande), DEFAULT_USD_CDF_EXCHANGE_RATE)} USD)`
+            ? `${formatMontant(ligne.montantDemande)} (env. ${formatUsdFromCdf(Number(ligne.montantDemande), tauxLigne)} USD)`
             : "—",
       },
       { label: "Priorité", value: ligne.priorite ?? "—" },

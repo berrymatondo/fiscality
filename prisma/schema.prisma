@@ -26,7 +26,7 @@ model Ministere {
 
 /// Entité sous tutelle d'un ministère (régie financière, direction générale, etc.).
 model Entite {
-  id             String   @id @default(cuid())
+  id             String    @id @default(cuid())
   sigle          String
   nom            String
   classification String?
@@ -71,25 +71,25 @@ enum TypePrevision {
 /// Demande budgétaire (prévision) saisie par un point focal Ministère (profil B1),
 /// rattachée à une entité de son ministère et classée par rubrique / type de prévision.
 model LigneBudgetaire {
-  id                 String        @id @default(cuid())
-  reference          String        @unique
-  ministereId        String
-  ministere          Ministere     @relation(fields: [ministereId], references: [id])
-  entiteId           String?
-  entite             Entite?       @relation(fields: [entiteId], references: [id], onDelete: SetNull)
-  exercice           Int
-  periode            String
-  typePrevision      TypePrevision
-  rubrique           String
-  objet              String?
-  montantDemande     Decimal?
-  priorite           String?
-  commentaire        String?
-  statut             StatutSaisie  @default(BROUILLON)
-  auteurId           String
-  auteur             User          @relation(fields: [auteurId], references: [id])
-  createdAt          DateTime      @default(now())
-  updatedAt          DateTime      @updatedAt
+  id             String        @id @default(cuid())
+  reference      String        @unique
+  ministereId    String
+  ministere      Ministere     @relation(fields: [ministereId], references: [id])
+  entiteId       String?
+  entite         Entite?       @relation(fields: [entiteId], references: [id], onDelete: SetNull)
+  exercice       Int
+  periode        String
+  typePrevision  TypePrevision
+  rubrique       String
+  objet          String?
+  montantDemande Decimal?
+  priorite       String?
+  commentaire    String?
+  statut         StatutSaisie  @default(BROUILLON)
+  auteurId       String
+  auteur         User          @relation(fields: [auteurId], references: [id])
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 
   pieceJointes PieceJointe[]
 
@@ -212,6 +212,17 @@ model SaisieMacro {
   pieceJointes PieceJointe[]
 
   @@map("saisies_macro")
+}
+
+/// Taux de change USD/CDF retenu pour un exercice budgétaire (1 USD = taux CDF).
+model TauxChangeExercice {
+  exercice     Int      @id
+  taux         Decimal
+  modifieParId String?
+  updatedAt    DateTime @updatedAt
+  createdAt    DateTime @default(now())
+
+  @@map("taux_change_exercices")
 }
 
 /// Document attaché à une saisie (justificatif, pièce comptable, etc.).

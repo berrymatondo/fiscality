@@ -12,7 +12,7 @@ import { LigneBudgetaireForm } from "@/components/dashboard/saisie/ligne-budgeta
 import { ExportPdfButton } from "@/components/dashboard/saisie/export-pdf-button";
 import { StatutBadge, STATUT_LABELS, formatMontant, ReadOnlyField, HistoriqueTimeline, SectionTitle } from "@/components/dashboard/saisie/shared";
 import { formatUsdFromCdf } from "@/lib/currency";
-import { DEFAULT_USD_CDF_EXCHANGE_RATE } from "@/lib/settings";
+import { getTauxExercice, getTauxParExercice } from "@/lib/exchange-rates";
 import { getRubriquesForMinistere, TYPE_PREVISION_LABELS } from "@/lib/rubriques";
 import { getAuditTrail } from "@/lib/audit";
 import {
@@ -50,6 +50,8 @@ export default async function EditerSaisieMinisterePage({ params }: { params: Pr
   if (!ligne || (role === "MINISTERE_FOCAL" && ligne.ministereId !== session.user.ministereId)) {
     notFound();
   }
+
+  const [tauxLigne, tauxParExercice] = await Promise.all([getTauxExercice(ligne.exercice), getTauxParExercice()]);
 
   const editable = isEditable(ligne.statut);
   const attachmentsLocked = ligne.statut !== "BROUILLON";
@@ -109,7 +111,7 @@ export default async function EditerSaisieMinisterePage({ params }: { params: Pr
                     <>
                       {formatMontant(ligne.montantDemande)}
                       <span className="ml-1 text-xs font-normal text-muted-foreground">
-                        (≈ {formatUsdFromCdf(Number(ligne.montantDemande), DEFAULT_USD_CDF_EXCHANGE_RATE)} USD)
+                        (≈ {formatUsdFromCdf(Number(ligne.montantDemande), tauxLigne)} USD)
                       </span>
                     </>
                   ) : (
@@ -128,6 +130,7 @@ export default async function EditerSaisieMinisterePage({ params }: { params: Pr
             <LigneBudgetaireForm
               ligneId={ligne.id}
               defaultPeriode={ligne.periode}
+              tauxParExercice={tauxParExercice}
               entites={entites}
               rubriques={rubriques}
               defaults={{
@@ -203,7 +206,7 @@ export default async function EditerSaisieMinisterePage({ params }: { params: Pr
                   label: "Montant demandé",
                   value:
                     ligne.montantDemande !== null
-                      ? `${formatMontant(ligne.montantDemande)} (env. ${formatUsdFromCdf(Number(ligne.montantDemande), DEFAULT_USD_CDF_EXCHANGE_RATE)} USD)`
+                      ? `${formatMontant(ligne.montantDemande)} (env. ${formatUsdFromCdf(Number(ligne.montantDemande), tauxLigne)} USD)`
                       : "—",
                 },
                 { label: "Priorité", value: ligne.priorite ?? "—" },

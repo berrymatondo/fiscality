@@ -4,6 +4,7 @@ import { UtilityShell } from "@/components/dashboard/utility-shell";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { LigneBudgetaireForm } from "@/components/dashboard/saisie/ligne-budgetaire-form";
 import { getRubriquesForMinistere } from "@/lib/rubriques";
+import { getTauxParExercice } from "@/lib/exchange-rates";
 
 export default async function NouvelleSaisieMinisterePage() {
   const session = await requireRole(["MINISTERE_FOCAL"]);
@@ -20,9 +21,10 @@ export default async function NouvelleSaisieMinisterePage() {
     );
   }
 
-  const [ministere, entites] = await Promise.all([
+  const [ministere, entites, tauxParExercice] = await Promise.all([
     prisma.ministere.findUniqueOrThrow({ where: { id: session.user.ministereId } }),
     prisma.entite.findMany({ where: { ministereId: session.user.ministereId }, orderBy: { sigle: "asc" } }),
+    getTauxParExercice(),
   ]);
 
   const rubriques = getRubriquesForMinistere(ministere.nom);
@@ -43,7 +45,7 @@ export default async function NouvelleSaisieMinisterePage() {
               entités » avant de créer une saisie.
             </p>
           ) : (
-            <LigneBudgetaireForm entites={entites} rubriques={rubriques} />
+            <LigneBudgetaireForm entites={entites} rubriques={rubriques} tauxParExercice={tauxParExercice} />
           )}
         </CardContent>
       </Card>

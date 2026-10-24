@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Field, currentPeriode } from "@/components/dashboard/saisie/shared";
 import { AmountInput, toNumericString } from "@/components/dashboard/saisie/amount-input";
-import { useExchangeRate, formatUsdFromCdf } from "@/components/dashboard/currency";
+import { formatUsdFromCdf } from "@/components/dashboard/currency";
+import { rateForExercice, type TauxParExercice } from "@/lib/settings";
 import { TYPE_PREVISION_LABELS, PRIORITES } from "@/lib/rubriques";
 import { saveLigneBudgetaire } from "@/app/saisie/ministere/actions";
 import type { TypePrevision } from "@/lib/generated/prisma/client";
@@ -31,18 +32,22 @@ export function LigneBudgetaireForm({
   entites,
   rubriques,
   defaults,
+  tauxParExercice = {},
 }: {
   ligneId?: string;
   defaultPeriode?: string;
   entites: EntiteOption[];
   rubriques: string[];
   defaults?: LigneDefaults;
+  /** Taux USD/CDF par exercice : l'équivalent USD suit l'année de la période saisie. */
+  tauxParExercice?: TauxParExercice;
 }) {
   const [typePrevision, setTypePrevision] = useState<TypePrevision>(defaults?.typePrevision ?? "BIENS_SERVICES");
   const [montantDemande, setMontantDemande] = useState(
     defaults?.montantDemande !== null && defaults?.montantDemande !== undefined ? String(defaults.montantDemande) : "",
   );
-  const rate = useExchangeRate();
+  const [periode, setPeriode] = useState(defaultPeriode ?? currentPeriode());
+  const rate = rateForExercice(tauxParExercice, Number(periode.slice(0, 4)));
 
   const montantNumber = Number(toNumericString(montantDemande));
   const usdEquivalent = Number.isFinite(montantNumber) && montantNumber > 0 ? formatUsdFromCdf(montantNumber, rate) : null;
@@ -57,7 +62,8 @@ export function LigneBudgetaireForm({
             type="month"
             name="periode"
             required
-            defaultValue={defaultPeriode ?? currentPeriode()}
+            value={periode}
+            onChange={(e) => setPeriode(e.target.value)}
             className={inputClass}
           />
         </Field>

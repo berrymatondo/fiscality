@@ -11,7 +11,7 @@ const adapter = new PrismaNeon({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
 const EMAIL = "decideur@budget.cd";
-const NAME = "Décideur DG/DGA";
+const NAME = "Ministre";
 const PASSWORD = "password1234";
 
 async function main() {

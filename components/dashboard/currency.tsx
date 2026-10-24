@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import { createContext, useContext, useEffect, useState, useSyncExternalStore, type ReactNode } from 'react'
 import {
   DEFAULT_USD_CDF_EXCHANGE_RATE,
-  USD_CDF_EXCHANGE_RATE_STORAGE_KEY,
   DEFAULT_DISPLAY_CURRENCY,
   DISPLAY_CURRENCY_STORAGE_KEY,
 } from '@/lib/settings'
@@ -14,7 +13,6 @@ export { parseFrenchNumber, formatUsdFromCdf }
 
 export type Currency = 'CDF' | 'USD'
 
-export const EXCHANGE_RATE_CHANGED_EVENT = 'fiscality:exchange-rate-changed'
 export const DISPLAY_CURRENCY_CHANGED_EVENT = 'fiscality:display-currency-changed'
 
 function subscribe(event: string) {
@@ -28,13 +26,16 @@ function subscribe(event: string) {
   }
 }
 
-function getRateSnapshot() {
-  const value = Number(localStorage.getItem(USD_CDF_EXCHANGE_RATE_STORAGE_KEY))
-  return Number.isFinite(value) && value > 0 ? value : DEFAULT_USD_CDF_EXCHANGE_RATE
+const ExchangeRateContext = createContext<number>(DEFAULT_USD_CDF_EXCHANGE_RATE)
+
+/** Fournit le taux USD/CDF de l'exercice sélectionné à tous les montants affichés. */
+export function ExchangeRateProvider({ rate, children }: { rate: number; children: ReactNode }) {
+  return <ExchangeRateContext.Provider value={rate}>{children}</ExchangeRateContext.Provider>
 }
 
+/** Taux USD/CDF de l'exercice sélectionné (1 USD = taux CDF). */
 export function useExchangeRate() {
-  return useSyncExternalStore(subscribe(EXCHANGE_RATE_CHANGED_EVENT), getRateSnapshot, () => DEFAULT_USD_CDF_EXCHANGE_RATE)
+  return useContext(ExchangeRateContext)
 }
 
 function getCurrencySnapshot(): Currency {

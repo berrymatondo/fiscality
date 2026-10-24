@@ -35,6 +35,8 @@ import { depensesPlf2027 } from '@/lib/exercices/2027'
 import { BudgetProcessView } from '@/components/dashboard/budget-process-view'
 import { AnalysisView } from '@/components/dashboard/analysis-view'
 import { SettingsView } from '@/components/dashboard/settings-view'
+import { ADMIN_ROLES } from '@/lib/roles'
+import type { TauxParExercice } from '@/lib/settings'
 import { AnnualHtmlDashboard } from '@/components/dashboard/annual-html-dashboard'
 import { DualCurrencyAmount } from '@/components/dashboard/currency'
 import { CountUp } from '@/components/dashboard/count-up'
@@ -148,12 +150,16 @@ export function DashboardContent({
   exercice,
   periodeLabel,
   provincesPubliees,
+  exercicesDisponibles = [],
+  tauxParExercice = {},
   currentRole,
 }: {
   section: NavLabel
   exercice: number
   periodeLabel?: string
   provincesPubliees?: { name: string; taux: number }[] | null
+  exercicesDisponibles?: number[]
+  tauxParExercice?: TauxParExercice
   currentRole: Role
 }) {
   const isDecideur = currentRole === 'DECIDEUR'
@@ -200,7 +206,14 @@ export function DashboardContent({
 
   switch (section) {
     case 'Paramètres':
-      return <SettingsView />
+      return (
+        <SettingsView
+          exercice={exercice}
+          exercicesDisponibles={exercicesDisponibles}
+          tauxParExercice={tauxParExercice}
+          canEdit={ADMIN_ROLES.includes(currentRole)}
+        />
+      )
     case 'Recettes':
       return (
         <>

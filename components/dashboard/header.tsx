@@ -1,6 +1,6 @@
 'use client'
 
-import { Calendar, ChevronDown, Download, Check, Menu } from 'lucide-react'
+import { Calendar, ChevronDown, Download, Check, Menu, ArrowLeftRight } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {
@@ -38,11 +38,14 @@ export function Header({
   exercice,
   periode,
   exercicesDisponibles,
+  exchangeRate,
 }: {
   onMenuClick: () => void
   exercice: number
   periode: string
   exercicesDisponibles: number[]
+  /** Taux USD/CDF retenu pour l'exercice sélectionné. */
+  exchangeRate: number
 }) {
   const router = useRouter()
   const pathname = usePathname()
@@ -108,6 +111,21 @@ export function Header({
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
+
+        <div
+          className="flex items-center gap-3 rounded-md border border-border px-3 py-1.5"
+          title={`Taux de change retenu pour l'exercice ${exercice}`}
+        >
+          <span className="leading-tight">
+            <span className="block text-[9px] font-semibold uppercase text-muted-foreground">
+              Taux {exercice}
+            </span>
+            <span className="block text-sm font-semibold text-foreground tabular-nums">
+              1 USD = {exchangeRate.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} CDF
+            </span>
+          </span>
+          <ArrowLeftRight className="h-4 w-4 text-muted-foreground" />
+        </div>
 
         <DropdownMenu>
           <DropdownMenuTrigger className="flex items-center justify-between gap-6 rounded-md border border-border px-3 py-1.5 text-left transition-colors hover:bg-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
